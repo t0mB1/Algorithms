@@ -1,0 +1,16 @@
+/Users/tombrayshaw/Projects/Algorithms/Algorithms/bin/Debug/netstandard2.0/Algorithms.deps.json
+/Users/tombrayshaw/Projects/Algorithms/Algorithms/bin/Debug/netstandard2.0/Algorithms.dll
+/Users/tombrayshaw/Projects/Algorithms/Algorithms/bin/Debug/netstandard2.0/ref/Algorithms.dll
+/Users/tombrayshaw/Projects/Algorithms/Algorithms/bin/Debug/netstandard2.0/Algorithms.pdb
+/Users/tombrayshaw/Projects/Algorithms/Algorithms/obj/Debug/netstandard2.0/Algorithms.csprojAssemblyReference.cache
+/Users/tombrayshaw/Projects/Algorithms/Algorithms/obj/Debug/netstandard2.0/App.xaml.g.cs
+/Users/tombrayshaw/Projects/Algorithms/Algorithms/obj/Debug/netstandard2.0/Views/MainPage.xaml.g.cs
+/Users/tombrayshaw/Projects/Algorithms/Algorithms/obj/Debug/netstandard2.0/Views/SearchingPage.xaml.g.cs
+/Users/tombrayshaw/Projects/Algorithms/Algorithms/obj/Debug/netstandard2.0/Views/SortingPage.xaml.g.cs
+/Users/tombrayshaw/Projects/Algorithms/Algorithms/obj/Debug/netstandard2.0/Algorithms.csproj.CoreCompileInputs.cache
+/Users/tombrayshaw/Projects/Algorithms/Algorithms/obj/Debug/netstandard2.0/Algorithms.AssemblyInfoInputs.cache
+/Users/tombrayshaw/Projects/Algorithms/Algorithms/obj/Debug/netstandard2.0/Algorithms.AssemblyInfo.cs
+/Users/tombrayshaw/Projects/Algorithms/Algorithms/obj/Debug/netstandard2.0/XamlC.stamp
+/Users/tombrayshaw/Projects/Algorithms/Algorithms/obj/Debug/netstandard2.0/Algorithms.dll
+/Users/tombrayshaw/Projects/Algorithms/Algorithms/obj/Debug/netstandard2.0/ref/Algorithms.dll
+/Users/tombrayshaw/Projects/Algorithms/Algorithms/obj/Debug/netstandard2.0/Algorithms.pdb

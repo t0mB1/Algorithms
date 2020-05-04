@@ -1,0 +1,39 @@
+﻿<Properties StartupConfiguration="{51A0C8EF-8F7B-4CB9-8A9E-6964FB17D443}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Algorithms/Views/SearchingPage.xaml.cs">
+    <Files>
+      <File FileName="Algorithms/Views/SearchingPage.xaml.cs" Line="28" Column="34" />
+      <File FileName="Algorithms/Services/GraphService.cs" Line="41" Column="28" />
+      <File FileName="Algorithms/Models/SearchingGraphObject.cs" Line="19" Column="1" NotebookId="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Algorithms" expanded="True">
+            <Node name="Algorithms" expanded="True">
+              <Node name="Models" expanded="True" />
+              <Node name="Services" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="MainPage.xaml" expanded="True" />
+                <Node name="SearchingPage.xaml" expanded="True">
+                  <Node name="SearchingPage.xaml.cs" selected="True" />
+                </Node>
+              </Node>
+              <Node name="App.xaml" expanded="True" />
+            </Node>
+            <Node name="Algorithms.iOS" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Algorithms.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.850486F3-2F91-46CD-964A-28D61B8AB48A" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/tombrayshaw/Projects/Algorithms/Algorithms/Views/SearchingPage.xaml.cs" relfile="Algorithms/Views/SearchingPage.xaml.cs" line="126" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Algorithms.Android PreferredExecutionTarget="Android.Android_Accelerated_Oreo" />
+</Properties>

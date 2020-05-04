@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             x:Class="Algorithms.Views.SearchingPage"
+             Title="Searches">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="ResetToolBarItem"
+                     Text="Reset"
+                     Clicked="ResetButtonIsClicked" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <StackLayout>
+            <Grid x:Name="grid"
+                  Margin="10, 20, 10, 10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+            
+                <Button x:Name="bestCaseBtn"
+                        Text="    Best Case    "
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        HorizontalOptions="Center"
+                        BorderColor="LightGray"
+                        BorderWidth="1"
+                        CornerRadius="8"
+                        Clicked="BestCaseBtnIsClicked"/>
+
+                <Button x:Name="randomCaseBtn"
+                        Text="    Random    "
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        HorizontalOptions="Center"
+                        BorderColor="LightGray"
+                        BorderWidth="1"
+                        CornerRadius="8"
+                        Clicked="RandomCaseBtnIsClicked"/>
+
+                <Button x:Name="worstCaseBtn"
+                        Text="    Worst Case    "
+                        Grid.Column="2"
+                        Grid.Row="0"
+                        HorizontalOptions="Center"
+                        BorderColor="LightGray"
+                        BorderWidth="1"
+                        CornerRadius="8"
+                        Clicked="WorstCaseBtnIsClicked"/>
+            </Grid>
+
+            <forms:ChartView x:Name="SearchGraph"
+                         HeightRequest="400"
+                         WidthRequest="800"
+                         Margin="10, 0, 10, 10"/>
+
+
+            <Grid x:Name="grid2"
+                  Margin="10, 10, 10, 10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+                <Picker x:Name="algorithmPicker"
+                        Title="Choose an Algorithm"
+                        SelectedIndexChanged="algorithmPicker_SelectedIndexChanged"
+                        HorizontalOptions="Center"
+                        Grid.Column="0"
+                        Grid.Row="0">
+                    <Picker.Items>
+                        <x:String x:FieldModifier="Center"/>
+                        <x:String>Jump Search</x:String>
+                        <x:String>Linear Search</x:String>
+                        <x:String>Classic Binary Search</x:String>
+                        <x:String>Modified Binary Search</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <Picker x:Name="searchItemPicker"
+                        Title="Search Item"
+                        SelectedIndexChanged="searchItemPicker_SelectedIndexChanged"
+                        HorizontalOptions="Center"
+                        Grid.Column="1"
+                        Grid.Row="0">
+                    <Picker.Items>
+                        <x:String x:FieldModifier="Center"/>
+                        <x:String>1</x:String>
+                        <x:String>2</x:String>
+                        <x:String>3</x:String>
+                        <x:String>4</x:String>
+                        <x:String>5</x:String>
+                        <x:String>6</x:String>
+                        <x:String>7</x:String>
+                        <x:String>8</x:String>
+                        <x:String>9</x:String>
+                        <x:String>10</x:String>
+                        <x:String>11</x:String>
+                        <x:String>12</x:String>
+                        <x:String>13</x:String>
+                        <x:String>14</x:String>
+                        <x:String>15</x:String>
+                        <x:String>16</x:String>
+                        <x:String>17</x:String>
+                        <x:String>18</x:String>
+                        <x:String>19</x:String>
+                        <x:String>20</x:String>
+                    </Picker.Items>
+                </Picker>
+            </Grid>
+
+            <Button x:Name="goBtn"
+                    Text="  Search  "
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    Clicked="SearchBtnIsClicked"
+                    Margin="10, 0, 10, 0"/>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
