@@ -91,7 +91,15 @@ namespace Algorithms.Views
                 switch (SGObj.Case)
                 {
                     case Case.Best:
-                        ChangeGraphToBestCase();
+                        if(SGObj.CurrentAlg == "Linear Search")
+                        {
+                            SGObj.SearchItemValue = 1;
+                        }
+                        else
+                        {
+                            SGObj.SearchItemValue = 10;
+                        }
+                        ChangeGraphToBestCaseShape();
                         break;
 
                     case Case.Worst:
@@ -99,9 +107,7 @@ namespace Algorithms.Views
                         break;
 
                     case Case.Random:
-                        if (SGObj.CurrentAlg == "Classic Binary Search" ||
-                            SGObj.CurrentAlg == "Modified Binary Search" ||
-                            SGObj.CurrentAlg == "Jump Search")
+                        if (!(SGObj.CurrentAlg == "Linear Search"))
                         {
                             ChangeGraphToRandomCase();
                             // SGObj.SearchItemValue = 0;
@@ -167,7 +173,9 @@ namespace Algorithms.Views
                     case "Jump Search":
                         {
                             CheckCaseOnSearch(SGObj);
-                            // carry out operations
+                            List<JumpSearchOperation> operations = algorithms.JumpSearch(CurrentEntriesOnGraph,
+                                                                                         SGObj.SearchItemValue);
+                            CarryOutOperations(operations);
                             break;
                         }
                     case "Classic Binary Search":
@@ -203,13 +211,16 @@ namespace Algorithms.Views
                 int index = CurrentEntriesOnGraph.IndexOf(operation.entry);
                 if (operation.IsSearchItem is false)
                 {
+                    // change to blue
                     CurrentEntriesOnGraph[index].Color = SKColor.Parse(operation.ChangeToColour);
                     DisplayGraph(CurrentEntriesOnGraph);
                     await Task.Delay(500);
+                    // change back to red
                     CurrentEntriesOnGraph[index].Color = SKColor.Parse("#FF1493");
                 }
                 else
                 {
+                    // change to green
                     CurrentEntriesOnGraph[index].Color = SKColor.Parse(operation.ChangeToColour);
                 }
                 DisplayGraph(CurrentEntriesOnGraph);

@@ -117,46 +117,67 @@ namespace Algorithms.Models
             return BSOperations;
         }
 
-        public bool JumpSearch(List<Entry> entries, int searchItem)
+        public List<JumpSearchOperation> JumpSearch(List<Entry> entries, int searchItem)
         {
-            entries.Sort();
+            List<JumpSearchOperation> JSOperations = new List<JumpSearchOperation>();
             int n = entries.Count;
             // finds block size to jump
             int step = (int)Math.Floor(Math.Sqrt(n));
-
             // finding the block where the search item is
             // present (if it is present)
             int prev = 0;
+
+            float Fval = entries[Math.Min(step, n) - 1].Value;
+            int Ival = (int)entries[Math.Min(step, n) - 1].Value;
+
             while (entries[Math.Min(step, n)-1].Value < searchItem)
             {
                 // highlight entries[Math.Min(step, n)-1] Blue
-                // wait
+                JSOperations.Add(new JumpSearchOperation
+                {
+                    entry = entries[Math.Min(step, n) - 1],
+                    IsSearchItem = false,
+                    ChangeToColour = "#FFFF00"
+                });
+
                 prev = step;
                 step += (int)Math.Floor(Math.Sqrt(n));
                 if(prev >= n)
                 {
-                    return false;
+                    // return false;
                 }
             }
             // linear search for search item in block
             // beginning with prev
-            while(entries[prev].Value == searchItem)
+            while(!(entries[prev].Value == searchItem))
             {
                 // highlight entries[prev] Blue
-                // wait
-                prev++;
-                if(prev == Math.Min(step, n))
+                JSOperations.Add(new JumpSearchOperation
                 {
-                    return false;
+                    entry = entries[prev],
+                    IsSearchItem = false,
+                    ChangeToColour = "#FFFF00"
+                });
+                prev++;
+                int ting = Math.Min(step, n);
+                if (prev == Math.Min(step, n))
+                {
+                    // return false;
                 }
             }
             // if search item is found
             if(entries[prev].Value == searchItem)
             {
-                // highlight entries[prev] Green 
-                return true;
+                // highlight entries[prev] Green
+                JSOperations.Add(new JumpSearchOperation
+                {
+                    entry = entries[prev],
+                    IsSearchItem = true,
+                    ChangeToColour = "#00FF00"
+                });
+                // return true;
             }
-            return false;
+            return JSOperations;
         }
     }
 }
