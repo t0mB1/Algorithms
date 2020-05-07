@@ -74,7 +74,7 @@
 
                 <Picker x:Name="algorithmPicker"
                         Title="Choose an Algorithm"
-                        SelectedIndexChanged="algorithmPicker_SelectedIndexChanged"
+                        SelectedIndexChanged="AlgorithmPicker_SelectedIndexChanged"
                         HorizontalOptions="Center"
                         Grid.Column="0"
                         Grid.Row="0">
@@ -119,7 +119,7 @@
                 </Picker>
             </Grid>
 
-            <Button x:Name="goBtn"
+            <Button x:Name="SearchBtn"
                     Text="  Search  "
                     HorizontalOptions="Center"
                     IsVisible="false"

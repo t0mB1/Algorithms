@@ -47,7 +47,6 @@ namespace Algorithms.Models
             {
                 int midpoint = (first + last) / 2;
                 // highlight Entry Blue
-                
                 BSOperations.Add(new BinarySearchOperation() {
                                  entry = entries[midpoint],
                                  IsSearchItem = false,
@@ -79,21 +78,32 @@ namespace Algorithms.Models
             return BSOperations;
         }
 
-        public bool ModifiedBinarySearch(List<Entry> entries, int searchItem)
+        public List<BinarySearchOperation> ModifiedBinarySearch(List<Entry> entries, int searchItem)
         {
             int first = 0;
             int last = entries.Count - 1;
-
-            while(entries[first].Value <= searchItem &&
+            List<BinarySearchOperation> BSOperations = new List<BinarySearchOperation>();
+            while (entries[first].Value <= searchItem &&
                   searchItem <= entries[last].Value)
             {
                 int mid = first + ((last - first) / 2);
                 // highlight entries[mid] Blue
-                // wait
-                if(searchItem == entries[mid].Value)
+                BSOperations.Add(new BinarySearchOperation()
+                {
+                    entry = entries[mid],
+                    IsSearchItem = false,
+                    ChangeToColour = "#FFFF00"
+                });
+                if (searchItem == entries[mid].Value)
                 {
                     // highlight entries[mid] Green
-                    return true;
+                    BSOperations.Add(new BinarySearchOperation()
+                    {
+                        entry = entries[mid],
+                        IsSearchItem = true,
+                        ChangeToColour = "#00FF00"
+                    });
+                    return BSOperations;
                 }
                 else if(searchItem < entries[mid].Value)
                 {
@@ -104,9 +114,8 @@ namespace Algorithms.Models
                     first = mid + 1;
                 }
             }
-            return false;
+            return BSOperations;
         }
-
 
         public bool JumpSearch(List<Entry> entries, int searchItem)
         {
