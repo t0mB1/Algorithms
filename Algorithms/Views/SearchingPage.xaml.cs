@@ -53,39 +53,6 @@ namespace Algorithms.Views
                     }
                 }
             }
-
-            //if (SGObj.SearchItemValue == 0)
-            //{
-            //    Random rnd = new Random();
-            //    SGObj.SearchItemValue = rnd.Next(1, 20);
-            //}
-            //switch (SGObj.Case)
-            //{
-            //    case Case.Random:
-            //        {
-            //            if (SGObj.CurrentAlg == "Classic Binary Search" ||
-            //               SGObj.CurrentAlg == "Modified Binary Search" ||
-            //               SGObj.CurrentAlg == "Jump Search")
-            //            {
-            //                DisplayGraph(service.GetBestCaseEntries(1, 20, SGObj.SearchItemValue));
-            //            }
-            //            else
-            //            {
-            //                DisplayGraph(service.GetRandomEntries(1, 20, SGObj.SearchItemValue));
-            //            }
-            //            break;
-            //        }
-            //    case Case.Best:
-            //        {
-            //            DisplayGraph(service.GetBestCaseEntries(1, 20, SGObj.SearchItemValue));
-            //            break;
-            //        }
-            //    case Case.Worst:
-            //        {
-            //            DisplayGraph(service.GetWostCaseEntries(1, 20));
-            //            break;
-            //        }
-            //}
         }
 
         private void DisplayGraph(List<Entry> entries)
