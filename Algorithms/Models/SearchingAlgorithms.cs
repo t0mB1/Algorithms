@@ -127,10 +127,25 @@ namespace Algorithms.Models
             // present (if it is present)
             int prev = 0;
 
-            float Fval = entries[Math.Min(step, n) - 1].Value;
-            int Ival = (int)entries[Math.Min(step, n) - 1].Value;
+            JSOperations.Add(new JumpSearchOperation
+            {
+                entry = entries[prev],
+                IsSearchItem = false,
+                ChangeToColour = "#FFFF00"
+            });
 
-            while (entries[Math.Min(step, n)-1].Value < searchItem)
+            if (entries[prev].Value == searchItem)
+            {
+                JSOperations.Add(new JumpSearchOperation
+                {
+                    entry = entries[prev],
+                    IsSearchItem = true,
+                    ChangeToColour = "#00FF00"
+                });
+                return JSOperations;
+            }
+
+            while (entries[Math.Min(step, n) - 1].Value < searchItem)
             {
                 // highlight entries[Math.Min(step, n)-1] Blue
                 JSOperations.Add(new JumpSearchOperation

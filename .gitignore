@@ -5,3 +5,6 @@
 *.exe
 *.pdb
 *.cache
+*.xml
+*.dll
+*.exe

@@ -18,7 +18,8 @@ namespace Algorithms.Views
         {
             InitializeComponent();
             SetBindingContext();
-            ResetGraph();
+            ChangeToRandomCase();
+            DisplayGraph(service.GetRandomEntries(1, 20, 0));
         }
 
         private void SetBindingContext()
@@ -39,38 +40,52 @@ namespace Algorithms.Views
         private void ResetGraph()
         {
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
-            if (SGObj.SearchItemValue == 0)
+            if (SGObj.Case == Case.Best ||
+                SGObj.Case == Case.Worst ||
+                SGObj.Case == Case.Random)
             {
-                Random rnd = new Random();
-                SGObj.SearchItemValue = rnd.Next(1, 20);
-            }
-            switch (SGObj.Case)
-            {
-                case Case.Random:
+                foreach (Entry entry in CurrentEntriesOnGraph)
+                {
+                    if (entry.Color == SKColor.Parse("#00FF00"))
                     {
-                        if(SGObj.CurrentAlg == "Classic Binary Search" ||
-                           SGObj.CurrentAlg == "Modified Binary Search" ||
-                           SGObj.CurrentAlg == "Jump Search")
-                        {
-                            DisplayGraph(service.GetBestCaseEntries(1, 20, SGObj.SearchItemValue));
-                        }
-                        else
-                        {
-                            DisplayGraph(service.GetRandomEntries(1, 20, SGObj.SearchItemValue));
-                        }
-                        break;
+                        entry.Color = SKColor.Parse("#0000FF");
+                        DisplayGraph(CurrentEntriesOnGraph);
                     }
-                case Case.Best:
-                    { 
-                        DisplayGraph(service.GetBestCaseEntries(1, 20, SGObj.SearchItemValue));
-                        break;
-                    }
-                case Case.Worst:
-                    {
-                        DisplayGraph(service.GetWostCaseEntries(1, 20));
-                        break;
-                    }
+                }
             }
+
+            //if (SGObj.SearchItemValue == 0)
+            //{
+            //    Random rnd = new Random();
+            //    SGObj.SearchItemValue = rnd.Next(1, 20);
+            //}
+            //switch (SGObj.Case)
+            //{
+            //    case Case.Random:
+            //        {
+            //            if (SGObj.CurrentAlg == "Classic Binary Search" ||
+            //               SGObj.CurrentAlg == "Modified Binary Search" ||
+            //               SGObj.CurrentAlg == "Jump Search")
+            //            {
+            //                DisplayGraph(service.GetBestCaseEntries(1, 20, SGObj.SearchItemValue));
+            //            }
+            //            else
+            //            {
+            //                DisplayGraph(service.GetRandomEntries(1, 20, SGObj.SearchItemValue));
+            //            }
+            //            break;
+            //        }
+            //    case Case.Best:
+            //        {
+            //            DisplayGraph(service.GetBestCaseEntries(1, 20, SGObj.SearchItemValue));
+            //            break;
+            //        }
+            //    case Case.Worst:
+            //        {
+            //            DisplayGraph(service.GetWostCaseEntries(1, 20));
+            //            break;
+            //        }
+            //}
         }
 
         private void DisplayGraph(List<Entry> entries)
@@ -84,14 +99,17 @@ namespace Algorithms.Views
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
             if (algorithmPicker.SelectedIndex != 0)
             {
-                SearchBtn.IsVisible = true;
+                toggleSearchBtn();
+                Title = SGObj.CurrentAlg;
+                // gets selected item in picker
                 int index = algorithmPicker.SelectedIndex;
                 SGObj.CurrentAlg = algorithmPicker.Items[index].ToString();
-                Title = SGObj.CurrentAlg;
+                
                 switch (SGObj.Case)
                 {
                     case Case.Best:
-                        if(SGObj.CurrentAlg == "Linear Search")
+                        if(SGObj.CurrentAlg == "Linear Search" ||
+                           SGObj.CurrentAlg == "Jump Search")
                         {
                             SGObj.SearchItemValue = 1;
                         }
@@ -107,17 +125,17 @@ namespace Algorithms.Views
                         break;
 
                     case Case.Random:
+
                         if (!(SGObj.CurrentAlg == "Linear Search"))
                         {
-                            ChangeGraphToRandomCase();
-                            // SGObj.SearchItemValue = 0;
+                            ChangeToRandomCase();
                             ChangeGraphToBestCaseShape();
                         }
                         else
                         {
                             ResetGraph();
-                            ChangeGraphToRandomCase();
-                            SGObj.SearchItemValue = 1;
+                            ChangeToRandomCase();
+                            // SGObj.SearchItemValue = 1;
                         }
                         break;
                 }
@@ -129,6 +147,22 @@ namespace Algorithms.Views
                 SearchBtn.IsVisible = false;
                 searchItemPicker.IsEnabled = true;
                 randomCaseBtn.IsEnabled = true;
+            }
+        }
+
+        private void toggleSearchBtn()
+        {
+            SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
+            if (SGObj.Case == Case.Random)
+            {
+                if(searchItemPicker.SelectedIndex != 0)
+                {
+                    SearchBtn.IsVisible = true;
+                }
+            }
+            else
+            {
+                SearchBtn.IsVisible = true;
             }
         }
 
@@ -145,7 +179,7 @@ namespace Algorithms.Views
             Entry newEntry = CurrentEntriesOnGraph.Where(p => p.Value == SGObj.SearchItemValue)
                                                   .FirstOrDefault();
             int index = CurrentEntriesOnGraph.IndexOf(newEntry);
-            if (SGObj.SearchItemValue != 0)
+            if (SGObj.SearchItemValue > 0)
             {
                 CurrentEntriesOnGraph[index].Color = SKColor.Parse("#0000FF");
             }
@@ -158,7 +192,7 @@ namespace Algorithms.Views
         async void SearchBtnIsClicked(object sender, EventArgs e) 
         {
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
-            if (SGObj.SearchItemValue != 0)
+            if (SGObj.SearchItemValue > 0)
             {
                 ToggleButtons();
                 switch (SGObj.CurrentAlg)
@@ -243,7 +277,15 @@ namespace Algorithms.Views
         {
             if (SGObj.Case == Case.Best)
             {
-                SGObj.SearchItemValue = 10;
+                if (SGObj.CurrentAlg == "Jump Search" ||
+                    SGObj.CurrentAlg == "Linear Search")
+                {
+                    SGObj.SearchItemValue = 1;
+                }
+                else
+                {
+                    SGObj.SearchItemValue = 10;
+                }
             }
             else if(SGObj.Case == Case.Worst)
             {
@@ -257,11 +299,11 @@ namespace Algorithms.Views
             ResetToolBarItem.IsEnabled = !temp;
             SearchBtn.IsEnabled = !temp;
             algorithmPicker.IsEnabled = !temp;
-            
             bestCaseBtn.IsVisible = !temp;
             randomCaseBtn.IsVisible = !temp;
             worstCaseBtn.IsVisible = !temp;
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
+            ToggleItemPicker();
             switch (SGObj.Case)
             {
                 case Case.Best:
@@ -282,10 +324,27 @@ namespace Algorithms.Views
             }
         }
 
+        private void ToggleItemPicker()
+        {
+            SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
+            if(!(SGObj.Case == Case.Random))
+            {
+                searchItemPicker.IsVisible = false;
+                searchItemPicker.IsEnabled = false;
+            }
+            else
+            {
+                searchItemPicker.IsVisible = true;
+                searchItemPicker.IsEnabled = true;
+            }
+        }
+
         void RandomCaseBtnIsClicked(object sender, EventArgs e)
         {
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
             SGObj.Case = Case.Random;
+            SGObj.SearchItemValue = 0;
+
             if (SGObj.CurrentAlg == "Classic Binary Search" ||
                 SGObj.CurrentAlg == "Modified Binary Search" ||
                 SGObj.CurrentAlg == "Jump Search")
@@ -296,24 +355,33 @@ namespace Algorithms.Views
             {
                 DisplayGraph(service.GetRandomEntries(1, 20, SGObj.SearchItemValue));
             }
-            ChangeGraphToRandomCase();
+            ChangeToRandomCase();
         }
 
         void BestCaseBtnIsClicked(object sender, EventArgs e)
         {
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
-            if (SGObj.CurrentAlg == "Linear Search")
+            if (algorithmPicker.SelectedItem != null)
             {
-                SGObj.SearchItemValue = 1;
+                if (SGObj.CurrentAlg == "Linear Search" ||
+                    SGObj.CurrentAlg == "Jump Search")
+                {
+                    SGObj.SearchItemValue = 1;
+                }
+                else
+                { 
+                    SGObj.SearchItemValue = 10;
+                }
             }
             else
             {
-                SGObj.SearchItemValue = 10;
+                SGObj.SearchItemValue = 0;
             }
+            ChangeGraphToBestCase();
             bestCaseBtn.FontAttributes = FontAttributes.Bold;
             randomCaseBtn.FontAttributes = FontAttributes.None;
             worstCaseBtn.FontAttributes = FontAttributes.None;
-            ChangeGraphToBestCase();
+            
         }
 
         void WorstCaseBtnIsClicked(object sender, EventArgs e)
@@ -321,11 +389,12 @@ namespace Algorithms.Views
             ChangeGraphToWorstCase();
         }
 
-        private void ChangeGraphToRandomCase()
+        private void ChangeToRandomCase()
         {
+            SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
             searchItemPicker.IsVisible = true;
             searchItemPicker.IsEnabled = true;
-            SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
+            searchItemPicker.SelectedIndex = -1;
             SGObj.Case = Case.Random;
             randomCaseBtn.FontAttributes = FontAttributes.Bold;
             bestCaseBtn.FontAttributes = FontAttributes.None;
@@ -338,7 +407,8 @@ namespace Algorithms.Views
             SGObj.Case = Case.Best;
             ChangeGraphToBestCaseShape();
             searchItemPicker.IsEnabled = false;
-            searchItemPicker.SelectedIndex = 0;
+            searchItemPicker.IsVisible = false;
+            searchItemPicker.SelectedIndex = SGObj.SearchItemValue;
         }
 
         private void ChangeGraphToBestCaseShape()
@@ -349,12 +419,13 @@ namespace Algorithms.Views
 
         private void ChangeGraphToWorstCase()
         {
-            searchItemPicker.IsEnabled = false;
-            searchItemPicker.SelectedIndex = 0;
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
-            DisplayGraph(service.GetWostCaseEntries(1, 20));
             SGObj.SearchItemValue = 20;
             SGObj.Case = Case.Worst;
+            searchItemPicker.IsEnabled = false;
+            searchItemPicker.IsVisible = false;
+            searchItemPicker.SelectedIndex = SGObj.SearchItemValue;
+            DisplayGraph(service.GetWostCaseEntries(1, 20));
             worstCaseBtn.FontAttributes = FontAttributes.Bold;
             randomCaseBtn.FontAttributes = FontAttributes.None;
             bestCaseBtn.FontAttributes = FontAttributes.None;
