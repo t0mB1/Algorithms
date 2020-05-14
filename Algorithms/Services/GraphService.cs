@@ -11,7 +11,7 @@ namespace Algorithms.Services
         public List<Entry> GetBestCaseEntries(int minVal, int maxVal, int searchItem)
         {
             List<Entry> entries = new List<Entry>();
-            for(int i = minVal; i < maxVal + 1; i++)
+            for (int i = minVal; i < maxVal + 1; i++)
             {
                 if (i == searchItem)
                 {
@@ -30,7 +30,7 @@ namespace Algorithms.Services
             List<Entry> entries = new List<Entry>();
             for (int i = minVal; i < maxVal + 1; i++)
             {
-                if(i == 20)
+                if (i == 20)
                 {
                     entries.Add(GenerateSearchItemEntry(i));
                 }
@@ -63,6 +63,7 @@ namespace Algorithms.Services
                 Color = SKColor.Parse("#0000FF")
             };
         }
+
 
         private List<Entry> ShuffleList(List<Entry> entries)
         {

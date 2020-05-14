@@ -5,10 +5,108 @@
              x:Class="Algorithms.Views.SortingPage"
              Title="Sorts">
 
-    <StackLayout>
-        <forms:ChartView x:Name="SortGraph"
-                         HeightRequest="400"
-                         WidthRequest="800"
-                         Margin="10, 40, 10, 10"/>
-    </StackLayout>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="ResetToolBarItem"
+                     Text="Reset"
+                     Clicked="ResetButtonIsClicked"/>
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <StackLayout>
+            <Grid x:Name="grid"
+                  Margin="10, 20, 10, 10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+            
+                <Button x:Name="bestCaseBtn"
+                        Text="    Best Case    "
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        HorizontalOptions="Center"
+                        BorderColor="LightGray"
+                        BorderWidth="1"
+                        CornerRadius="8"
+                        Clicked="BestCaseBtnIsClicked"/>
+
+                <Button x:Name="randomCaseBtn"
+                        Text="    Random    "
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        HorizontalOptions="Center"
+                        BorderColor="LightGray"
+                        BorderWidth="1"
+                        CornerRadius="8"
+                        Clicked="RandomCaseBtnIsClicked"/>
+
+                <Button x:Name="worstCaseBtn"
+                        Text="    Worst Case    "
+                        Grid.Column="2"
+                        Grid.Row="0"
+                        HorizontalOptions="Center"
+                        BorderColor="LightGray"
+                        BorderWidth="1"
+                        CornerRadius="8"
+                        Clicked="WorstCaseBtnIsClicked"/>
+            </Grid>
+
+            <forms:ChartView x:Name="SortGraph"
+                             HeightRequest="400"
+                             WidthRequest="800"
+                             Margin="10, 0, 10, 10"/>
+
+            
+            <Picker x:Name="algorithmPicker"
+                        Title="Choose an Algorithm"
+                        SelectedIndexChanged="AlgorithmPicker_SelectedIndexChanged"
+                        HorizontalOptions="Center"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="10, 0, 10, 10"
+                        Grid.ColumnSpan="2">
+                    <Picker.Items>
+                        <x:String x:FieldModifier="Center"/>
+                        <x:String>Bubble Sort</x:String>
+                        <x:String>Merge Sort</x:String>
+                        <x:String>Insertion Sort</x:String>
+                        <x:String>Quick Sort</x:String>
+                    </Picker.Items>
+                </Picker>
+
+            <Picker x:Name="SpeedPicker"
+                    Title="Speed"
+                    SelectedIndexChanged="SpeedPicker_SelectedIndexChanged"
+                    HorizontalOptions="Center"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="10, 0, 10, 10">
+                <Picker.Items>
+                    <x:String x:FieldModifier="Center"/>
+                    <x:String>Super-Duper Slow</x:String>
+                    <x:String>Super Slow</x:String>
+                    <x:String>Slow</x:String>
+                    <x:String>Medium</x:String>
+                    <x:String>Fast Ish</x:String>
+                    <x:String>Fast</x:String>
+                    <x:String>Super Fast</x:String>
+                    <x:String>Super-Duper Fast</x:String>
+                    <x:String>If You Blink, You'll Miss It</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Button x:Name="SortBtn"
+                    Text="  Sort  "
+                    HorizontalOptions="Center"
+                    IsVisible="false"
+                    IsEnabled="False"
+                    Clicked="SortBtnIsClicked"
+                    Margin="10, 0, 10, 0"/>
+
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

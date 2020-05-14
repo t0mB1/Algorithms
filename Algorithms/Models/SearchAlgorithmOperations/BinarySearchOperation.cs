@@ -2,7 +2,7 @@
 
 namespace Algorithms.Models.SearchAlgorithmOperations
 {
-    public class BinarySearchOperation : IOperation
+    public class BinarySearchOperation : ISearchOperation
     {
         public Entry entry { get; set; }
         public bool IsSearchItem { get; set; }

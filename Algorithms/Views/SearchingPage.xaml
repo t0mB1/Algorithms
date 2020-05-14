@@ -61,63 +61,70 @@
                          Margin="10, 0, 10, 10"/>
 
 
-            <Grid x:Name="grid2"
-                  Margin="10, 10, 10, 10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+            <Picker x:Name="algorithmPicker"
+                    Title="Choose an Algorithm"
+                    SelectedIndexChanged="AlgorithmPicker_SelectedIndexChanged"
+                    HorizontalOptions="Center"
+                    Margin="10, 0, 10, 10">
+                <Picker.Items>
+                    <x:String x:FieldModifier="Center"/>
+                    <x:String>Jump Search</x:String>
+                    <x:String>Linear Search</x:String>
+                    <x:String>Classic Binary Search</x:String>
+                    <x:String>Modified Binary Search</x:String>
+                </Picker.Items>
+            </Picker>
 
+            <Picker x:Name="searchItemPicker"
+                    Title="Search Item"
+                    SelectedIndexChanged="SearchItemPicker_SelectedIndexChanged"
+                    HorizontalOptions="Center"
+                    Margin="10, 0, 10, 10">
+                <Picker.Items>
+                    <x:String x:FieldModifier="Center"/>
+                    <x:String>1</x:String>
+                    <x:String>2</x:String>
+                    <x:String>3</x:String>
+                    <x:String>4</x:String>
+                    <x:String>5</x:String>
+                    <x:String>6</x:String>
+                    <x:String>7</x:String>
+                    <x:String>8</x:String>
+                    <x:String>9</x:String>
+                    <x:String>10</x:String>
+                    <x:String>11</x:String>
+                    <x:String>12</x:String>
+                    <x:String>13</x:String>
+                    <x:String>14</x:String>
+                    <x:String>15</x:String>
+                    <x:String>16</x:String>
+                    <x:String>17</x:String>
+                    <x:String>18</x:String>
+                    <x:String>19</x:String>
+                    <x:String>20</x:String>
+                </Picker.Items>
+            </Picker>
 
-                <Picker x:Name="algorithmPicker"
-                        Title="Choose an Algorithm"
-                        SelectedIndexChanged="AlgorithmPicker_SelectedIndexChanged"
-                        HorizontalOptions="Center"
-                        Grid.Column="0"
-                        Grid.Row="0">
-                    <Picker.Items>
-                        <x:String x:FieldModifier="Center"/>
-                        <x:String>Jump Search</x:String>
-                        <x:String>Linear Search</x:String>
-                        <x:String>Classic Binary Search</x:String>
-                        <x:String>Modified Binary Search</x:String>
-                    </Picker.Items>
-                </Picker>
-
-                <Picker x:Name="searchItemPicker"
-                        Title="Search Item"
-                        SelectedIndexChanged="searchItemPicker_SelectedIndexChanged"
-                        HorizontalOptions="Center"
-                        Grid.Column="1"
-                        Grid.Row="0">
-                    <Picker.Items>
-                        <x:String x:FieldModifier="Center"/>
-                        <x:String>1</x:String>
-                        <x:String>2</x:String>
-                        <x:String>3</x:String>
-                        <x:String>4</x:String>
-                        <x:String>5</x:String>
-                        <x:String>6</x:String>
-                        <x:String>7</x:String>
-                        <x:String>8</x:String>
-                        <x:String>9</x:String>
-                        <x:String>10</x:String>
-                        <x:String>11</x:String>
-                        <x:String>12</x:String>
-                        <x:String>13</x:String>
-                        <x:String>14</x:String>
-                        <x:String>15</x:String>
-                        <x:String>16</x:String>
-                        <x:String>17</x:String>
-                        <x:String>18</x:String>
-                        <x:String>19</x:String>
-                        <x:String>20</x:String>
-                    </Picker.Items>
-                </Picker>
-            </Grid>
+            <Picker x:Name="SpeedPicker"
+                    Title="Speed"
+                    SelectedIndexChanged="SpeedPicker_SelectedIndexChanged"
+                    HorizontalOptions="Center"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="10, 0, 10, 10">
+                <Picker.Items>
+                    <x:String x:FieldModifier="Center"/>
+                    <x:String>Super-Duper Slow</x:String>
+                    <x:String>Super Slow</x:String>
+                    <x:String>Slow</x:String>
+                    <x:String>Medium</x:String>
+                    <x:String>Fast Ish</x:String>
+                    <x:String>Fast</x:String>
+                    <x:String>Super Fast</x:String>
+                    <x:String>Super-Duper Fast</x:String>
+                    <x:String>If You Blink, You'll Miss It</x:String>
+                </Picker.Items>
+            </Picker>
 
             <Button x:Name="SearchBtn"
                     Text="  Search  "

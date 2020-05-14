@@ -1,43 +1,65 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using Algorithms.Models.SortAlgorithmOperations;
 using Microcharts;
 
 namespace Algorithms.Models
 {
     public class SortingAlgorithms
     {
-
-        public void BubbleSort(List<Entry> entries, int searchItem)
+        public List<BubbleSortOperation> BubbleSort(Entry[] entries)
         {
-            int n = entries.Count;
-            for (int i = 0; i < n; i++)
+            List<BubbleSortOperation> operations = new List<BubbleSortOperation>();
+            int n = entries.Count();
+
+            for (int i = 0; i < n-1; i++)
             {
-                // highlight entries[i]
-                // wait
-                for (int j = 0; j < n - i - 2 ; j++)
+                for (int j = 0; j < n - i - 1 ; j++)
                 {
-                    // highlight entries[j]
-                    // wait
-                    if (entries[j].Value > entries[j].Value+1)
+                    operations.Add(new BubbleSortOperation
                     {
+                        EntriesToChange = new Entry[]
+                        {
+                            entries.Select(hr => hr).ToArray()[j]
+                        },
+                        NewEntries = entries.Select(hr => hr).ToArray(),
+                        ChangeToColour = "#FFFF00"
+                    });
+                    // check for swap
+                    if (entries[j].Value > entries[j+1].Value)
+                    {
+                        Entry[] EntriesToChange = new Entry[]
+                        {
+                            entries[j],
+                            entries[j + 1]
+                        };
+                        // swap
                         Entry temp = entries[j];
                         entries[j] = entries[j + 1];
                         entries[j + 1] = temp;
-                        // update graph with new list
+                        // add swap operation
+                        operations.Add(new BubbleSortOperation
+                        {
+                            EntriesToChange = EntriesToChange,
+                            NewEntries = entries.Select(hr => hr).ToArray(),
+                            ChangeToColour = "#FFFF00"
+                        });
                     }
                 }
             }
+            return operations;
         }
 
-        public void MergeSort(List<Entry> entries, int searchItem)
+        public void MergeSort(List<Entry> entries)
         {
             if(entries.Count > 1)
             {
                 int mid = entries.Count / 2;
                 List<Entry> lefthalf = entries.GetRange(0, mid);
                 List<Entry> righthalf = entries.GetRange(mid, entries.Count - mid);
-                MergeSort(lefthalf, searchItem);
-                MergeSort(righthalf, searchItem);
+                MergeSort(lefthalf);
+                MergeSort(righthalf);
                 int i = 0;
                 int j = 0;
                 int k = 0;
@@ -77,7 +99,7 @@ namespace Algorithms.Models
             }
         }
 
-        public void InsertionSort(List<Entry> entries, int searchItem)
+        public void InsertionSort(List<Entry> entries)
         {
             int n = entries.Count;
             for(int i = 1; i < n-1; i++)
