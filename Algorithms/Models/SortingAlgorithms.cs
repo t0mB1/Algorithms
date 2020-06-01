@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Algorithms.Models.SortAlgorithmOperations;
 using Microcharts;
+using SkiaSharp;
 
 namespace Algorithms.Models
 {
@@ -42,51 +43,82 @@ namespace Algorithms.Models
             return operations;
         }
 
-        public void MergeSort(List<Entry> entries)
+        private List<HeapSortOperation> operations = new List<HeapSortOperation>();
+
+        public IEnumerable<HeapSortOperation> HeapSort(Entry[] entries)
         {
-            if(entries.Count > 1)
+            int n = entries.Length;
+            // Build heap (rearrange array) 
+            for (int i = n / 2 - 1; i >= 0; i--)
             {
-                int mid = entries.Count / 2;
-                List<Entry> lefthalf = entries.GetRange(0, mid);
-                List<Entry> righthalf = entries.GetRange(mid, entries.Count - mid);
-                MergeSort(lefthalf);
-                MergeSort(righthalf);
-                int i = 0;
-                int j = 0;
-                int k = 0;
+                Heapify(entries, n, i);
+            }
+            // One by one extract an element from heap 
+            for (int i = n - 1; i > 0; i--)
+            {
+                Entry[] entries1 = new Entry[]{
+                    entries.Select(hr => hr).ToArray()[0],
+                    entries.Select(hr => hr).ToArray()[i]
+                };
+                // Move current root to end
+                Entry temp = entries[0];
+                entries[0] = entries[i];
+                entries[i] = temp;
 
-                while(i < lefthalf.Count &&
-                      j < righthalf.Count)
+                operations.Add(new HeapSortOperation
                 {
-                    if(lefthalf[i].Value < righthalf[j].Value)
-                    {
-                        entries[k] = righthalf[i];
-                        i++;
-                    }
-                    else
-                    {
-                        entries[k] = righthalf[j];
-                        j++;
-                    }
-                    k++;
-                    Console.WriteLine(lefthalf + "\n" +
-                                      righthalf + "\n" +
-                                      entries);
-                }
+                    EntriesToChange = entries1,
+                    NewEntries = entries.Select(hr => hr).ToArray(),
+                    ChangeToColour = "#FFFF00"
+                });
 
-                while(i < lefthalf.Count)
-                {
-                    entries[k] = lefthalf[i];
-                    i++;
-                    k++;
-                }
+                // call max heapify on the reduced heap 
+                Heapify(entries, i, 0);
+            }
+            return operations;
+        }
 
-                while(j < righthalf.Count)
+        private void Heapify(Entry[] entries, int n, int i)
+        {
+            int largest = i; // Initialize largest as root
+            int left = 2 * i + 1; // left = 2*i + 1
+            int right = 2 * i + 2; // right = 2*i + 2
+
+            // If left child is larger than root 
+            if (left < n &&
+                entries[left].Value > entries[largest].Value)
+            {
+                largest = left;
+            }   
+
+            // If right child is larger than largest so far 
+            if (right < n &&
+                entries[right].Value > entries[largest].Value)
+            {
+                largest = right;
+            }
+
+            // If largest is not root 
+            if (largest != i)
+            {
+                Entry[] entries1 = new Entry[]{
+                    entries.Select(hr => hr).ToArray()[i],
+                    entries.Select(hr => hr).ToArray()[largest]
+                };
+
+                Entry temp = entries[i];
+                entries[i] = entries[largest];
+                entries[largest] = temp;
+
+                operations.Add(new HeapSortOperation
                 {
-                    entries[k] = righthalf[j];
-                    j++;
-                    k++;
-                }
+                    EntriesToChange = entries1,
+                    NewEntries = entries.Select(hr => hr).ToArray(),
+                    ChangeToColour = "#FFFF00"
+                });
+
+                // Recursively heapify the affected sub-tree 
+                Heapify(entries, n, largest);
             }
         }
 
@@ -134,144 +166,70 @@ namespace Algorithms.Models
 
         public List<QuickSortOperation> QuickSort(Entry[] entries, int start, int end)
         {
-            if(start < end)
+            int pivot;
+            if (start < end)
             {
-                int split = Partition(entries, start, end);
-                QuickSort(entries, start, split-1);
-                QuickSort(entries, split + 1, end);
+                pivot = Partition(entries, start, end);
+                if (pivot > 1)
+                {
+                    QuickSort(entries, start, pivot - 1);
+                }
+                if (pivot + 1 < end)
+                {
+                    QuickSort(entries, pivot + 1, end);
+                }
             }
             return QSOperations;
         }
 
-        private int Partition(Entry[] entries, int start, int end)
+        private int Partition(Entry[] entries, int left, int right)
         {
-            int pivot = (int)entries.Select(hr => hr).ToArray()[end].Value;
-
+            int pivot = (int)entries[left].Value;
+            
             QSOperations.Add(new QuickSortOperation
             {
                 EntriesToChange = new Entry[]
                 {
-                    entries.Select(hr => hr).ToArray()[end]
+                    entries.Select(hr => hr).ToArray()[left]
                 },
                 NewEntries = entries.Select(hr => hr).ToArray(),
                 ChangeToColour = "#00FFFF",
                 IsSwitchOperation = false
             });
 
-            int i = start - 1;
-            for (int j = start; j < end; j++)
+            while (true)
             {
-                QSOperations.Add(new QuickSortOperation
+                while (entries[left].Value < pivot)
                 {
-                    EntriesToChange = new Entry[]
+                    left++;
+                }
+                while (entries[right].Value > pivot)
+                {
+                    right--;
+                }
+                if (left < right)
+                {
+                    Entry[] EntriesToChange = new Entry[]
                     {
-                        entries.Select(hr => hr).ToArray()[j]
-                    },
-                    NewEntries = entries.Select(hr => hr).ToArray(),
-                    ChangeToColour = "#0000FF",
-                    IsSwitchOperation = false
-                });
-                if (entries[j].Value < pivot)
-                {
-                    i++;
+                        entries.Select(hr => hr).ToArray()[right],
+                        entries.Select(hr => hr).ToArray()[left]
+                    };
+                    Entry temp = entries[right];
+                    entries[right] = entries[left];
+                    entries[left] = temp;
                     QSOperations.Add(new QuickSortOperation
                     {
-                        EntriesToChange = new Entry[]
-                        {
-                            entries.Select(hr => hr).ToArray()[i],
-                            entries.Select(hr => hr).ToArray()[j]
-                        },
-                        NewEntries = entries.Select(hr => hr).ToArray(),
-                        ChangeToColour = "#FFFF00",
-                        IsSwitchOperation = true
-                    });
-                    Entry temp = entries[i];
-                    entries[i] = entries[i + 1];
-                    entries[i+1] = temp;
-
-                    QSOperations.Add(new QuickSortOperation
-                    {
-                        EntriesToChange = new Entry[]
-                        {
-                            entries.Select(hr => hr).ToArray()[i],
-                            entries.Select(hr => hr).ToArray()[i+1]
-                        },
+                        EntriesToChange = EntriesToChange,
                         NewEntries = entries.Select(hr => hr).ToArray(),
                         ChangeToColour = "#FFFF00",
                         IsSwitchOperation = true
                     });
                 }
-            }
-            
-            Entry temp1 = entries[i + 1];
-            entries[i + 1] = entries[end];
-            entries[end] = temp1;
-            QSOperations.Add(new QuickSortOperation
-            {
-                EntriesToChange = new Entry[]
+                else
                 {
-                    entries.Select(hr => hr).ToArray()[i+1],
-                    entries.Select(hr => hr).ToArray()[end]
-                },
-                NewEntries = entries.Select(hr => hr).ToArray(),
-                ChangeToColour = "#FFFF00",
-                IsSwitchOperation = true
-            });
-            return i + 1;
-
-                    //QSOperations.Add(new QuickSortOperation
-                    //{
-                    //    EntriesToChange = new Entry[]
-                    //    {
-                    //        entries.Select(hr => hr).ToArray()[leftmark],
-                    //        entries.Select(hr => hr).ToArray()[rightmark]
-                    //    },
-                    //    NewEntries = entries.Select(hr => hr).ToArray(),
-                    //    ChangeToColour = "#FFFF00",
-                    //    IsSwitchOperation = true
-                    //});
-
-
-                    //QSOperations.Add(new QuickSortOperation
-                    //{
-                    //    EntriesToChange = new Entry[]
-                    //    {
-                    //        entries.Select(hr => hr).ToArray()[leftmark],
-                    //        entries.Select(hr => hr).ToArray()[rightmark]
-                    //    },
-                    //    NewEntries = entries.Select(hr => hr).ToArray(),
-                    //    ChangeToColour = "#FFFF00",
-                    //    IsSwitchOperation = true
-                    //});
-            //    }
-            //}
-            //QSOperations.Add(new QuickSortOperation
-            //{
-            //    EntriesToChange = new Entry[]
-            //            {
-            //                entries.Select(hr => hr).ToArray()[leftmark],
-            //                entries.Select(hr => hr).ToArray()[rightmark]
-            //            },
-            //    NewEntries = entries.Select(hr => hr).ToArray(),
-            //    ChangeToColour = "#FFFF00",
-            //    IsSwitchOperation = true
-            //});
-            //Entry temp2 = entries[start];
-            //entries[start] = entries[rightmark];
-            //entries[rightmark] = temp2;
-            //QSOperations.Add(new QuickSortOperation
-            //{
-            //    EntriesToChange = new Entry[]
-            //            {
-            //                entries.Select(hr => hr).ToArray()[leftmark],
-            //                entries.Select(hr => hr).ToArray()[rightmark]
-            //            },
-            //    NewEntries = entries.Select(hr => hr).ToArray(),
-            //    ChangeToColour = "#FFFF00",
-            //    IsSwitchOperation = true
-            //});
-            //return rightmark;
+                    return right;
+                }
+            }
         }
-
     }
 }

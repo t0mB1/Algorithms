@@ -16,8 +16,8 @@ namespace Algorithms.Services
                 case AlgorithmNameEnumeration.BubbleSort:
                     _filename = "Algorithms.AlgorithmInfomation.BubbleSortInfo.txt";
                     break;
-                case AlgorithmNameEnumeration.MergeSort:
-                    _filename = "Algorithms.AlgorithmInfomation.MergeSortInfo.txt";
+                case AlgorithmNameEnumeration.HeapSort:
+                    _filename = "Algorithms.AlgorithmInfomation.HeapSortInfo.txt";
                     break;
                 case AlgorithmNameEnumeration.InsertionSort:
                     _filename = "Algorithms.AlgorithmInfomation.InsertionSortInfo.txt";

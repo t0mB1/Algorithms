@@ -25,9 +25,9 @@ namespace Algorithms.Views
             NavToAlgPage(AlgorithmNameEnumeration.BubbleSort);
         }
 
-        void MergeSortTextCell_Tapped(object sender, EventArgs e)
+        void HeapSortTextCell_Tapped(object sender, EventArgs e)
         {
-            NavToAlgPage(AlgorithmNameEnumeration.MergeSort);
+            NavToAlgPage(AlgorithmNameEnumeration.HeapSort);
         }
 
         void InsertionSortTextCell_Tapped(object sender, EventArgs e)

@@ -95,13 +95,22 @@ namespace Algorithms.Views
 
         void SortBtnIsClicked(object sender, EventArgs e)
         {
+            SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
             if (IsSorted(CurrentEntriesOnGraph) is true)
             {
-                CurrentEntriesOnGraph = service.GetRandomEntries(1, 20, 0).ToArray();
+                if (SGObj.Case == Case.Random)
+                {
+                    CurrentEntriesOnGraph = service.GetRandomEntries(1, 20, 0).ToArray();
+                }
+                else
+                {
+                    CurrentEntriesOnGraph = service.GetWostCaseEntries(20, 1).ToArray();
+                }
+                
                 DisplayGraph(CurrentEntriesOnGraph);
                 Task.Delay(20);
             }
-            SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
+            
             if (SGObj.CurrentAlg != "" ||
                 SGObj.CurrentAlg != null)
             {
@@ -111,23 +120,25 @@ namespace Algorithms.Views
                     case "Bubble Sort":
                         {
                             List<BubbleSortOperation> operations = algorithms.BubbleSort(CurrentEntriesOnGraph.ToArray());
-                            CarryOutOperations(operations);
+                            CarryOutOpsWithoutPivot(operations);
                             break;
                         }
-                    case "Merge Sort":
+                    case "Heap Sort":
                         {
+                            IEnumerable<HeapSortOperation > operations = algorithms.HeapSort(CurrentEntriesOnGraph.ToArray());
+                            CarryOutOpsWithoutPivot(operations.ToList());
                             break;
                         }
                     case "Insertion Sort":
                         {
                             List<InsertionSortOperation> operations = algorithms.InsertionSort(CurrentEntriesOnGraph.ToArray());
-                            CarryOutOperations(operations);
+                            CarryOutOpsWithoutPivot(operations);
                             break;
                         }
                     case "Quick Sort":
                         {
                             List<QuickSortOperation> operations = algorithms.QuickSort(CurrentEntriesOnGraph.ToArray(), 0, 19);
-                            CarryOutOperations(operations);
+                            CarryOutOpsWithPivot(operations);
                             break; 
                         }
                 }
@@ -146,37 +157,7 @@ namespace Algorithms.Views
             return true;
         }
 
-        private async void CarryOutOperations2<T>(List<T> operations) where T : ISortOperation
-        {
-            SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
-            int speed = SGObj.SpeedDictionary[SGObj.Speed];
-            foreach (T operation in operations)
-            {
-                int index;
-                foreach (Entry entry in operation.EntriesToChange)
-                {
-                    index = CurrentEntriesOnGraph.IndexOf(entry);
-                    CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse(operation.ChangeToColour);
-                    DisplayGraph(CurrentEntriesOnGraph);
-                    await Task.Delay(speed);
-                }
-                DisplayGraph(CurrentEntriesOnGraph);
-                await Task.Delay(speed);
-
-                foreach (Entry entry in operation.EntriesToChange)
-                {
-                    // change colour back to red
-                    index = CurrentEntriesOnGraph.IndexOf(entry);
-                    CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse("#FF1493");
-                }
-                DisplayGraph(CurrentEntriesOnGraph);
-                await Task.Delay(speed);
-            }
-            ToggleButtons();
-            DisplayCaseBtns();
-        }
-
-        private async void CarryOutOperations<T>(List<T> operations) where T : ISortOperation
+        private async void CarryOutOpsWithoutPivot<T>(List<T> operations) where T : ISortOperation
         {
             SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
             int speed = SGObj.SpeedDictionary[SGObj.Speed];
@@ -198,6 +179,47 @@ namespace Algorithms.Views
                     // change colour back to red
                     index = CurrentEntriesOnGraph.IndexOf(entry);
                     CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse("#FF1493");
+                }
+            }
+            ToggleButtons();
+            DisplayCaseBtns();
+        }
+
+        private async void CarryOutOpsWithPivot<T>(List<T> operations) where T : ISortOperation
+        {
+            SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
+            int speed = SGObj.SpeedDictionary[SGObj.Speed];
+            foreach (T operation in operations)
+            {
+                if (operation.IsSwitchOperation is false)
+                {
+                    foreach (Entry entry in CurrentEntriesOnGraph.Where(hr =>
+                                            hr.Color == SKColor.Parse("#00FFFF")))
+                    {
+                        entry.Color = SKColor.Parse("#FF1493");
+                    }
+                    DisplayGraph(CurrentEntriesOnGraph);
+                    await Task.Delay(speed);
+                }
+                int index;
+                foreach (Entry entry in operation.EntriesToChange)
+                {
+                    index = CurrentEntriesOnGraph.IndexOf(entry);
+                    CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse(operation.ChangeToColour);
+                }
+                CurrentEntriesOnGraph = (Entry[])operation.NewEntries;
+                DisplayGraph(CurrentEntriesOnGraph);
+                await Task.Delay(speed);
+
+                if (operation.IsSwitchOperation is true)
+                {
+                    foreach (Entry entry in operation.EntriesToChange)
+                    {
+                        // change colour back to red
+                        index = CurrentEntriesOnGraph.IndexOf(entry);
+                        CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse("#FF1493");
+                    }
+                    DisplayGraph(CurrentEntriesOnGraph);
                 }
             }
             ToggleButtons();

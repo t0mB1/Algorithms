@@ -14,9 +14,9 @@
                                   Tapped="BubbleSortTextCell_Tapped"/>
                         
 
-                        <TextCell x:Name="MergeSortTextCell"
-                                  Text="Merge Sort"
-                                  Tapped="MergeSortTextCell_Tapped"/>
+                        <TextCell x:Name="HeapSortTextCell"
+                                  Text="Heap Sort"
+                                  Tapped="HeapSortTextCell_Tapped"/>
 
                         <TextCell x:Name="InsertionSortTextCell"
                                   Text="Insertion Sort"

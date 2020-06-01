@@ -20,7 +20,7 @@ namespace Algorithms.Views {
         private global::Xamarin.Forms.TextCell BubbleSortTextCell;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.TextCell MergeSortTextCell;
+        private global::Xamarin.Forms.TextCell HeapSortTextCell;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.TextCell InsertionSortTextCell;
@@ -44,7 +44,7 @@ namespace Algorithms.Views {
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(AboutAlgorithmsPage));
             BubbleSortTextCell = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.TextCell>(this, "BubbleSortTextCell");
-            MergeSortTextCell = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.TextCell>(this, "MergeSortTextCell");
+            HeapSortTextCell = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.TextCell>(this, "HeapSortTextCell");
             InsertionSortTextCell = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.TextCell>(this, "InsertionSortTextCell");
             QuickSortTextCell = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.TextCell>(this, "QuickSortTextCell");
             JumpSearchTextCell = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.TextCell>(this, "JumpSearchTextCell");

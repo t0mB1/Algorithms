@@ -5,7 +5,7 @@ namespace Algorithms.Models
     public enum AlgorithmNameEnumeration
     {
         BubbleSort,
-        MergeSort,
+        HeapSort,
         InsertionSort,
         QuickSort,
         JumpSearch,

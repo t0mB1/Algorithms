@@ -1,17 +1,21 @@
 ﻿<Properties StartupConfiguration="{51A0C8EF-8F7B-4CB9-8A9E-6964FB17D443}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="Algorithms/Views/SearchingPage.xaml.cs">
     <Files>
-      <File FileName="Algorithms/Views/SortingPage.xaml.cs" Line="161" Column="53" />
-      <File FileName="Algorithms/Models/SortingAlgorithms.cs" Line="21" Column="22" />
-      <File FileName="Algorithms/Views/SearchingPage.xaml.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="Algorithms/Views/SortingPage.xaml.cs" Line="116" Column="18" />
+      <File FileName="Algorithms/Views/SearchingPage.xaml.cs" Line="11" Column="19" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Algorithms" expanded="True">
             <Node name="Algorithms" expanded="True">
-              <Node name="Models" expanded="True" />
+              <Node name="AlgorithmInfomation" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="SortAlgorithmOperations" expanded="True" />
+              </Node>
+              <Node name="Services" expanded="True" />
               <Node name="Views" expanded="True">
+                <Node name="AboutAlgorithmsPage.xaml" expanded="True" />
                 <Node name="SearchingPage.xaml" expanded="True">
                   <Node name="SearchingPage.xaml.cs" selected="True" />
                 </Node>
@@ -28,9 +32,7 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/tombrayshaw/Projects/Algorithms/Algorithms/Views/SortingPage.xaml.cs" relfile="Algorithms/Views/SortingPage.xaml.cs" line="114" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.Algorithms.Android PreferredExecutionTarget="Android.Android_Accelerated_Oreo" />
