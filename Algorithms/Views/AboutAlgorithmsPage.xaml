@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Algorithms.Views.AboutAlgorithmsPage"
+             Title="Algorithms">
+
+    <ScrollView>
+            <TableView Intent="Settings">
+                <TableRoot>
+
+                    <TableSection Title="Sort">
+                        <TextCell x:Name="BubbleSortTextCell"
+                                  Text="Bubble Sort"
+                                  Tapped="BubbleSortTextCell_Tapped"/>
+                        
+
+                        <TextCell x:Name="MergeSortTextCell"
+                                  Text="Merge Sort"
+                                  Tapped="MergeSortTextCell_Tapped"/>
+
+                        <TextCell x:Name="InsertionSortTextCell"
+                                  Text="Insertion Sort"
+                                  Tapped="InsertionSortTextCell_Tapped"/>
+
+                        <TextCell x:Name="QuickSortTextCell"
+                                  Text="Quick Sort"
+                                  Tapped="QuickSortTextCell_Tapped"/>
+
+                        
+                    </TableSection>
+
+                    <TableSection Title="Search">
+                        <TextCell x:Name="JumpSearchTextCell"
+                                  Text="Jump Search"
+                                  Tapped="JumpSearchTextCell_Tapped"/>
+
+                        <TextCell x:Name="LinearSearchTextCell"
+                                  Text="Linear Search"
+                                  Tapped="LinearSearchTextCell_Tapped"/>
+
+                        <TextCell x:Name="ClassicBinarySearchTextCell"
+                                  Text="Classic Binary Search"
+                                  Tapped="ClassicBinarySearchTextCell_Tapped"/>
+
+                        <TextCell x:Name="ModBinarySearchTextCell"
+                                  Text="Modified BinarySearch"
+                                  Tapped="ModBinarySearchTextCell_Tapped"/>
+                    </TableSection>
+
+                </TableRoot>
+            </TableView>
+    </ScrollView>
+</ContentPage>

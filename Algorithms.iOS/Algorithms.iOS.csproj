@@ -143,4 +143,7 @@
       <Name>Algorithms</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BubbleSortInfo.txt" />
+  </ItemGroup>
 </Project>

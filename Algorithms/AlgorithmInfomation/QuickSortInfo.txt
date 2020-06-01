@@ -1,0 +1,126 @@
+﻿Quick Sort is a divide and conquer algorithm. It partitions the array into two smaller arrays and uses a pivot to sort the array
+Best: O(nlog(n))
+Worst: O(n)
+Average: O(nlog(n))
+C#
+using System;
+
+class Sort
+{
+    public void QSort(int[] array, int start, int end)
+    {
+        if (start < end)
+        {
+            int split = Partition(array, start, end);
+            QSort(array, start, split-1);
+            QSort(array, split+1, end);
+        }
+    }
+
+    private int Partition(int[] array, int start, int end)
+    {
+        int pivot = array[start];
+        int leftmark = start + 1;
+        int rightmark = end;
+        while (true)
+        {
+            while(leftmark <= rightmark &&
+                    array[leftmark] <= pivot)
+            {
+                leftmark++;
+            }
+            while(array[rightmark] >= pivot &&
+                    rightmark >= leftmark)
+            {
+                rightmark--;
+            }
+            if(rightmark < leftmark)
+            {
+                break;
+            }
+            else
+            {
+                int temp = array[leftmark];
+                array[leftmark] = array[rightmark];
+                array[rightmark] = temp;
+            }
+        }
+        int tempVal = array[start];
+        array[start] = array[rightmark];
+        array[rightmark] = tempVal;
+        return rightmark;
+    }
+}
+
+Java
+class Sort
+{
+    public void QSort(int[] array, int start, int end)
+    {
+        if (start < end){
+            int split = Partition(array, start, end);
+            QSort(array, start, split-1);
+            QSort(array, split+1, end);
+        }
+    }
+
+    private int Partition(int[] array, int start, int end)
+    {
+        int pivot = array[start];
+        int leftmark = start + 1;
+        int rightmark = end;
+        while (true){
+            while(leftmark <= rightmark &&
+                  array[leftmark] <= pivot){
+                leftmark++;
+            }
+            while(array[rightmark] >= pivot &&
+                  rightmark >= leftmark){
+                rightmark--;
+            }
+            if(rightmark < leftmark){
+                break;
+            } else{
+                int temp = array[leftmark];
+                array[leftmark] = array[rightmark];
+                array[rightmark] = temp;
+            }
+        }
+        int tempVal = array[start];
+        array[start] = array[rightmark];
+        array[rightmark] = tempVal;
+        return rightmark;
+    }
+}
+
+Python
+def QSort(array, start, end):
+     if (start < end):
+          split = Partition(array, start, end)
+          QSort(array, start, split-1)
+          QSort(array, split+1, end)
+
+def Partition(array, start, end)
+     pivot = array[start]
+     leftmark = start + 1
+     rightmark = end
+
+     while (true):
+          while(leftmark <= rightmark and
+                  array[leftmark] <= pivot):
+                leftmark++
+          while(array[rightmark] >= pivot and
+                  rightmark >= leftmark):
+                rightmark--
+
+          if(rightmark < leftmark):
+                break;
+          else:
+                temp = array[leftmark]
+                array[leftmark] = array[rightmark]
+                array[rightmark] = temp
+
+     tempVal = array[start]
+     array[start] = array[rightmark]
+     array[rightmark] = tempVal
+     return rightmark

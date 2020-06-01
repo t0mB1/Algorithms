@@ -14,3 +14,7 @@
 /Users/tombrayshaw/Projects/Algorithms/Algorithms/obj/Debug/netstandard2.0/Algorithms.dll
 /Users/tombrayshaw/Projects/Algorithms/Algorithms/obj/Debug/netstandard2.0/ref/Algorithms.dll
 /Users/tombrayshaw/Projects/Algorithms/Algorithms/obj/Debug/netstandard2.0/Algorithms.pdb
+/Users/tombrayshaw/Projects/Algorithms/Algorithms/obj/Debug/netstandard2.0/AppShell.xaml.g.cs
+/Users/tombrayshaw/Projects/Algorithms/Algorithms/obj/Debug/netstandard2.0/Views/AboutAlgorithmsPage.xaml.g.cs
+/Users/tombrayshaw/Projects/Algorithms/Algorithms/obj/Debug/netstandard2.0/Views/SettingsPage.xaml.g.cs
+/Users/tombrayshaw/Projects/Algorithms/Algorithms/obj/Debug/netstandard2.0/Views/SelectedAlgorithmPage.xaml.g.cs

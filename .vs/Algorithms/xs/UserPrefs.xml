@@ -1,25 +1,22 @@
 ﻿<Properties StartupConfiguration="{51A0C8EF-8F7B-4CB9-8A9E-6964FB17D443}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Algorithms/Views/SortingPage.xaml.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Algorithms/Views/SearchingPage.xaml.cs">
     <Files>
-      <File FileName="Algorithms/Views/SortingPage.xaml.cs" Line="205" Column="43" />
-      <File FileName="Algorithms/Views/MainPage.xaml" Line="35" Column="1" />
+      <File FileName="Algorithms/Views/SortingPage.xaml.cs" Line="161" Column="53" />
+      <File FileName="Algorithms/Models/SortingAlgorithms.cs" Line="21" Column="22" />
+      <File FileName="Algorithms/Views/SearchingPage.xaml.cs" Line="1" Column="1" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Algorithms" expanded="True">
             <Node name="Algorithms" expanded="True">
-              <Node name="Models" expanded="True">
-                <Node name="SearchAlgorithmOperations" expanded="True" />
-                <Node name="SortAlgorithmOperations" expanded="True" />
-              </Node>
-              <Node name="Services" expanded="True" />
+              <Node name="Models" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="SortingPage.xaml" expanded="True">
-                  <Node name="SortingPage.xaml.cs" selected="True" />
+                <Node name="SearchingPage.xaml" expanded="True">
+                  <Node name="SearchingPage.xaml.cs" selected="True" />
                 </Node>
+                <Node name="SortingPage.xaml" expanded="True" />
               </Node>
-              <Node name="App.xaml" expanded="True" />
             </Node>
             <Node name="Algorithms.iOS" expanded="True" />
           </Node>
@@ -27,11 +24,13 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.Algorithms.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.850486F3-2F91-46CD-964A-28D61B8AB48A" />
+  <MonoDevelop.Ide.ItemProperties.Algorithms.iOS Xamarin.HotReload.UnhandledDeviceException.Algorithms.iOS.HideInfoBar="True" Xamarin.HotReload.DebuggerTimeoutException.Algorithms.iOS.HideInfoBar="True" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.44956E21-33F6-432A-AE74-AE019CA6E8AB" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/tombrayshaw/Projects/Algorithms/Algorithms/Views/SortingPage.xaml.cs" relfile="Algorithms/Views/SortingPage.xaml.cs" line="114" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.Algorithms.Android PreferredExecutionTarget="Android.Android_Accelerated_Oreo" />

@@ -21,5 +21,18 @@
     <Folder Include="Services\" />
     <Folder Include="Models\SearchAlgorithmOperations\" />
     <Folder Include="Models\SortAlgorithmOperations\" />
+    <Folder Include="AlgorithmInfomation\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="AlgorithmInfomation\BubbleSortInfo.txt" />
+    <None Remove="AlgorithmInfomation\MergeSortInfo.txt" />
+    <None Remove="AlgorithmInfomation\InsertionSortInfo.txt" />
+    <None Remove="AlgorithmInfomation\QuickSortInfo.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AlgorithmInfomation\BubbleSortInfo.txt" />
+    <EmbeddedResource Include="AlgorithmInfomation\MergeSortInfo.txt" />
+    <EmbeddedResource Include="AlgorithmInfomation\InsertionSortInfo.txt" />
+    <EmbeddedResource Include="AlgorithmInfomation\QuickSortInfo.txt" />
   </ItemGroup>
 </Project>

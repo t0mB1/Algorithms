@@ -27,16 +27,33 @@ namespace Algorithms.Views
             ResetGraph();
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
+            if (algorithmPicker.SelectedIndex != -1)
+            {
+                SGObj.CurrentAlg = algorithmPicker.SelectedItem.ToString();
+                Title = SGObj.CurrentAlg;
+                
+            }
+            else
+            {
+                Title = "Searches";
+                SGObj.CurrentAlg = "";
+            }
+        }
+
         void AlgorithmPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
-            if (algorithmPicker.SelectedIndex != 0)
+            if (algorithmPicker.SelectedIndex != -1 &&
+                algorithmPicker.SelectedItem.ToString() != "")
             {
                 ToggleSearchBtn();
-                Title = SGObj.CurrentAlg;
                 // gets selected item in picker
                 SGObj.CurrentAlg = algorithmPicker.SelectedItem.ToString();
-
+                Title = SGObj.CurrentAlg;
                 switch (SGObj.Case)
                 {
                     case Case.Best:

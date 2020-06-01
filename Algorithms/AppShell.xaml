@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       x:Class="Algorithms.AppShell"
+       xmlns:views="clr-namespace:Algorithms.Views">
+
+    <FlyoutItem x:Name="VisualizerFlyoutItem"
+                Title="Visualizer"
+                FlyoutDisplayOptions="AsMultipleItems">
+        <ShellSection Title="Sort"
+                      Icon="tab_feed.png">
+            <ShellContent>
+                <views:SortingPage/>
+            </ShellContent>
+        </ShellSection>
+        <ShellSection Title="Search"
+                      Icon="tab_feed.png">
+            <ShellContent>
+                <views:SearchingPage/>
+            </ShellContent>
+        </ShellSection>
+    </FlyoutItem>
+    <FlyoutItem x:Name="AlgorithmsFlyoutItem"
+                Title="Algorithms">
+        <ShellSection Title="Algorithms">
+            <ShellContent>
+                <views:AboutAlgorithmsPage/>
+            </ShellContent>
+        </ShellSection>
+    </FlyoutItem>
+    <FlyoutItem x:Name="SettingsFlyoutItem"
+                Title="Settings">
+        <ShellSection Title="Settings">
+            <ShellContent>
+                <views:SettingsPage/>
+            </ShellContent>
+        </ShellSection>
+    </FlyoutItem>
+
+</Shell>

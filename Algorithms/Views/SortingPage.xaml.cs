@@ -9,6 +9,7 @@ using Algorithms.Services;
 using Algorithms.Models.SortAlgorithmOperations;
 using System.Threading.Tasks;
 using Xamarin.Forms.Internals;
+using System.Linq;
 
 namespace Algorithms.Views
 {
@@ -70,7 +71,6 @@ namespace Algorithms.Views
             }
         }
 
-
         void AlgorithmPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
             SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
@@ -110,7 +110,7 @@ namespace Algorithms.Views
                 {
                     case "Bubble Sort":
                         {
-                            List<BubbleSortOperation> operations = algorithms.BubbleSort(CurrentEntriesOnGraph);
+                            List<BubbleSortOperation> operations = algorithms.BubbleSort(CurrentEntriesOnGraph.ToArray());
                             CarryOutOperations(operations);
                             break;
                         }
@@ -120,26 +120,60 @@ namespace Algorithms.Views
                         }
                     case "Insertion Sort":
                         {
+                            List<InsertionSortOperation> operations = algorithms.InsertionSort(CurrentEntriesOnGraph.ToArray());
+                            CarryOutOperations(operations);
                             break;
                         }
                     case "Quick Sort":
                         {
-                            break;
+                            List<QuickSortOperation> operations = algorithms.QuickSort(CurrentEntriesOnGraph.ToArray(), 0, 19);
+                            CarryOutOperations(operations);
+                            break; 
                         }
                 }
             }
         }
 
-        private static bool IsSorted(Entry[] arr)
+        private static bool IsSorted(IEnumerable<Entry> arr)
         {
-            for (int i = 1; i < arr.Length; i++)
+            for (int i = 1; i < arr.Count(); i++)
             {
-                if (arr[i - 1].Value > arr[i].Value)
+                if (arr.ToArray()[i - 1].Value > arr.ToArray()[i].Value)
                 {
                     return false;
                 }
             }
             return true;
+        }
+
+        private async void CarryOutOperations2<T>(List<T> operations) where T : ISortOperation
+        {
+            SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
+            int speed = SGObj.SpeedDictionary[SGObj.Speed];
+            foreach (T operation in operations)
+            {
+                int index;
+                foreach (Entry entry in operation.EntriesToChange)
+                {
+                    index = CurrentEntriesOnGraph.IndexOf(entry);
+                    CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse(operation.ChangeToColour);
+                    DisplayGraph(CurrentEntriesOnGraph);
+                    await Task.Delay(speed);
+                }
+                DisplayGraph(CurrentEntriesOnGraph);
+                await Task.Delay(speed);
+
+                foreach (Entry entry in operation.EntriesToChange)
+                {
+                    // change colour back to red
+                    index = CurrentEntriesOnGraph.IndexOf(entry);
+                    CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse("#FF1493");
+                }
+                DisplayGraph(CurrentEntriesOnGraph);
+                await Task.Delay(speed);
+            }
+            ToggleButtons();
+            DisplayCaseBtns();
         }
 
         private async void CarryOutOperations<T>(List<T> operations) where T : ISortOperation
@@ -152,18 +186,18 @@ namespace Algorithms.Views
                 foreach (Entry entry in operation.EntriesToChange)
                 {
                     index = CurrentEntriesOnGraph.IndexOf(entry);
-                    CurrentEntriesOnGraph[index].Color = SKColor.Parse(operation.ChangeToColour);
+                    CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse(operation.ChangeToColour);
                 }
                 DisplayGraph(operation.NewEntries);
                 await Task.Delay(speed);
-                
+
                 CurrentEntriesOnGraph = (Entry[])operation.NewEntries;
                 DisplayGraph(CurrentEntriesOnGraph);
                 foreach (Entry entry in operation.EntriesToChange)
                 {
                     // change colour back to red
                     index = CurrentEntriesOnGraph.IndexOf(entry);
-                    CurrentEntriesOnGraph[index].Color = SKColor.Parse("#FF1493");
+                    CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse("#FF1493");
                 }
             }
             ToggleButtons();
@@ -289,6 +323,6 @@ namespace Algorithms.Views
 
         private readonly GraphService service = new GraphService();
         readonly SortingAlgorithms algorithms = new SortingAlgorithms();
-        Entry[] CurrentEntriesOnGraph = new Entry[20];
+        IEnumerable<Entry> CurrentEntriesOnGraph = new Entry[20];
     }
 }
