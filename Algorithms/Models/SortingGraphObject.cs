@@ -7,6 +7,7 @@ namespace Algorithms.Models
         public GraphCaseEnum Case { get; set; }
         public string CurrentAlg { get; set; }
         public string Speed { get; set; }
+        public int GraphElementNumber { get; set; }
         public readonly Dictionary<string, int> SpeedDictionary = new Dictionary<string, int>
         {
             ["Super-Duper Slow"] =350,

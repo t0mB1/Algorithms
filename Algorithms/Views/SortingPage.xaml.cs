@@ -31,7 +31,7 @@ namespace Algorithms.Views
         {
             SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
             SGObj.Case = GraphCaseEnum.Worst;
-            CurrentEntriesOnGraph = service.GetWostCaseEntriesForSort(20, 1).ToArray();
+            CurrentEntriesOnGraph = service.GetWostCaseEntriesForSort(SGObj.GraphElementNumber, 1).ToArray();
             DisplayGraph(CurrentEntriesOnGraph);
             UpdateCaseBtnFonts();
         }
@@ -40,7 +40,7 @@ namespace Algorithms.Views
         {
             SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
             SGObj.Case = GraphCaseEnum.Random;
-            CurrentEntriesOnGraph = service.GetRandomEntries(1, 20, 0).ToArray();
+            CurrentEntriesOnGraph = service.GetRandomEntries(1, SGObj.GraphElementNumber, 0).ToArray();
             DisplayGraph(CurrentEntriesOnGraph);
             UpdateCaseBtnFonts();
         }
@@ -53,8 +53,11 @@ namespace Algorithms.Views
                 SGObj.Speed = SpeedPicker.SelectedItem.ToString();
                 if(algorithmPicker.SelectedIndex > 0)
                 {
-                    SortBtn.IsVisible = true;
-                    SortBtn.IsEnabled = true;
+                    if (GraphElementsPicker.SelectedIndex > 0)
+                    {
+                        SortBtn.IsVisible = true;
+                        SortBtn.IsEnabled = true;
+                    }
                 }
                 else
                 {
@@ -73,8 +76,11 @@ namespace Algorithms.Views
                 SGObj.CurrentAlg = algorithmPicker.SelectedItem.ToString();
                 if (SpeedPicker.SelectedIndex > 0)
                 {
-                    SortBtn.IsVisible = true;
-                    SortBtn.IsEnabled = true;
+                    if(GraphElementsPicker.SelectedIndex > 0)
+                    {
+                        SortBtn.IsVisible = true;
+                        SortBtn.IsEnabled = true;
+                    }
                 }
                 Title = SGObj.CurrentAlg;
             }
@@ -87,7 +93,36 @@ namespace Algorithms.Views
             }
         }
 
-        void SortBtnIsClicked(object sender, EventArgs e)
+        void GraphElementsPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
+            ResetGraph();
+            if (GraphElementsPicker.SelectedIndex > 0)
+            {
+                SGObj.GraphElementNumber = SGObj.GraphElementNumDictionary[
+                                                 GraphElementsPicker.SelectedItem.
+                                                 ToString()];
+                if (SpeedPicker.SelectedIndex > 0)
+                {
+                    if (algorithmPicker.SelectedIndex > 0)
+                    {
+                        SortBtn.IsVisible = true;
+                        SortBtn.IsEnabled = true;
+                    }
+                }
+            }
+            else
+            {
+                SortBtn.IsVisible = false;
+                SortBtn.IsEnabled = false;
+            }
+            if(SGObj.GraphElementNumber > 25)
+            {
+                SortGraph.Chart = new BarChart() { Entries = CurrentEntriesOnGraph, Margin = 5 };
+            }
+        }
+
+            void SortBtnIsClicked(object sender, EventArgs e)
         {
             SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
             if (IsSorted(CurrentEntriesOnGraph) is true)
@@ -122,7 +157,10 @@ namespace Algorithms.Views
                     case "Quick Sort":
                         {
                             List<QuickSortOperation> ops = new List<QuickSortOperation>();
-                            List<QuickSortOperation> operations = algorithms.QuickSort(CurrentEntriesOnGraph.ToArray(), 0, 19, ops);
+                            List<QuickSortOperation> operations = algorithms.QuickSort(CurrentEntriesOnGraph.ToArray(),
+                                                                                       0,
+                                                                                       SGObj.GraphElementNumber-1,
+                                                                                       ops);
                             CarryOutOpsWithoutPivot(operations);
                             break; 
                         }
@@ -173,58 +211,12 @@ namespace Algorithms.Views
             DisplayCaseBtns();
         }
 
-        private async void CarryOutOpsWithPivot<T>(List<T> operations) where T : ISortOperation
-        {
-            SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
-            int speed = SGObj.SpeedDictionary[SGObj.Speed];
-            foreach (T operation in operations)
-            {
-                if (operation.IsSwitchOperation is false)
-                {
-                    foreach (Entry entry in CurrentEntriesOnGraph.Where(hr =>
-                                            hr.Color == SKColor.Parse("#00FFFF")))
-                    {
-                        entry.Color = SKColor.Parse("#FF1493");
-                    }
-                    DisplayGraph(CurrentEntriesOnGraph);
-                    await Task.Delay(speed);
-                }
-                int index;
-                foreach (Entry entry in operation.EntriesToChange)
-                {
-                    index = CurrentEntriesOnGraph.IndexOf(entry);
-                    if (index > 0)
-                    {
-                        CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse(operation.ChangeToColour);
-                    }
-                }
-                CurrentEntriesOnGraph = (Entry[])operation.NewEntries;
-                DisplayGraph(CurrentEntriesOnGraph);
-                await Task.Delay(speed);
-
-                if (operation.IsSwitchOperation is true)
-                {
-                    foreach (Entry entry in operation.EntriesToChange)
-                    {
-                        // change colour back to red
-                        index = CurrentEntriesOnGraph.IndexOf(entry);
-                        if(index > 0)
-                        {
-                            CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse("#FF1493");
-                        }
-                    }
-                    DisplayGraph(CurrentEntriesOnGraph);
-                }
-            }
-            ToggleButtons();
-            DisplayCaseBtns();
-        }
-
         private void SetBindingContext()
         {
             BindingContext = new SortingGraphObject
             {
-                Case = GraphCaseEnum.Random
+                Case = GraphCaseEnum.Random,
+                GraphElementNumber = 20
             };
         }
 
@@ -234,12 +226,12 @@ namespace Algorithms.Views
             switch (SGObj.Case)
             {
                 case GraphCaseEnum.Worst:
-                    CurrentEntriesOnGraph = service.GetWostCaseEntriesForSort(20, 1).ToArray();
+                    CurrentEntriesOnGraph = service.GetWostCaseEntriesForSort(SGObj.GraphElementNumber, 1).ToArray();
                     DisplayGraph(CurrentEntriesOnGraph);
                     break;
 
                 case GraphCaseEnum.Random:
-                    CurrentEntriesOnGraph = service.GetRandomEntries(1, 20, 0).ToArray();
+                    CurrentEntriesOnGraph = service.GetRandomEntries(1, SGObj.GraphElementNumber, 0).ToArray();
                     DisplayGraph(CurrentEntriesOnGraph);
                     break;
             }
@@ -282,7 +274,7 @@ namespace Algorithms.Views
         {
             SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
             SGObj.Case = GraphCaseEnum.Random;
-            CurrentEntriesOnGraph = service.GetRandomEntries(1, 20, 0).ToArray();
+            CurrentEntriesOnGraph = service.GetRandomEntries(1, SGObj.GraphElementNumber, 0).ToArray();
             DisplayGraph(CurrentEntriesOnGraph);
             UpdateCaseBtnFonts();
         }
