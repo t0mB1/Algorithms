@@ -18,25 +18,14 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-            
-                <Button x:Name="bestCaseBtn"
-                        Text="    Best Case    "
-                        Grid.Column="0"
-                        Grid.Row="0"
-                        HorizontalOptions="Center"
-                        BorderColor="LightGray"
-                        BorderWidth="1"
-                        CornerRadius="8"
-                        Clicked="BestCaseBtnIsClicked"/>
 
                 <Button x:Name="randomCaseBtn"
                         Text="    Random    "
-                        Grid.Column="1"
+                        Grid.Column="0"
                         Grid.Row="0"
                         HorizontalOptions="Center"
                         BorderColor="LightGray"
@@ -46,7 +35,7 @@
 
                 <Button x:Name="worstCaseBtn"
                         Text="    Worst Case    "
-                        Grid.Column="2"
+                        Grid.Column="1"
                         Grid.Row="0"
                         HorizontalOptions="Center"
                         BorderColor="LightGray"
@@ -65,8 +54,6 @@
                         Title="Choose an Algorithm"
                         SelectedIndexChanged="AlgorithmPicker_SelectedIndexChanged"
                         HorizontalOptions="Center"
-                        Grid.Row="0"
-                        Grid.Column="0"
                         Margin="10, 0, 10, 10"
                         Grid.ColumnSpan="2">
                     <Picker.Items>
@@ -82,8 +69,6 @@
                     Title="Speed"
                     SelectedIndexChanged="SpeedPicker_SelectedIndexChanged"
                     HorizontalOptions="Center"
-                    Grid.Row="0"
-                    Grid.Column="0"
                     Margin="10, 0, 10, 10">
                 <Picker.Items>
                     <x:String x:FieldModifier="Center"/>
@@ -95,7 +80,26 @@
                     <x:String>Fast</x:String>
                     <x:String>Super Fast</x:String>
                     <x:String>Super-Duper Fast</x:String>
-                    <x:String>If You Blink, You'll Miss It</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Picker x:Name="GraphElementsPicker"
+                    Title="N⁰ Elements"
+                    SelectedIndexChanged="GraphElementsPicker_SelectedIndexChanged"
+                    HorizontalOptions="Center"
+                    Margin="10, 0, 10, 10">
+                <Picker.Items>
+                    <x:String x:FieldModifier="Center"/>
+                    <x:String>5</x:String>
+                    <x:String>10</x:String>
+                    <x:String>15</x:String>
+                    <x:String>20</x:String>
+                    <x:String>25</x:String>
+                    <x:String>30</x:String>
+                    <x:String>35</x:String>
+                    <x:String>40</x:String>
+                    <x:String>45</x:String>
+                    <x:String>50</x:String>
                 </Picker.Items>
             </Picker>
 

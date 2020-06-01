@@ -43,15 +43,15 @@ namespace Algorithms.Models
             return operations;
         }
 
-        private List<HeapSortOperation> operations = new List<HeapSortOperation>();
-
         public IEnumerable<HeapSortOperation> HeapSort(Entry[] entries)
         {
+            List<HeapSortOperation> HSOperations = new List<HeapSortOperation>();
+            Entry[] tings = entries.Select(hr => hr).ToArray();
             int n = entries.Length;
             // Build heap (rearrange array) 
             for (int i = n / 2 - 1; i >= 0; i--)
             {
-                Heapify(entries, n, i);
+                Heapify(entries, n, i, HSOperations);
             }
             // One by one extract an element from heap 
             for (int i = n - 1; i > 0; i--)
@@ -64,8 +64,7 @@ namespace Algorithms.Models
                 Entry temp = entries[0];
                 entries[0] = entries[i];
                 entries[i] = temp;
-
-                operations.Add(new HeapSortOperation
+                HSOperations.Add(new HeapSortOperation
                 {
                     EntriesToChange = entries1,
                     NewEntries = entries.Select(hr => hr).ToArray(),
@@ -73,12 +72,12 @@ namespace Algorithms.Models
                 });
 
                 // call max heapify on the reduced heap 
-                Heapify(entries, i, 0);
+                Heapify(entries, i, 0, HSOperations);
             }
-            return operations;
+            return HSOperations.Select(hr => hr);
         }
 
-        private void Heapify(Entry[] entries, int n, int i)
+        private void Heapify(Entry[] entries, int n, int i, List<HeapSortOperation> HSOperations)
         {
             int largest = i; // Initialize largest as root
             int left = 2 * i + 1; // left = 2*i + 1
@@ -110,7 +109,7 @@ namespace Algorithms.Models
                 entries[i] = entries[largest];
                 entries[largest] = temp;
 
-                operations.Add(new HeapSortOperation
+                HSOperations.Add(new HeapSortOperation
                 {
                     EntriesToChange = entries1,
                     NewEntries = entries.Select(hr => hr).ToArray(),
@@ -118,7 +117,7 @@ namespace Algorithms.Models
                 });
 
                 // Recursively heapify the affected sub-tree 
-                Heapify(entries, n, largest);
+                Heapify(entries, n, largest, HSOperations);
             }
         }
 
@@ -162,27 +161,25 @@ namespace Algorithms.Models
             return operations;
         }
 
-        private List<QuickSortOperation> QSOperations = new List<QuickSortOperation>();
-
-        public List<QuickSortOperation> QuickSort(Entry[] entries, int start, int end)
+        public List<QuickSortOperation> QuickSort(Entry[] entries, int start, int end, List<QuickSortOperation> QSOperations)
         {
             int pivot;
             if (start < end)
             {
-                pivot = Partition(entries, start, end);
+                pivot = Partition(entries, start, end, QSOperations);
                 if (pivot > 1)
                 {
-                    QuickSort(entries, start, pivot - 1);
+                    QuickSort(entries, start, pivot - 1, QSOperations);
                 }
                 if (pivot + 1 < end)
                 {
-                    QuickSort(entries, pivot + 1, end);
+                    QuickSort(entries, pivot + 1, end, QSOperations);
                 }
             }
-            return QSOperations;
+            return QSOperations.Select(hr => hr).ToList();
         }
 
-        private int Partition(Entry[] entries, int left, int right)
+        private int Partition(Entry[] entries, int left, int right, List<QuickSortOperation> QSOperations)
         {
             int pivot = (int)entries[left].Value;
             

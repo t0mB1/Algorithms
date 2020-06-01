@@ -27,27 +27,21 @@ namespace Algorithms.Views
             ResetGraph();
         }
 
-        void BestCaseBtnIsClicked(object sender, EventArgs e)
-        {
-            SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
-            SGObj.Case = Case.Best;
-            ChangeGraphToBestCase();
-            UpdateCaseBtnFonts();
-        }
-
         void WorstCaseBtnIsClicked(object sender, EventArgs e)
         {
             SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
-            SGObj.Case = Case.Worst;
-
+            SGObj.Case = GraphCaseEnum.Worst;
+            CurrentEntriesOnGraph = service.GetWostCaseEntriesForSort(20, 1).ToArray();
+            DisplayGraph(CurrentEntriesOnGraph);
             UpdateCaseBtnFonts();
         }
 
         void RandomCaseBtnIsClicked(object sender, EventArgs e)
         {
             SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
-            SGObj.Case = Case.Random;
-            DisplayGraph(service.GetRandomEntries(1, 20, 0));
+            SGObj.Case = GraphCaseEnum.Random;
+            CurrentEntriesOnGraph = service.GetRandomEntries(1, 20, 0).ToArray();
+            DisplayGraph(CurrentEntriesOnGraph);
             UpdateCaseBtnFonts();
         }
 
@@ -98,17 +92,7 @@ namespace Algorithms.Views
             SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
             if (IsSorted(CurrentEntriesOnGraph) is true)
             {
-                if (SGObj.Case == Case.Random)
-                {
-                    CurrentEntriesOnGraph = service.GetRandomEntries(1, 20, 0).ToArray();
-                }
-                else
-                {
-                    CurrentEntriesOnGraph = service.GetWostCaseEntries(20, 1).ToArray();
-                }
-                
-                DisplayGraph(CurrentEntriesOnGraph);
-                Task.Delay(20);
+                ResetGraph();
             }
             
             if (SGObj.CurrentAlg != "" ||
@@ -125,7 +109,7 @@ namespace Algorithms.Views
                         }
                     case "Heap Sort":
                         {
-                            IEnumerable<HeapSortOperation > operations = algorithms.HeapSort(CurrentEntriesOnGraph.ToArray());
+                            IEnumerable<HeapSortOperation> operations = algorithms.HeapSort(CurrentEntriesOnGraph.ToArray());
                             CarryOutOpsWithoutPivot(operations.ToList());
                             break;
                         }
@@ -137,8 +121,9 @@ namespace Algorithms.Views
                         }
                     case "Quick Sort":
                         {
-                            List<QuickSortOperation> operations = algorithms.QuickSort(CurrentEntriesOnGraph.ToArray(), 0, 19);
-                            CarryOutOpsWithPivot(operations);
+                            List<QuickSortOperation> ops = new List<QuickSortOperation>();
+                            List<QuickSortOperation> operations = algorithms.QuickSort(CurrentEntriesOnGraph.ToArray(), 0, 19, ops);
+                            CarryOutOpsWithoutPivot(operations);
                             break; 
                         }
                 }
@@ -167,7 +152,10 @@ namespace Algorithms.Views
                 foreach (Entry entry in operation.EntriesToChange)
                 {
                     index = CurrentEntriesOnGraph.IndexOf(entry);
-                    CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse(operation.ChangeToColour);
+                    if (index > 0)
+                    {
+                        CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse(operation.ChangeToColour);
+                    }
                 }
                 DisplayGraph(operation.NewEntries);
                 await Task.Delay(speed);
@@ -205,7 +193,10 @@ namespace Algorithms.Views
                 foreach (Entry entry in operation.EntriesToChange)
                 {
                     index = CurrentEntriesOnGraph.IndexOf(entry);
-                    CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse(operation.ChangeToColour);
+                    if (index > 0)
+                    {
+                        CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse(operation.ChangeToColour);
+                    }
                 }
                 CurrentEntriesOnGraph = (Entry[])operation.NewEntries;
                 DisplayGraph(CurrentEntriesOnGraph);
@@ -217,7 +208,10 @@ namespace Algorithms.Views
                     {
                         // change colour back to red
                         index = CurrentEntriesOnGraph.IndexOf(entry);
-                        CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse("#FF1493");
+                        if(index > 0)
+                        {
+                            CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse("#FF1493");
+                        }
                     }
                     DisplayGraph(CurrentEntriesOnGraph);
                 }
@@ -230,7 +224,7 @@ namespace Algorithms.Views
         {
             BindingContext = new SortingGraphObject
             {
-                Case = Case.Random
+                Case = GraphCaseEnum.Random
             };
         }
 
@@ -239,15 +233,12 @@ namespace Algorithms.Views
             SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
             switch (SGObj.Case)
             {
-                case Case.Best:
-
+                case GraphCaseEnum.Worst:
+                    CurrentEntriesOnGraph = service.GetWostCaseEntriesForSort(20, 1).ToArray();
+                    DisplayGraph(CurrentEntriesOnGraph);
                     break;
 
-                case Case.Worst:
-
-                    break;
-
-                case Case.Random:
+                case GraphCaseEnum.Random:
                     CurrentEntriesOnGraph = service.GetRandomEntries(1, 20, 0).ToArray();
                     DisplayGraph(CurrentEntriesOnGraph);
                     break;
@@ -261,23 +252,18 @@ namespace Algorithms.Views
             SpeedPicker.IsEnabled = !temp;
             ResetToolBarItem.IsEnabled = !temp;
             SortBtn.IsEnabled = !temp;
-            bestCaseBtn.IsVisible = !temp;
+            
             randomCaseBtn.IsVisible = !temp;
             worstCaseBtn.IsVisible = !temp;
             SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
             switch (SGObj.Case)
             {
-                case Case.Best:
-                    bestCaseBtn.IsVisible = temp;
-                    bestCaseBtn.IsEnabled = !temp;
-                    break;
-
-                case Case.Worst:
+                case GraphCaseEnum.Worst:
                     worstCaseBtn.IsVisible = temp;
                     worstCaseBtn.IsEnabled = !temp;
                     break;
 
-                case Case.Random:
+                case GraphCaseEnum.Random:
                     randomCaseBtn.IsVisible = temp;
                     randomCaseBtn.IsEnabled = !temp;
                     break;
@@ -286,8 +272,6 @@ namespace Algorithms.Views
 
         private void DisplayCaseBtns()
         {
-            bestCaseBtn.IsVisible = true;
-            bestCaseBtn.IsEnabled = true;
             worstCaseBtn.IsVisible = true;
             worstCaseBtn.IsEnabled = true;
             randomCaseBtn.IsVisible = true;
@@ -297,7 +281,7 @@ namespace Algorithms.Views
         private void ChangeToRandomCase()
         {
             SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
-            SGObj.Case = Case.Random;
+            SGObj.Case = GraphCaseEnum.Random;
             CurrentEntriesOnGraph = service.GetRandomEntries(1, 20, 0).ToArray();
             DisplayGraph(CurrentEntriesOnGraph);
             UpdateCaseBtnFonts();
@@ -306,36 +290,16 @@ namespace Algorithms.Views
         private void UpdateCaseBtnFonts()
         {
             SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
-            if (SGObj.Case == Case.Random)
+            if (SGObj.Case == GraphCaseEnum.Random)
             {
                 randomCaseBtn.FontAttributes = FontAttributes.Bold;
-                bestCaseBtn.FontAttributes = FontAttributes.None;
                 worstCaseBtn.FontAttributes = FontAttributes.None;
             }
-            else if (SGObj.Case == Case.Best)
+            else if (SGObj.Case == GraphCaseEnum.Worst)
             {
                 randomCaseBtn.FontAttributes = FontAttributes.None;
-                bestCaseBtn.FontAttributes = FontAttributes.Bold;
-                worstCaseBtn.FontAttributes = FontAttributes.None;
-            }
-            else if (SGObj.Case == Case.Worst)
-            {
-                randomCaseBtn.FontAttributes = FontAttributes.None;
-                bestCaseBtn.FontAttributes = FontAttributes.None;
                 worstCaseBtn.FontAttributes = FontAttributes.Bold;
             }
-        }
-
-        private void ChangeGraphToBestCase()
-        {
-            SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
-            SGObj.Case = Case.Best;
-            OrderEntriesOnGraph();
-        }
-
-        private void OrderEntriesOnGraph()
-        {
-            DisplayGraph(service.GetBestCaseEntries(1, 20, 0));
         }
 
         private void DisplayGraph(IEnumerable<Entry> entries)

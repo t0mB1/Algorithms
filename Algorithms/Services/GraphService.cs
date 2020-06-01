@@ -25,7 +25,7 @@ namespace Algorithms.Services
             return entries;
         }
 
-        public List<Entry> GetWostCaseEntries(int minVal, int maxVal)
+        public List<Entry> GetWostCaseEntriesForSearch(int minVal, int maxVal)
         {
             List<Entry> entries = new List<Entry>();
             for (int i = minVal; i < maxVal + 1; i++)
@@ -38,6 +38,16 @@ namespace Algorithms.Services
                 {
                     entries.Add(GenerateEntry(i));
                 }
+            }
+            return entries;
+        }
+
+        public List<Entry> GetWostCaseEntriesForSort(int maxVal, int minVal)
+        {
+            List<Entry> entries = new List<Entry>();
+            for (int i = maxVal; i > minVal-1; i--)
+            {
+                entries.Add(GenerateEntry(i));
             }
             return entries;
         }

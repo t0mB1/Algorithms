@@ -2,17 +2,10 @@
 using System.Collections.Generic;
 
 namespace Algorithms.Models
-{
-    public enum Case
-    {
-        Random,
-        Best,
-        Worst
-    }
-
+{ 
     public class SearchingGraphObject
     {
-        public Case Case { get; set; }
+        public GraphCaseEnum Case { get; set; }
         public int SearchItemValue { get; set; }
         public string CurrentAlg { get; set; }
         public string Speed { get; set; }
