@@ -86,10 +86,10 @@
             <Picker x:Name="GraphElementsPicker"
                     Title="N⁰ Elements"
                     SelectedIndexChanged="GraphElementsPicker_SelectedIndexChanged"
-                    HorizontalOptions="Center"
                     Margin="10, 0, 10, 10"
                     SelectedIndex="4"
-                    SelectedItem="20">
+                    SelectedItem="20"
+                    HorizontalOptions="CenterAndExpand">
                 <Picker.Items>
                     <x:String x:FieldModifier="Center"/>
                     <x:String>5</x:String>

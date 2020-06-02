@@ -1,11 +1,10 @@
 ﻿<Properties StartupConfiguration="{51A0C8EF-8F7B-4CB9-8A9E-6964FB17D443}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Algorithms/Views/SortingPage.xaml.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Algorithms/Models/SortingGraphObject.cs">
     <Files>
-      <File FileName="Algorithms/Views/SortingPage.xaml" Line="92" Column="38" />
-      <File FileName="Algorithms/Views/SortingPage.xaml.cs" Line="230" Column="57" />
-      <File FileName="Algorithms.iOS/Main.cs" Line="17" Column="1" />
+      <File FileName="Algorithms/Views/SortingPage.xaml" Line="88" Column="84" />
+      <File FileName="Algorithms/Views/SortingPage.xaml.cs" Line="182" Column="1" />
       <File FileName="Algorithms/Models/SortingAlgorithms.cs" Line="169" Column="1" />
-      <File FileName="Algorithms/Views/SearchingPage.xaml.cs" Line="433" Column="48" NotebookId="1" />
+      <File FileName="Algorithms/Models/SortingGraphObject.cs" Line="10" Column="52" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -13,14 +12,14 @@
           <Node name="Algorithms" expanded="True">
             <Node name="Algorithms" expanded="True">
               <Node name="AlgorithmInfomation" expanded="True" />
-              <Node name="Models" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="SortingGraphObject.cs" selected="True" />
+              </Node>
               <Node name="Services" expanded="True" />
               <Node name="Views" expanded="True">
                 <Node name="AboutAlgorithmsPage.xaml" expanded="True" />
                 <Node name="SearchingPage.xaml" expanded="True" />
-                <Node name="SortingPage.xaml" expanded="True">
-                  <Node name="SortingPage.xaml.cs" selected="True" />
-                </Node>
+                <Node name="SortingPage.xaml" expanded="True" />
               </Node>
             </Node>
             <Node name="Algorithms.iOS" expanded="True" />

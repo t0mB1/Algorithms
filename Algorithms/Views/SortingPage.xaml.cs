@@ -96,7 +96,6 @@ namespace Algorithms.Views
         void GraphElementsPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
             SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
-            ResetGraph();
             if (GraphElementsPicker.SelectedIndex > 0)
             {
                 SGObj.GraphElementNumber = SGObj.GraphElementNumDictionary[
@@ -116,10 +115,7 @@ namespace Algorithms.Views
                 SortBtn.IsVisible = false;
                 SortBtn.IsEnabled = false;
             }
-            if(SGObj.GraphElementNumber > 25)
-            {
-                SortGraph.Chart = new BarChart() { Entries = CurrentEntriesOnGraph, Margin = 5 };
-            }
+            ResetGraph();
         }
 
             void SortBtnIsClicked(object sender, EventArgs e)
@@ -296,7 +292,41 @@ namespace Algorithms.Views
 
         private void DisplayGraph(IEnumerable<Entry> entries)
         {
-            SortGraph.Chart = new BarChart { Entries = entries };
+            SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
+
+            switch (SGObj.GraphElementNumber)
+            {
+                case 5:
+                    SortGraph.Chart = new BarChart { Entries = entries, Margin = 30 };
+                    break;
+                case 10:
+                    SortGraph.Chart = new BarChart { Entries = entries };
+                    break;
+                case 15:
+                    SortGraph.Chart = new BarChart { Entries = entries };
+                    break;
+                case 20:
+                    SortGraph.Chart = new BarChart { Entries = entries };
+                    break;
+                case 25:
+                    SortGraph.Chart = new BarChart { Entries = entries, Margin = 15 };
+                    break;
+                case 30:
+                    SortGraph.Chart = new BarChart { Entries = entries, Margin = 15 };
+                    break;
+                case 35:
+                    SortGraph.Chart = new BarChart { Entries = entries, Margin = 12 };
+                    break;
+                case 40:
+                    SortGraph.Chart = new BarChart { Entries = entries, Margin = 10 };
+                    break;
+                case 45:
+                    SortGraph.Chart = new BarChart { Entries = entries, Margin = 8 };
+                    break;
+                case 50:
+                    SortGraph.Chart = new BarChart { Entries = entries, Margin = 6 };
+                    break;
+            }
         }
 
         private readonly GraphService service = new GraphService();
