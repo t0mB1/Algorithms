@@ -22,6 +22,7 @@
     <Folder Include="Models\SearchAlgorithmOperations\" />
     <Folder Include="Models\SortAlgorithmOperations\" />
     <Folder Include="AlgorithmInfomation\" />
+    <Folder Include="Styles\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="AlgorithmInfomation\BubbleSortInfo.txt" />

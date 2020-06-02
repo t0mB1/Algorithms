@@ -27,6 +27,12 @@ namespace Algorithms.Views
             ResetGraph();
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            ChangeToRandomCase();
+        }
+
         void WorstCaseBtnIsClicked(object sender, EventArgs e)
         {
             SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
@@ -93,7 +99,7 @@ namespace Algorithms.Views
             ToggleSortBtn();
         }
 
-            void SortBtnIsClicked(object sender, EventArgs e)
+        void SortBtnIsClicked(object sender, EventArgs e)
         {
             SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
             if (IsSorted(CurrentEntriesOnGraph) is true)
@@ -215,7 +221,7 @@ namespace Algorithms.Views
             SpeedPicker.IsEnabled = !temp;
             ResetToolBarItem.IsEnabled = !temp;
             SortBtn.IsEnabled = !temp;
-            
+            SpeedPicker.IsEnabled = !temp;
             randomCaseBtn.IsVisible = !temp;
             worstCaseBtn.IsVisible = !temp;
             SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
@@ -272,51 +278,63 @@ namespace Algorithms.Views
             if (SGObj.Case == GraphCaseEnum.Random)
             {
                 randomCaseBtn.FontAttributes = FontAttributes.Bold;
+                randomCaseBtn.BorderWidth = 2;
                 worstCaseBtn.FontAttributes = FontAttributes.None;
+                worstCaseBtn.BorderWidth = 1;
             }
             else if (SGObj.Case == GraphCaseEnum.Worst)
             {
                 randomCaseBtn.FontAttributes = FontAttributes.None;
+                randomCaseBtn.BorderWidth = 1;
                 worstCaseBtn.FontAttributes = FontAttributes.Bold;
+                worstCaseBtn.BorderWidth = 2;
             }
         }
 
         private void DisplayGraph(IEnumerable<Entry> entries)
         {
             SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
-
+            int margin = 0;
             switch (SGObj.GraphElementNumber)
             {
                 case 5:
-                    SortGraph.Chart = new BarChart { Entries = entries, Margin = 30 };
-                    break;
-                case 10:
-                    SortGraph.Chart = new BarChart { Entries = entries };
-                    break;
-                case 15:
-                    SortGraph.Chart = new BarChart { Entries = entries };
-                    break;
-                case 20:
-                    SortGraph.Chart = new BarChart { Entries = entries };
+                    margin = 30;
                     break;
                 case 25:
-                    SortGraph.Chart = new BarChart { Entries = entries, Margin = 15 };
+                    margin = 15;
                     break;
                 case 30:
-                    SortGraph.Chart = new BarChart { Entries = entries, Margin = 15 };
+                    margin = 15;
                     break;
                 case 35:
-                    SortGraph.Chart = new BarChart { Entries = entries, Margin = 12 };
+                    margin = 12;
                     break;
                 case 40:
-                    SortGraph.Chart = new BarChart { Entries = entries, Margin = 10 };
+                    margin = 10;
                     break;
                 case 45:
-                    SortGraph.Chart = new BarChart { Entries = entries, Margin = 8 };
+                    margin = 8;
                     break;
                 case 50:
-                    SortGraph.Chart = new BarChart { Entries = entries, Margin = 6 };
+                    margin = 6;
                     break;
+            }
+            if(margin == 0)
+            {
+                SortGraph.Chart = new BarChart
+                {
+                    Entries = entries,
+                    BackgroundColor = SKColors.Transparent
+                };
+            }
+            else
+            {
+                SortGraph.Chart = new BarChart
+                {
+                    Entries = entries,
+                    Margin = margin,
+                    BackgroundColor = SKColors.Transparent
+                };
             }
         }
 

@@ -1,10 +1,31 @@
 ﻿<Properties StartupConfiguration="{51A0C8EF-8F7B-4CB9-8A9E-6964FB17D443}|Default">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Algorithms/AppShell.xaml.cs">
+    <Files>
+      <File FileName="Algorithms/AppShell.xaml" Line="7" Column="1" />
+      <File FileName="Algorithms/AppShell.xaml.cs" Line="13" Column="9" />
+      <File FileName="Algorithms/Styles/DarkTheme.xaml" Line="19" Column="1" NotebookId="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Algorithms" expanded="True">
-            <Node name="Algorithms" expanded="True" />
+            <Node name="Algorithms" expanded="True">
+              <Node name="Styles" expanded="True">
+                <Node name="DarkTheme.xaml" expanded="True" />
+              </Node>
+              <Node name="Views" expanded="True">
+                <Node name="AboutAlgorithmsPage.xaml" expanded="True" />
+                <Node name="SearchingPage.xaml" expanded="True" />
+                <Node name="SelectedAlgorithmPage.xaml" expanded="True" />
+                <Node name="SortingPage.xaml" expanded="True" />
+              </Node>
+              <Node name="AppShell.xaml" expanded="True">
+                <Node name="AppShell.xaml.cs" selected="True" />
+              </Node>
+            </Node>
+            <Node name="Algorithms.iOS" expanded="True">
+              <Node name="Renderers" expanded="True" />
+            </Node>
           </Node>
         </State>
       </Pad>

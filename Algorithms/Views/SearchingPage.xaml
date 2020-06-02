@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              x:Class="Algorithms.Views.SearchingPage"
-             Title="Searches">
+             Title="Searches"
+             BackgroundColor="{DynamicResource headerbackgroundColor}">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="ResetToolBarItem"
@@ -11,8 +12,8 @@
                      Clicked="ResetButtonIsClicked" />
     </ContentPage.ToolbarItems>
 
-    <ScrollView>
-        <StackLayout>
+    <ScrollView BackgroundColor="{DynamicResource tablebackgroundColor}">
+        <StackLayout BackgroundColor="{DynamicResource tablebackgroundColor}">
             <Grid x:Name="grid"
                   Margin="10, 20, 10, 10">
                 <Grid.ColumnDefinitions>
@@ -29,43 +30,41 @@
                         Grid.Column="0"
                         Grid.Row="0"
                         HorizontalOptions="Center"
-                        BorderColor="LightGray"
+                        Clicked="BestCaseBtnIsClicked"
                         BorderWidth="1"
-                        CornerRadius="8"
-                        Clicked="BestCaseBtnIsClicked"/>
+                        BorderColor="{DynamicResource buttonbordercolor}"/>
 
                 <Button x:Name="randomCaseBtn"
                         Text="    Random    "
                         Grid.Column="1"
                         Grid.Row="0"
                         HorizontalOptions="Center"
-                        BorderColor="LightGray"
+                        Clicked="RandomCaseBtnIsClicked"
                         BorderWidth="1"
-                        CornerRadius="8"
-                        Clicked="RandomCaseBtnIsClicked"/>
+                        BorderColor="{DynamicResource buttonbordercolor}"/>
 
                 <Button x:Name="worstCaseBtn"
                         Text="    Worst Case    "
                         Grid.Column="2"
                         Grid.Row="0"
                         HorizontalOptions="Center"
-                        BorderColor="LightGray"
+                        Clicked="WorstCaseBtnIsClicked"
                         BorderWidth="1"
-                        CornerRadius="8"
-                        Clicked="WorstCaseBtnIsClicked"/>
+                        BorderColor="{DynamicResource buttonbordercolor}"/>
             </Grid>
 
             <forms:ChartView x:Name="SearchGraph"
                          HeightRequest="400"
                          WidthRequest="800"
-                         Margin="10, 0, 10, 10"/>
-
+                         Margin="10, 0, 10, 10"
+                         BackgroundColor="Transparent"/>
 
             <Picker x:Name="algorithmPicker"
                     Title="Choose an Algorithm"
                     SelectedIndexChanged="AlgorithmPicker_SelectedIndexChanged"
                     HorizontalOptions="Center"
-                    Margin="10, 0, 10, 10">
+                    Margin="10, 0, 10, 10"
+                    BackgroundColor="{DynamicResource pickerbackgroundColor}">
                 <Picker.Items>
                     <x:String x:FieldModifier="Center"/>
                     <x:String>Jump Search</x:String>
@@ -79,7 +78,8 @@
                     Title="Search Item"
                     SelectedIndexChanged="SearchItemPicker_SelectedIndexChanged"
                     HorizontalOptions="Center"
-                    Margin="10, 0, 10, 10">
+                    Margin="10, 0, 10, 10"
+                    BackgroundColor="{DynamicResource pickerbackgroundColor}">
                 <Picker.Items>
                     <x:String x:FieldModifier="Center"/>
                     <x:String>1</x:String>
@@ -111,7 +111,8 @@
                     HorizontalOptions="Center"
                     Grid.Row="0"
                     Grid.Column="0"
-                    Margin="10, 0, 10, 10">
+                    Margin="10, 0, 10, 10"
+                    BackgroundColor="{DynamicResource pickerbackgroundColor}">
                 <Picker.Items>
                     <x:String x:FieldModifier="Center"/>
                     <x:String>Super-Duper Slow</x:String>

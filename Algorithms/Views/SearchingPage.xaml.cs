@@ -19,7 +19,6 @@ namespace Algorithms.Views
             InitializeComponent();
             SetBindingContext();
             ChangeToRandomCase();
-            DisplayGraph(service.GetRandomEntries(1, 20, 0));
         }
 
         void ResetButtonIsClicked(object sender, EventArgs e)
@@ -31,17 +30,17 @@ namespace Algorithms.Views
         {
             base.OnAppearing();
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
-            if (algorithmPicker.SelectedIndex != -1)
+            if (algorithmPicker.SelectedIndex > 0)
             {
                 SGObj.CurrentAlg = algorithmPicker.SelectedItem.ToString();
                 Title = SGObj.CurrentAlg;
-                
             }
             else
             {
                 Title = "Searches";
                 SGObj.CurrentAlg = "";
             }
+            DisplayGraph(service.GetRandomEntries(1, 20, 0));
         }
 
         void AlgorithmPicker_SelectedIndexChanged(object sender, EventArgs e)
@@ -396,20 +395,29 @@ namespace Algorithms.Views
             if (SGObj.Case == GraphCaseEnum.Random)
             {
                 randomCaseBtn.FontAttributes = FontAttributes.Bold;
+                randomCaseBtn.BorderWidth = 2;
                 bestCaseBtn.FontAttributes = FontAttributes.None;
+                bestCaseBtn.BorderWidth = 1;
                 worstCaseBtn.FontAttributes = FontAttributes.None;
+                worstCaseBtn.BorderWidth = 1;
             }
             else if (SGObj.Case == GraphCaseEnum.Best)
             {
                 randomCaseBtn.FontAttributes = FontAttributes.None;
+                randomCaseBtn.BorderWidth = 1;
                 bestCaseBtn.FontAttributes = FontAttributes.Bold;
+                bestCaseBtn.BorderWidth = 2;
                 worstCaseBtn.FontAttributes = FontAttributes.None;
+                worstCaseBtn.BorderWidth = 1;
             }
             else if (SGObj.Case == GraphCaseEnum.Worst)
             {
                 randomCaseBtn.FontAttributes = FontAttributes.None;
+                randomCaseBtn.BorderWidth = 1;
                 bestCaseBtn.FontAttributes = FontAttributes.None;
+                bestCaseBtn.BorderWidth = 1;
                 worstCaseBtn.FontAttributes = FontAttributes.Bold;
+                worstCaseBtn.BorderWidth = 2;
             }
         }
 
@@ -445,7 +453,8 @@ namespace Algorithms.Views
 
         private void DisplayGraph(List<Entry> entries)
         {
-            SearchGraph.Chart = new BarChart { Entries = entries };
+
+            SearchGraph.Chart = new BarChart { Entries = entries, BackgroundColor = SKColors.Transparent };
             CurrentEntriesOnGraph = entries;
         }
 

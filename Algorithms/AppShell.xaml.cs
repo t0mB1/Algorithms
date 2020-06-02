@@ -9,6 +9,7 @@ namespace Algorithms
         public AppShell()
         {
             InitializeComponent();
+            FlyoutBackgroundColor = Color.Crimson;
         }
     }
 }

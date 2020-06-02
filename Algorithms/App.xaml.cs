@@ -1,10 +1,10 @@
 ﻿using Xamarin.Forms;
-using Algorithms.Views;
 
 namespace Algorithms
 {
     public partial class App : Application
     {
+        public static string AppTheme { get; set; }
 
         public App()
         {

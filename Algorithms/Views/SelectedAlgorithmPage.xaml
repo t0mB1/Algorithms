@@ -1,49 +1,66 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Algorithms.Views.SelectedAlgorithmPage">
+             x:Class="Algorithms.Views.SelectedAlgorithmPage"
+             BackgroundColor="{DynamicResource headerbackgroundColor}">
 
-    <TableView Intent="Form" HasUnevenRows="True" HorizontalOptions="StartAndExpand">
-        <TableRoot>
+    <TableView Intent="Form"
+               HasUnevenRows="True"
+               HorizontalOptions="StartAndExpand"
+               BackgroundColor="{DynamicResource tablebackgroundColor}">
+        <TableRoot TextColor="{DynamicResource TextTernaryColor}">
             <TableSection Title="Information"
-                          AbsoluteLayout.LayoutBounds="10, 10, 10, 10">
-                <ViewCell x:Name="InfoViewCell"
-                          >
-                    <StackLayout Margin="20, 10, 20, 10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                        <Label x:Name="InfomationLabel"/>
+                          AbsoluteLayout.LayoutBounds="10, 10, 10, 10"
+                          TextColor="#FF1493">
+                <ViewCell x:Name="InfoViewCell">
+                    <StackLayout Margin="20, 10, 20, 10"
+                                 HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="FillAndExpand">
+                        <Label x:Name="InfomationLabel"
+                               TextColor="{DynamicResource TextSecondaryColor}"/>
                     </StackLayout>
                 </ViewCell>
             </TableSection>
-            <TableSection Title="Big(O)">
+            <TableSection Title="Big(O)"
+                          TextColor="#FF1493">
                 <ViewCell x:Name="BigOViewCell">
                     <StackLayout Margin="20, 10, 20, 10">
-                        <Label x:Name="BestCaseLabel"/>
-                        <Label x:Name="WorstCaseLabel"/>
-                        <Label x:Name="AverageCaseLabel"/>
+                        <Label x:Name="BestCaseLabel"
+                               TextColor="{DynamicResource TextSecondaryColor}"/>
+                        <Label x:Name="WorstCaseLabel"
+                               TextColor="{DynamicResource TextSecondaryColor}"/>
+                        <Label x:Name="AverageCaseLabel"
+                               TextColor="{DynamicResource TextSecondaryColor}"/>
                     </StackLayout>
                 </ViewCell>
             </TableSection>
             <TableSection x:Name="ImpSection1"
-                          Title="C# Implementation">
+                          Title="C# Implementation"
+                          TextColor="#FF1493">
                 <ViewCell x:Name="Imp1ViewCell">
                     <StackLayout Margin="20, 10, 20, 10">
-                        <Label x:Name="Imp1Lbl"/>
+                        <Label x:Name="Imp1Lbl"
+                               TextColor="{DynamicResource TextSecondaryColor}"/>
                     </StackLayout>
                 </ViewCell>      
             </TableSection>
             <TableSection x:Name="ImpSection2"
-                          Title="Java Implementation">
+                          Title="Java Implementation"
+                          TextColor="#FF1493">
                 <ViewCell x:Name="Imp2ViewCell">
                     <StackLayout Margin="20, 10, 20, 10">
-                        <Label x:Name="Imp2Lbl"/>
+                        <Label x:Name="Imp2Lbl"
+                               TextColor="{DynamicResource TextSecondaryColor}"/>
                     </StackLayout>
                 </ViewCell>      
             </TableSection>
             <TableSection x:Name="ImpSection3"
-                          Title="Python Implementation">
+                          Title="Python Implementation"
+                          TextColor="#FF1493">
                 <ViewCell x:Name="Imp3ViewCell">
                     <StackLayout Margin="20, 10, 20, 10">
-                        <Label x:Name="Imp3Lbl"/>
+                        <Label x:Name="Imp3Lbl"
+                               TextColor="{DynamicResource TextSecondaryColor}"/>
                     </StackLayout>
                 </ViewCell>      
             </TableSection>

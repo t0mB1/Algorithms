@@ -2,7 +2,8 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        x:Class="Algorithms.AppShell"
-       xmlns:views="clr-namespace:Algorithms.Views">
+       xmlns:views="clr-namespace:Algorithms.Views"
+       BackgroundColor="{DynamicResource tablebackgroundColor}"> 
 
     <FlyoutItem x:Name="VisualizerFlyoutItem"
                 Title="Visualizer"
@@ -10,13 +11,13 @@
         <ShellSection Title="Sort"
                       Icon="tab_feed.png">
             <ShellContent>
-                <views:SortingPage/>
+                <views:SortingPage BackgroundColor="{DynamicResource backgroundColor}"/>
             </ShellContent>
         </ShellSection>
         <ShellSection Title="Search"
                       Icon="tab_feed.png">
             <ShellContent>
-                <views:SearchingPage/>
+                <views:SearchingPage BackgroundColor="{DynamicResource backgroundColor}"/>
             </ShellContent>
         </ShellSection>
     </FlyoutItem>
@@ -24,7 +25,7 @@
                 Title="Algorithms">
         <ShellSection Title="Algorithms">
             <ShellContent>
-                <views:AboutAlgorithmsPage/>
+                <views:AboutAlgorithmsPage BackgroundColor="{DynamicResource backgroundColor}"/>
             </ShellContent>
         </ShellSection>
     </FlyoutItem>
@@ -32,7 +33,7 @@
                 Title="Settings">
         <ShellSection Title="Settings">
             <ShellContent>
-                <views:SettingsPage/>
+                <views:SettingsPage BackgroundColor="{DynamicResource backgroundColor}"/>
             </ShellContent>
         </ShellSection>
     </FlyoutItem>

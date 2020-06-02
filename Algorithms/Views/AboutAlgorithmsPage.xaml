@@ -2,51 +2,65 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Algorithms.Views.AboutAlgorithmsPage"
-             Title="Algorithms">
+             Title="Algorithms"
+             BackgroundColor="{DynamicResource headerbackgroundColor}">
 
     <ScrollView>
-            <TableView Intent="Settings">
-                <TableRoot>
+            <TableView Intent="Settings"
+                       BackgroundColor="{DynamicResource tablebackgroundColor}">
+                <TableRoot TextColor="{DynamicResource TextTernaryColor}" >
 
-                    <TableSection Title="Sort">
+                    <TableSection x:Name="SortTableSection"
+                                  Title="Sort"
+                                  TextColor="#FF1493">
+
                         <TextCell x:Name="BubbleSortTextCell"
                                   Text="Bubble Sort"
-                                  Tapped="BubbleSortTextCell_Tapped"/>
-                        
+                                  Tapped="BubbleSortTextCell_Tapped"
+                                  TextColor="{DynamicResource TextSecondaryColor}"/>
 
                         <TextCell x:Name="HeapSortTextCell"
                                   Text="Heap Sort"
-                                  Tapped="HeapSortTextCell_Tapped"/>
+                                  Tapped="HeapSortTextCell_Tapped"
+                                  TextColor="{DynamicResource TextSecondaryColor}"/>
 
                         <TextCell x:Name="InsertionSortTextCell"
                                   Text="Insertion Sort"
-                                  Tapped="InsertionSortTextCell_Tapped"/>
+                                  Tapped="InsertionSortTextCell_Tapped"
+                                  TextColor="{DynamicResource TextSecondaryColor}"/>
 
                         <TextCell x:Name="QuickSortTextCell"
                                   Text="Quick Sort"
-                                  Tapped="QuickSortTextCell_Tapped"/>
+                                  Tapped="QuickSortTextCell_Tapped"
+                                  TextColor="{DynamicResource TextSecondaryColor}"/>
 
-                        
                     </TableSection>
 
-                    <TableSection Title="Search">
+                    <TableSection x:Name="SearchTableSection"
+                                  Title="Search"
+                                  TextColor="#FF1493">
+
                         <TextCell x:Name="JumpSearchTextCell"
                                   Text="Jump Search"
-                                  Tapped="JumpSearchTextCell_Tapped"/>
+                                  Tapped="JumpSearchTextCell_Tapped"
+                                  TextColor="{DynamicResource TextSecondaryColor}"/>
 
                         <TextCell x:Name="LinearSearchTextCell"
                                   Text="Linear Search"
-                                  Tapped="LinearSearchTextCell_Tapped"/>
+                                  Tapped="LinearSearchTextCell_Tapped"
+                                  TextColor="{DynamicResource TextSecondaryColor}"/>
 
                         <TextCell x:Name="ClassicBinarySearchTextCell"
                                   Text="Classic Binary Search"
-                                  Tapped="ClassicBinarySearchTextCell_Tapped"/>
+                                  Tapped="ClassicBinarySearchTextCell_Tapped"
+                                  TextColor="{DynamicResource TextSecondaryColor}"/>
 
                         <TextCell x:Name="ModBinarySearchTextCell"
                                   Text="Modified BinarySearch"
-                                  Tapped="ModBinarySearchTextCell_Tapped"/>
-                    </TableSection>
+                                  Tapped="ModBinarySearchTextCell_Tapped"
+                                  TextColor="{DynamicResource TextSecondaryColor}"/>
 
+                    </TableSection>
                 </TableRoot>
             </TableView>
     </ScrollView>
