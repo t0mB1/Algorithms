@@ -1,29 +1,10 @@
 ﻿<Properties StartupConfiguration="{51A0C8EF-8F7B-4CB9-8A9E-6964FB17D443}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Algorithms/AlgorithmInfomation/JumpSearchInfo.txt">
-    <Files>
-      <File FileName="Algorithms/Models/SearchingAlgorithms.cs" Line="120" Column="52" />
-      <File FileName="Algorithms/AlgorithmInfomation/LinearSearchInfo.txt" Line="6" Column="1" NotebookId="1" />
-      <File FileName="Algorithms/AlgorithmInfomation/ClassicBinarySearchInfo.txt" Line="10" Column="1" NotebookId="1" />
-      <File FileName="Algorithms/AlgorithmInfomation/ModifiedBinarySearchInfo.txt" Line="10" Column="1" NotebookId="1" />
-      <File FileName="Algorithms/AlgorithmInfomation/JumpSearchInfo.txt" Line="10" Column="1" NotebookId="1" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Algorithms" expanded="True">
-            <Node name="Algorithms" expanded="True">
-              <Node name="AlgorithmInfomation" expanded="True">
-                <Node name="JumpSearchInfo.txt" selected="True" />
-              </Node>
-              <Node name="Models" expanded="True" />
-              <Node name="Services" expanded="True" />
-              <Node name="Views" expanded="True">
-                <Node name="AboutAlgorithmsPage.xaml" expanded="True" />
-                <Node name="SearchingPage.xaml" expanded="True" />
-                <Node name="SortingPage.xaml" expanded="True" />
-              </Node>
-            </Node>
-            <Node name="Algorithms.iOS" expanded="True" />
+            <Node name="Algorithms" expanded="True" />
           </Node>
         </State>
       </Pad>

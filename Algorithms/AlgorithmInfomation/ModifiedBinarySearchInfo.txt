@@ -3,7 +3,35 @@ Best: O(n)
 Worst: O(n²)
 Average: O(n²)
 C#
+using System;
+using System.Collections.Generic;
 
+class SearchAlgorithm
+{
+    public bool ModBinarySearch(int[] array, int searchItem)
+    {
+        int first = 0;
+        int last = entries.Count - 1;
+        while (array[first] <= searchItem &&
+                searchItem <= array[last])
+        {
+            int mid = first + ((last - first) / 2);
+            if (searchItem == array[mid])
+            {
+                return true;
+            }
+            else if(searchItem < array[mid])
+            {
+                last = mid - 1;
+            }
+            else
+            {
+                first = mid + 1;
+            }
+        }
+        return false;
+    }
+}
 
 Java
 

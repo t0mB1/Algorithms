@@ -3,10 +3,72 @@ Best: O(n)
 Worst: O(n²)
 Average: O(n²)
 C#
+using System;
+using System.Collection.Generic;
 
+class SearchAlgorithm
+{
+    public bool BinarySearch(int[] array, int searchItem)
+    {
+        int first = 0;
+        int last = array.Count - 1;
+        while (first <= last)
+        {
+            int midpoint = (first + last) / 2;
+            if (array[midpoint] == searchItem)
+            {
+                return true;
+            }
+            else
+            {
+                if(array[midpoint] < searchItem)
+                {
+                    first = midpoint + 1;
+                }
+                else
+                {
+                    last = midpoint - 1;
+                }
+            }
+        }
+        return false;
+    }
+}
 
 Java
-
+class SearchAlgorithm
+{
+    public bool BinarySearch(int[] array, int searchItem)
+    {
+        int first = 0;
+        int last = array.Count - 1;
+        while (first <= last){
+            int midpoint = (first + last) / 2;
+            if (array[midpoint] == searchItem){
+                return true;
+            } else{
+                if(array[midpoint] < searchItem){
+                    first = midpoint + 1;
+                } else{
+                    last = midpoint - 1;
+                }
+            }
+        }
+        return false;
+    }
+}
 
 Python
-
+def BinarySearch(array, searchItem):
+    first = 0
+    last = len(array) - 1
+    while first <= last:
+        midpoint = (first + last) / 2
+        if array[midpoint] == searchItem:
+            return true
+        else:
+            if array[midpoint] < searchItem:
+                first = midpoint + 1
+            else:
+                last = midpoint - 1
+    return false

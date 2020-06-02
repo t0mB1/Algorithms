@@ -202,10 +202,7 @@ namespace Algorithms.Views
                     break;
 
                 case GraphCaseEnum.Random:
-                    if(IsSorted(CurrentEntriesOnGraph) is true)
-                    {
-                        CurrentEntriesOnGraph = service.GetRandomEntries(1, SGObj.GraphElementNumber, 0).ToArray();
-                    }
+                    CurrentEntriesOnGraph = service.GetRandomEntries(1, SGObj.GraphElementNumber, 0).ToArray();
                     DisplayGraph(CurrentEntriesOnGraph);
                     break;
             }

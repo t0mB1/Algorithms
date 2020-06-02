@@ -25,6 +25,18 @@ namespace Algorithms.Services
                 case AlgorithmNameEnumeration.QuickSort:
                     _filename = "Algorithms.AlgorithmInfomation.QuickSortInfo.txt";
                     break;
+                case AlgorithmNameEnumeration.ClassicBinarySearch:
+                    _filename = "Algorithms.AlgorithmInfomation.ClassicBinarySearchInfo.txt";
+                    break;
+                case AlgorithmNameEnumeration.ModBinarySearch:
+                    _filename = "Algorithms.AlgorithmInfomation.ModifiedBinarySearchInfo.txt";
+                    break;
+                case AlgorithmNameEnumeration.LinearSearch:
+                    _filename = "Algorithms.AlgorithmInfomation.LinearSearchInfo.txt";
+                    break;
+                case AlgorithmNameEnumeration.JumpSearch:
+                    _filename = "Algorithms.AlgorithmInfomation.JumpSearchInfo.txt";
+                    break;
             }
             if (_filename != "")
             {

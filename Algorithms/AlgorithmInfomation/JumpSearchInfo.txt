@@ -1,12 +1,32 @@
-﻿
+﻿Linear Search is one of the simplist search algorithms and is used in other search algorithms such as Jump Search.
 Best: O(n)
 Worst: O(n²)
 Average: O(n²)
 C#
+using System;
+using System.Collections.Generic;
 
+class SearchAlgorithm
+{
+    public bool JumpSearch(int[] array, int SearchItem)
+    {
+
+
+        return false;
+    }
+}
 
 Java
+class SearchAlgorithm
+{
+    public bool JumpSearch(int[] array, int SearchItem)
+    {
 
+
+        return false;
+    }
+}
 
 Python
-
+def JumpSearch(array, SearchItem)
+    
