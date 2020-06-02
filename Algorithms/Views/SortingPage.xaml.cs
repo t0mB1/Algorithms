@@ -51,21 +51,12 @@ namespace Algorithms.Views
             if (SpeedPicker.SelectedIndex > 0)
             {
                 SGObj.Speed = SpeedPicker.SelectedItem.ToString();
-                if(algorithmPicker.SelectedIndex > 0)
-                {
-                    if (GraphElementsPicker.SelectedIndex > 0)
-                    {
-                        SortBtn.IsVisible = true;
-                        SortBtn.IsEnabled = true;
-                    }
-                }
-                else
-                {
-                    SortBtn.IsVisible = false;
-                    SortBtn.IsEnabled = false;
-                    SGObj.Speed = "";
-                }
             }
+            else
+            {
+                SGObj.Speed = "";
+            }
+            ToggleSortBtn();
         }
 
         void AlgorithmPicker_SelectedIndexChanged(object sender, EventArgs e)
@@ -74,23 +65,15 @@ namespace Algorithms.Views
             if (algorithmPicker.SelectedIndex > 0)
             {
                 SGObj.CurrentAlg = algorithmPicker.SelectedItem.ToString();
-                if (SpeedPicker.SelectedIndex > 0)
-                {
-                    if(GraphElementsPicker.SelectedIndex > 0)
-                    {
-                        SortBtn.IsVisible = true;
-                        SortBtn.IsEnabled = true;
-                    }
-                }
                 Title = SGObj.CurrentAlg;
             }
             else
             {
                 Title = "Searches";
                 SGObj.CurrentAlg = "";
-                SortBtn.IsVisible = false;
-                SortBtn.IsEnabled = false;
             }
+            ToggleSortBtn();
+            ResetGraph();
         }
 
         void GraphElementsPicker_SelectedIndexChanged(object sender, EventArgs e)
@@ -101,21 +84,13 @@ namespace Algorithms.Views
                 SGObj.GraphElementNumber = SGObj.GraphElementNumDictionary[
                                                  GraphElementsPicker.SelectedItem.
                                                  ToString()];
-                if (SpeedPicker.SelectedIndex > 0)
-                {
-                    if (algorithmPicker.SelectedIndex > 0)
-                    {
-                        SortBtn.IsVisible = true;
-                        SortBtn.IsEnabled = true;
-                    }
-                }
+                ResetGraph();
             }
             else
             {
-                SortBtn.IsVisible = false;
-                SortBtn.IsEnabled = false;
+                SGObj.GraphElementNumber = 0;
             }
-            ResetGraph();
+            ToggleSortBtn();
         }
 
             void SortBtnIsClicked(object sender, EventArgs e)
@@ -227,7 +202,10 @@ namespace Algorithms.Views
                     break;
 
                 case GraphCaseEnum.Random:
-                    CurrentEntriesOnGraph = service.GetRandomEntries(1, SGObj.GraphElementNumber, 0).ToArray();
+                    if(IsSorted(CurrentEntriesOnGraph) is true)
+                    {
+                        CurrentEntriesOnGraph = service.GetRandomEntries(1, SGObj.GraphElementNumber, 0).ToArray();
+                    }
                     DisplayGraph(CurrentEntriesOnGraph);
                     break;
             }
@@ -255,6 +233,22 @@ namespace Algorithms.Views
                     randomCaseBtn.IsVisible = temp;
                     randomCaseBtn.IsEnabled = !temp;
                     break;
+            }
+        }
+
+        private void ToggleSortBtn()
+        {
+            if (algorithmPicker.SelectedIndex > 0 &&
+                SpeedPicker.SelectedIndex > 0 &&
+                GraphElementsPicker.SelectedIndex > 0)
+            {
+                SortBtn.IsVisible = true;
+                SortBtn.IsEnabled = true;
+            }
+            else
+            {
+                SortBtn.IsVisible = false;
+                SortBtn.IsEnabled = false;
             }
         }
 

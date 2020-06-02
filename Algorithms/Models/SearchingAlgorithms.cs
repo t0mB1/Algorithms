@@ -1,15 +1,12 @@
 ﻿using System.Collections.Generic;
 using Microcharts;
 using System;
-using Algorithms.Services;
 using Algorithms.Models.SearchAlgorithmOperations;
 
 namespace Algorithms.Models
 {
     public class SearchingAlgorithms
     {
-        private GraphService service = new GraphService();
-
         public List<LinearSearchOperation> LinearSearch(List<Entry> entries, int searchItem)
         {
             List<LinearSearchOperation> operations = new List<LinearSearchOperation>();

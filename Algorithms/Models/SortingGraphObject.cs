@@ -10,14 +10,14 @@ namespace Algorithms.Models
         public int GraphElementNumber { get; set; }
         public readonly Dictionary<string, int> SpeedDictionary = new Dictionary<string, int>
         {
-            ["Super-Duper Slow"] =350,
-            ["Super Slow"] =280,
-            ["Slow"] =200,
-            ["Medium"] =115,
-            ["Fast Ish"] =75,
-            ["Fast"]=40,
-            ["Super Fast"] =20,
-            ["Super-Duper Fast"]=10,
+            ["Super-Duper Slow"] = 350,
+            ["Super Slow"] = 280,
+            ["Slow"] = 200,
+            ["Medium"] = 115,
+            ["Fast Ish"] = 75,
+            ["Fast"]= 40,
+            ["Super Fast"] = 20,
+            ["Super-Duper Fast"]= 10,
         };
         public readonly Dictionary<string, int> GraphElementNumDictionary = new Dictionary<string, int>
         {

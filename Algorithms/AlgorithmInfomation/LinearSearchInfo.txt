@@ -1,0 +1,12 @@
+﻿
+Best: O(n)
+Worst: O(n)
+Average: O(n)
+C#
+
+
+Java
+
+
+Python
+
