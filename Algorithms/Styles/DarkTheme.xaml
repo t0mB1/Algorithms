@@ -5,7 +5,7 @@
                     Source="DefaultTheme.xaml">
 
     <Color x:Key="backgroundColor">#FF000000</Color>
-    <Color x:Key="headerbackgroundColor">#4C4C4B</Color>
+    <Color x:Key="headerbackgroundColor">#353535</Color>
     <Color x:Key="tablebackgroundColor">#191919</Color>
     <Color x:Key="graphbackgroundColor">#4C4C4C</Color>
     <Color x:Key="pickerbackgroundColor">#222222</Color>

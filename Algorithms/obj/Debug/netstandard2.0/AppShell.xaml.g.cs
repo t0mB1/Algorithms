@@ -23,14 +23,10 @@ namespace Algorithms {
         private global::Xamarin.Forms.FlyoutItem AlgorithmsFlyoutItem;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.FlyoutItem SettingsFlyoutItem;
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(AppShell));
             VisualizerFlyoutItem = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.FlyoutItem>(this, "VisualizerFlyoutItem");
             AlgorithmsFlyoutItem = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.FlyoutItem>(this, "AlgorithmsFlyoutItem");
-            SettingsFlyoutItem = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.FlyoutItem>(this, "SettingsFlyoutItem");
         }
     }
 }

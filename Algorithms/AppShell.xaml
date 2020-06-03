@@ -3,7 +3,27 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        x:Class="Algorithms.AppShell"
        xmlns:views="clr-namespace:Algorithms.Views"
-       BackgroundColor="{DynamicResource tablebackgroundColor}"> 
+       FlyoutBackgroundColor="{DynamicResource headerbackgroundColor}"
+       BackgroundColor="{DynamicResource headerbackgroundColor}">
+
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid BackgroundColor="{DynamicResource headerbackgroundColor}" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.2*" />
+                    <ColumnDefinition Width="0.8*" />
+                </Grid.ColumnDefinitions>
+                <Image Source="{Binding FlyoutIcon}"
+                       Margin="5"
+                       HeightRequest="10"/>
+                <Label Grid.Column="1"
+                       Text="{Binding Title}"
+                       FontAttributes="None"
+                       VerticalTextAlignment="Center"
+                       TextColor="{DynamicResource TextTernaryColor}"/>
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
 
     <FlyoutItem x:Name="VisualizerFlyoutItem"
                 Title="Visualizer"
@@ -23,17 +43,10 @@
     </FlyoutItem>
     <FlyoutItem x:Name="AlgorithmsFlyoutItem"
                 Title="Algorithms">
+        
         <ShellSection Title="Algorithms">
             <ShellContent>
                 <views:AboutAlgorithmsPage BackgroundColor="{DynamicResource backgroundColor}"/>
-            </ShellContent>
-        </ShellSection>
-    </FlyoutItem>
-    <FlyoutItem x:Name="SettingsFlyoutItem"
-                Title="Settings">
-        <ShellSection Title="Settings">
-            <ShellContent>
-                <views:SettingsPage BackgroundColor="{DynamicResource backgroundColor}"/>
             </ShellContent>
         </ShellSection>
     </FlyoutItem>
