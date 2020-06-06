@@ -3,13 +3,12 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                     x:Class="Algorithms.Styles.DarkTheme"
                     Source="DefaultTheme.xaml">
-
+        
     <Color x:Key="backgroundColor">#FF000000</Color>
     <Color x:Key="headerbackgroundColor">#353535</Color>
     <Color x:Key="tablebackgroundColor">#191919</Color>
-    <Color x:Key="graphbackgroundColor">#4C4C4C</Color>
-    <Color x:Key="pickerbackgroundColor">#222222</Color>
-    <Color x:Key="buttonbordercolor">#4C4C4C</Color>
+    <Color x:Key="buttonbordercolor">#323232</Color>
+    <Color x:Key="flyoutBackgroundColor">#353535</Color>
     
     <Color x:Key="TextPrimaryColor">#B0FFFFFF</Color>
     <Color x:Key="TextSecondaryColor">#B0FFFFFF</Color>

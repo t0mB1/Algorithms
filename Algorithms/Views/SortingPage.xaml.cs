@@ -10,6 +10,7 @@ using Algorithms.Models.SortAlgorithmOperations;
 using System.Threading.Tasks;
 using Xamarin.Forms.Internals;
 using System.Linq;
+using Algorithms.Styles;
 
 namespace Algorithms.Views
 {
@@ -27,19 +28,13 @@ namespace Algorithms.Views
             ResetGraph();
         }
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            ChangeToRandomCase();
-        }
-
         void WorstCaseBtnIsClicked(object sender, EventArgs e)
         {
             SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
             SGObj.Case = GraphCaseEnum.Worst;
             CurrentEntriesOnGraph = service.GetWostCaseEntriesForSort(SGObj.GraphElementNumber, 1).ToArray();
             DisplayGraph(CurrentEntriesOnGraph);
-            UpdateCaseBtnFonts();
+            UpdateCaseBtnAppearance();
         }
 
         void RandomCaseBtnIsClicked(object sender, EventArgs e)
@@ -48,7 +43,7 @@ namespace Algorithms.Views
             SGObj.Case = GraphCaseEnum.Random;
             CurrentEntriesOnGraph = service.GetRandomEntries(1, SGObj.GraphElementNumber, 0).ToArray();
             DisplayGraph(CurrentEntriesOnGraph);
-            UpdateCaseBtnFonts();
+            UpdateCaseBtnAppearance();
         }
 
         void SpeedPicker_SelectedIndexChanged(object sender, EventArgs e)
@@ -269,25 +264,34 @@ namespace Algorithms.Views
             SGObj.Case = GraphCaseEnum.Random;
             CurrentEntriesOnGraph = service.GetRandomEntries(1, SGObj.GraphElementNumber, 0).ToArray();
             DisplayGraph(CurrentEntriesOnGraph);
-            UpdateCaseBtnFonts();
+            UpdateCaseBtnAppearance();
         }
 
-        private void UpdateCaseBtnFonts()
+        private void UpdateCaseBtnAppearance()
         {
             SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
-            if (SGObj.Case == GraphCaseEnum.Random)
+            if(App.AppTheme == "dark")
             {
-                randomCaseBtn.FontAttributes = FontAttributes.Bold;
-                randomCaseBtn.BorderWidth = 2;
-                worstCaseBtn.FontAttributes = FontAttributes.None;
-                worstCaseBtn.BorderWidth = 1;
+                randomCaseBtn.BorderColor = Color.FromHex("#4C4C4C");
+                worstCaseBtn.BorderColor = Color.FromHex("#4C4C4C");
             }
-            else if (SGObj.Case == GraphCaseEnum.Worst)
+            else if (App.AppTheme == "light")
             {
-                randomCaseBtn.FontAttributes = FontAttributes.None;
-                randomCaseBtn.BorderWidth = 1;
-                worstCaseBtn.FontAttributes = FontAttributes.Bold;
-                worstCaseBtn.BorderWidth = 2;
+                randomCaseBtn.BorderColor = Color.FromHex("#CCCCCC");
+                worstCaseBtn.BorderColor = Color.FromHex("#CCCCCC");
+            }
+            switch (SGObj.Case)
+            {
+                case GraphCaseEnum.Random:
+                    randomCaseBtn.FontAttributes = FontAttributes.Bold;
+                    worstCaseBtn.FontAttributes = FontAttributes.None;
+                    randomCaseBtn.BorderColor = Color.FromHex("#007EFA");
+                    break;
+                case GraphCaseEnum.Worst:
+                    worstCaseBtn.FontAttributes = FontAttributes.Bold;
+                    randomCaseBtn.FontAttributes = FontAttributes.None;
+                    worstCaseBtn.BorderColor = Color.FromHex("#007EFA");
+                    break;
             }
         }
 

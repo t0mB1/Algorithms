@@ -12,8 +12,8 @@
                      Clicked="ResetButtonIsClicked" />
     </ContentPage.ToolbarItems>
 
-    <ScrollView BackgroundColor="{DynamicResource tablebackgroundColor}">
-        <StackLayout BackgroundColor="{DynamicResource tablebackgroundColor}">
+    <ScrollView BackgroundColor="{DynamicResource backgroundColor}">
+        <StackLayout>
             <Grid x:Name="grid"
                   Margin="10, 20, 10, 10">
                 <Grid.ColumnDefinitions>
@@ -63,8 +63,7 @@
                     Title="Choose an Algorithm"
                     SelectedIndexChanged="AlgorithmPicker_SelectedIndexChanged"
                     HorizontalOptions="Center"
-                    Margin="10, 0, 10, 10"
-                    BackgroundColor="{DynamicResource pickerbackgroundColor}">
+                    Margin="10, 0, 10, 10">
                 <Picker.Items>
                     <x:String x:FieldModifier="Center"/>
                     <x:String>Jump Search</x:String>
@@ -78,8 +77,7 @@
                     Title="Search Item"
                     SelectedIndexChanged="SearchItemPicker_SelectedIndexChanged"
                     HorizontalOptions="Center"
-                    Margin="10, 0, 10, 10"
-                    BackgroundColor="{DynamicResource pickerbackgroundColor}">
+                    Margin="10, 0, 10, 10">
                 <Picker.Items>
                     <x:String x:FieldModifier="Center"/>
                     <x:String>1</x:String>
@@ -111,8 +109,7 @@
                     HorizontalOptions="Center"
                     Grid.Row="0"
                     Grid.Column="0"
-                    Margin="10, 0, 10, 10"
-                    BackgroundColor="{DynamicResource pickerbackgroundColor}">
+                    Margin="10, 0, 10, 10">
                 <Picker.Items>
                     <x:String x:FieldModifier="Center"/>
                     <x:String>Super-Duper Slow</x:String>

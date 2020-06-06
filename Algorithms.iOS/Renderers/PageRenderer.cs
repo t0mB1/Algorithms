@@ -50,9 +50,9 @@ namespace Algorithms.iOS.Renderers
 
                 App.AppTheme = "dark";
             }
-            else
+            else if (this.TraitCollection.UserInterfaceStyle == UIUserInterfaceStyle.Light)
             {
-                if (App.AppTheme != "dark")
+                if (App.AppTheme == "light" )
                     return;
 
                 Xamarin.Forms.Application.Current.Resources = new LightTheme();

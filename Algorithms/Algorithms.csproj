@@ -29,11 +29,17 @@
     <None Remove="AlgorithmInfomation\MergeSortInfo.txt" />
     <None Remove="AlgorithmInfomation\InsertionSortInfo.txt" />
     <None Remove="AlgorithmInfomation\QuickSortInfo.txt" />
+    <None Remove="AlgorithmInfomation\LinearSearchInfo.txt" />
+    <None Remove="AlgorithmInfomation\ModifiedBinarySearchInfo.txt" />
+    <None Remove="AlgorithmInfomation\JumpSearchInfo.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AlgorithmInfomation\BubbleSortInfo.txt" />
     <EmbeddedResource Include="AlgorithmInfomation\HeapSortInfo.txt" />
     <EmbeddedResource Include="AlgorithmInfomation\InsertionSortInfo.txt" />
     <EmbeddedResource Include="AlgorithmInfomation\QuickSortInfo.txt" />
+    <EmbeddedResource Include="AlgorithmInfomation\LinearSearchInfo.txt" />
+    <EmbeddedResource Include="AlgorithmInfomation\ModifiedBinarySearchInfo.txt" />
+    <EmbeddedResource Include="AlgorithmInfomation\JumpSearchInfo.txt" />
   </ItemGroup>
 </Project>

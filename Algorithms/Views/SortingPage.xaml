@@ -12,8 +12,8 @@
                      Clicked="ResetButtonIsClicked"/>
     </ContentPage.ToolbarItems>
 
-    <ScrollView BackgroundColor="{DynamicResource tablebackgroundColor}">
-        <StackLayout BackgroundColor="{DynamicResource tablebackgroundColor}">
+    <ScrollView BackgroundColor="{DynamicResource backgroundColor}">
+        <StackLayout>
             <Grid x:Name="grid"
                   Margin="10, 20, 10, 10">
                 <Grid.ColumnDefinitions>
@@ -48,7 +48,6 @@
                              WidthRequest="800"
                              Margin="10, 0, 10, 10"/>
 
-            
             <Picker x:Name="algorithmPicker"
                         Title="Choose an Algorithm"
                         SelectedIndexChanged="AlgorithmPicker_SelectedIndexChanged"

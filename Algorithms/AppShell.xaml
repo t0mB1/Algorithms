@@ -3,12 +3,12 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        x:Class="Algorithms.AppShell"
        xmlns:views="clr-namespace:Algorithms.Views"
-       FlyoutBackgroundColor="{DynamicResource headerbackgroundColor}"
+       FlyoutBackgroundColor="{DynamicResource flyoutBackgroundColor}"
        BackgroundColor="{DynamicResource headerbackgroundColor}">
 
     <Shell.ItemTemplate>
         <DataTemplate>
-            <Grid BackgroundColor="{DynamicResource headerbackgroundColor}" >
+            <Grid BackgroundColor="{DynamicResource flyoutBackgroundColor}" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.2*" />
                     <ColumnDefinition Width="0.8*" />
@@ -20,7 +20,7 @@
                        Text="{Binding Title}"
                        FontAttributes="None"
                        VerticalTextAlignment="Center"
-                       TextColor="{DynamicResource TextTernaryColor}"/>
+                       TextColor="{DynamicResource TextSecondaryColor}"/>
             </Grid>
         </DataTemplate>
     </Shell.ItemTemplate>
@@ -31,22 +31,21 @@
         <ShellSection Title="Sort"
                       Icon="tab_feed.png">
             <ShellContent>
-                <views:SortingPage BackgroundColor="{DynamicResource backgroundColor}"/>
+                <views:SortingPage BackgroundColor="{DynamicResource flyoutBackgroundColor}"/>
             </ShellContent>
         </ShellSection>
         <ShellSection Title="Search"
                       Icon="tab_feed.png">
             <ShellContent>
-                <views:SearchingPage BackgroundColor="{DynamicResource backgroundColor}"/>
+                <views:SearchingPage BackgroundColor="{DynamicResource flyoutBackgroundColor}"/>
             </ShellContent>
         </ShellSection>
     </FlyoutItem>
     <FlyoutItem x:Name="AlgorithmsFlyoutItem"
                 Title="Algorithms">
-        
         <ShellSection Title="Algorithms">
             <ShellContent>
-                <views:AboutAlgorithmsPage BackgroundColor="{DynamicResource backgroundColor}"/>
+                <views:AboutAlgorithmsPage BackgroundColor="{DynamicResource flyoutBackgroundColor}"/>
             </ShellContent>
         </ShellSection>
     </FlyoutItem>

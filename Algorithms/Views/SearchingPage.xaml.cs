@@ -217,7 +217,7 @@ namespace Algorithms.Views
                 }
             }
             ChangeGraphToBestCase();
-            UpdateCaseBtnFonts();
+            UpdateCaseBtnAppearance();
         }
 
         void WorstCaseBtnIsClicked(object sender, EventArgs e)
@@ -262,18 +262,13 @@ namespace Algorithms.Views
 
         private void ResetGraph()
         {
-            SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
-            if (SGObj.Case == GraphCaseEnum.Best ||
-                SGObj.Case == GraphCaseEnum.Worst ||
-                SGObj.Case == GraphCaseEnum.Random)
+            foreach (Entry entry in CurrentEntriesOnGraph)
             {
-                foreach (Entry entry in CurrentEntriesOnGraph)
+                if (entry.Color == SKColor.Parse("#00FF00"))
                 {
-                    if (entry.Color == SKColor.Parse("#00FF00"))
-                    {
-                        entry.Color = SKColor.Parse("#0000FF");
-                        DisplayGraph(CurrentEntriesOnGraph);
-                    }
+                    entry.Color = SKColor.Parse("#0000FF");
+                    DisplayGraph(CurrentEntriesOnGraph);
+
                 }
             }
         }
@@ -344,7 +339,7 @@ namespace Algorithms.Views
             randomCaseBtn.IsVisible = !temp;
             worstCaseBtn.IsVisible = !temp;
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
-            ToggleItemPicker();
+            ToggleSearchItemPicker();
             switch (SGObj.Case)
             {
                 case GraphCaseEnum.Best:
@@ -365,7 +360,7 @@ namespace Algorithms.Views
             }
         }
 
-        private void ToggleItemPicker()
+        private void ToggleSearchItemPicker()
         {
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
             if (!(SGObj.Case == GraphCaseEnum.Random))
@@ -383,41 +378,43 @@ namespace Algorithms.Views
         private void ChangeToRandomCase()
         {
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
-            searchItemPicker.IsVisible = true;
-            searchItemPicker.IsEnabled = true;
+            ToggleSearchItemPicker();
             SGObj.Case = GraphCaseEnum.Random;
-            UpdateCaseBtnFonts();
+            UpdateCaseBtnAppearance();
         }
 
-        private void UpdateCaseBtnFonts()
+        private void UpdateCaseBtnAppearance()
         {
+            randomCaseBtn.FontAttributes = FontAttributes.None;
+            bestCaseBtn.FontAttributes = FontAttributes.None;
+            worstCaseBtn.FontAttributes = FontAttributes.None;
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
-            if (SGObj.Case == GraphCaseEnum.Random)
+            if (App.AppTheme == "dark")
             {
-                randomCaseBtn.FontAttributes = FontAttributes.Bold;
-                randomCaseBtn.BorderWidth = 2;
-                bestCaseBtn.FontAttributes = FontAttributes.None;
-                bestCaseBtn.BorderWidth = 1;
-                worstCaseBtn.FontAttributes = FontAttributes.None;
-                worstCaseBtn.BorderWidth = 1;
+                randomCaseBtn.BorderColor = Color.FromHex("#4C4C4C");
+                worstCaseBtn.BorderColor = Color.FromHex("#4C4C4C");
+                bestCaseBtn.BorderColor = Color.FromHex("#4C4C4C");
             }
-            else if (SGObj.Case == GraphCaseEnum.Best)
+            else if (App.AppTheme == "light")
             {
-                randomCaseBtn.FontAttributes = FontAttributes.None;
-                randomCaseBtn.BorderWidth = 1;
-                bestCaseBtn.FontAttributes = FontAttributes.Bold;
-                bestCaseBtn.BorderWidth = 2;
-                worstCaseBtn.FontAttributes = FontAttributes.None;
-                worstCaseBtn.BorderWidth = 1;
+                randomCaseBtn.BorderColor = Color.FromHex("#CCCCCC");
+                worstCaseBtn.BorderColor = Color.FromHex("#CCCCCC");
+                bestCaseBtn.BorderColor = Color.FromHex("#CCCCCC");
             }
-            else if (SGObj.Case == GraphCaseEnum.Worst)
+            switch (SGObj.Case)
             {
-                randomCaseBtn.FontAttributes = FontAttributes.None;
-                randomCaseBtn.BorderWidth = 1;
-                bestCaseBtn.FontAttributes = FontAttributes.None;
-                bestCaseBtn.BorderWidth = 1;
-                worstCaseBtn.FontAttributes = FontAttributes.Bold;
-                worstCaseBtn.BorderWidth = 2;
+                case GraphCaseEnum.Random:
+                    randomCaseBtn.FontAttributes = FontAttributes.Bold; ;
+                    randomCaseBtn.BorderColor = Color.FromHex("#007EFA");
+                    break;
+                case GraphCaseEnum.Best:
+                    bestCaseBtn.FontAttributes = FontAttributes.Bold;
+                    bestCaseBtn.BorderColor = Color.FromHex("#007EFA");
+                    break;
+                case GraphCaseEnum.Worst:
+                    worstCaseBtn.FontAttributes = FontAttributes.Bold;
+                    worstCaseBtn.BorderColor = Color.FromHex("#007EFA");
+                    break;
             }
         }
 
@@ -427,9 +424,7 @@ namespace Algorithms.Views
             SGObj.Case = GraphCaseEnum.Best;
             CheckCase();
             OrderEntriesOnGraph();
-            searchItemPicker.IsEnabled = false;
-            searchItemPicker.IsVisible = false;
-            searchItemPicker.SelectedIndex = SGObj.SearchItemValue;
+            ToggleSearchItemPicker();
         }
 
         private void ChangeGraphToWorstCase()
@@ -438,11 +433,9 @@ namespace Algorithms.Views
             SGObj.SearchItemValue = 20;
             SGObj.Case = GraphCaseEnum.Worst;
             CheckCase();
-            searchItemPicker.IsEnabled = false;
-            searchItemPicker.IsVisible = false;
-            searchItemPicker.SelectedIndex = SGObj.SearchItemValue;
+            ToggleSearchItemPicker();
             DisplayGraph(service.GetWostCaseEntriesForSearch(1, 20));
-            UpdateCaseBtnFonts();
+            UpdateCaseBtnAppearance();
         }
 
         private void OrderEntriesOnGraph()
