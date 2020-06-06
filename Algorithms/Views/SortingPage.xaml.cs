@@ -334,7 +334,7 @@ namespace Algorithms.Views
         }
 
         private readonly GraphService service = new GraphService();
-        readonly SortingAlgorithms algorithms = new SortingAlgorithms();
-        IEnumerable<Entry> CurrentEntriesOnGraph = new Entry[20];
+        private readonly SortingAlgorithms algorithms = new SortingAlgorithms();
+        private IEnumerable<Entry> CurrentEntriesOnGraph = new Entry[20];
     }
 }

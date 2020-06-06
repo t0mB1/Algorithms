@@ -21,11 +21,6 @@ namespace Algorithms.Views
             ChangeToRandomCase();
         }
 
-        void ResetButtonIsClicked(object sender, EventArgs e)
-        {
-            ResetGraph();
-        }
-
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -43,6 +38,11 @@ namespace Algorithms.Views
             DisplayGraph(service.GetRandomEntries(1, 20, 0));
         }
 
+        void ResetButtonIsClicked(object sender, EventArgs e)
+        {
+            ResetGraph();
+        }
+
         void AlgorithmPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
@@ -58,22 +58,26 @@ namespace Algorithms.Views
                 Title = "Searches";
                 SGObj.CurrentAlg = "";
             }
+            ResetGraph();
         }
 
         void SearchItemPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
             ToggleSearchBtn();
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
+            // change colour of old entry
             Entry oldEntry = CurrentEntriesOnGraph.Where(p => p.Value == SGObj.SearchItemValue)
                                                   .FirstOrDefault();
             if (!(oldEntry is null))
             {
                 oldEntry.Color = SKColor.Parse("#FF1493");
             }
+
             SGObj.SearchItemValue = searchItemPicker.SelectedIndex;
-            Entry newEntry = CurrentEntriesOnGraph.Where(p => p.Value == SGObj.SearchItemValue)
-                                                  .FirstOrDefault();
-            int index = CurrentEntriesOnGraph.ToList().IndexOf(newEntry);
+            Entry searchItemEntry = CurrentEntriesOnGraph.Where(p => p.Value == SGObj.SearchItemValue)
+                                                         .FirstOrDefault();
+
+            int index = CurrentEntriesOnGraph.ToList().IndexOf(searchItemEntry);
             if (SGObj.SearchItemValue > 0)
             {
                 CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse("#0000FF");
@@ -83,16 +87,15 @@ namespace Algorithms.Views
 
         void SpeedPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
             ToggleSearchBtn();
+            SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
             if (SpeedPicker.SelectedIndex > 0)
             {
                 SGObj.Speed = SpeedPicker.SelectedItem.ToString();
-                if (!(algorithmPicker.SelectedIndex > 0 &&
-                    searchItemPicker.SelectedIndex > 0))
-                {
-                    SGObj.Speed = "";
-                }
+            }
+            else
+            {
+                SGObj.Speed = "";
             }
         }
 
@@ -142,49 +145,6 @@ namespace Algorithms.Views
             }
         }
 
-        void RandomCaseBtnIsClicked(object sender, EventArgs e)
-        {
-            SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
-            if (SGObj.CurrentAlg == "Classic Binary Search" ||
-                SGObj.CurrentAlg == "Modified Binary Search" ||
-                SGObj.CurrentAlg == "Jump Search")
-            {
-                DisplayGraph(service.GetBestCaseEntries(1, 20, SGObj.SearchItemValue));
-            }
-            else
-            {
-                DisplayGraph(service.GetRandomEntries(1, 20, SGObj.SearchItemValue));
-            }
-            ChangeToRandomCase();
-        }
-
-        void BestCaseBtnIsClicked(object sender, EventArgs e)
-        {
-            SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
-            if (algorithmPicker.SelectedItem != null)
-            {
-                if (SGObj.CurrentAlg == "Linear Search" ||
-                    SGObj.CurrentAlg == "Jump Search")
-                {
-                    SGObj.SearchItemValue = 1;
-                    searchItemPicker.SelectedItem = "1";
-                }
-                else if (SGObj.CurrentAlg == "Binary Search" ||
-                         SGObj.CurrentAlg == "Modified Binary Search")
-                {
-                    SGObj.SearchItemValue = 10;
-                    searchItemPicker.SelectedItem = "10";
-                }
-            }
-            ChangeGraphToBestCase();
-            UpdateCaseBtnAppearance();
-        }
-
-        void WorstCaseBtnIsClicked(object sender, EventArgs e)
-        {
-            ChangeGraphToWorstCase();
-        }
-
         private async void CarryOutOperations<T>(List<T> operations) where T : ISearchOperation
         {
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
@@ -212,6 +172,22 @@ namespace Algorithms.Views
             DisplayCaseBtns();
         }
 
+        private void RandomCaseBtnIsClicked(object sender, EventArgs e)
+        {
+            ChangeToRandomCase();
+        }
+
+        private void BestCaseBtnIsClicked(object sender, EventArgs e)
+        {
+            ChangeGraphToBestCase();
+            UpdateCaseBtnAppearance();
+        }
+
+        private void WorstCaseBtnIsClicked(object sender, EventArgs e)
+        {
+            ChangeGraphToWorstCase();
+        }
+
         private void SetBindingContext()
         {
             BindingContext = new SearchingGraphObject
@@ -230,10 +206,35 @@ namespace Algorithms.Views
                     DisplayGraph(CurrentEntriesOnGraph);
                     break;
                 case GraphCaseEnum.Random:
-                    CurrentEntriesOnGraph = service.GetRandomEntries(1, 20, SGObj.SearchItemValue).ToArray();
+                    if (SGObj.CurrentAlg == "Classic Binary Search" ||
+                        SGObj.CurrentAlg == "Modified Binary Search" ||
+                        SGObj.CurrentAlg == "Jump Search")
+                    {
+                        DisplayGraph(service.GetBestCaseEntries(1, 20, SGObj.SearchItemValue));
+                    }
+                    else
+                    {
+                        DisplayGraph(service.GetRandomEntries(1, 20, SGObj.SearchItemValue));
+                    }
                     DisplayGraph(CurrentEntriesOnGraph);
                     break;
                 case GraphCaseEnum.Best:
+                    SGObj.SearchItemValue = 0;
+                    if (algorithmPicker.SelectedItem != null)
+                    {
+                        if (SGObj.CurrentAlg == "Linear Search" ||
+                            SGObj.CurrentAlg == "Jump Search")
+                        {
+                            SGObj.SearchItemValue = 1;
+                            searchItemPicker.SelectedItem = "1";
+                        }
+                        else if (SGObj.CurrentAlg == "Classic Binary Search" ||
+                                 SGObj.CurrentAlg == "Modified Binary Search")
+                        {
+                            SGObj.SearchItemValue = 10;
+                            searchItemPicker.SelectedItem = "10";
+                        }
+                    }
                     CurrentEntriesOnGraph = service.GetBestCaseEntries(1, 20, SGObj.SearchItemValue).ToArray();
                     DisplayGraph(CurrentEntriesOnGraph);
                     break;
@@ -325,6 +326,16 @@ namespace Algorithms.Views
         {
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
             SGObj.Case = GraphCaseEnum.Random;
+            if (SGObj.CurrentAlg == "Classic Binary Search" ||
+                SGObj.CurrentAlg == "Modified Binary Search" ||
+                SGObj.CurrentAlg == "Jump Search")
+            {
+                DisplayGraph(service.GetBestCaseEntries(1, 20, SGObj.SearchItemValue));
+            }
+            else
+            {
+                DisplayGraph(service.GetRandomEntries(1, 20, SGObj.SearchItemValue));
+            }
             ToggleSearchItemPicker();
             UpdateCaseBtnAppearance();
         }
@@ -364,7 +375,8 @@ namespace Algorithms.Views
         {
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
             SGObj.Case = GraphCaseEnum.Best;
-            DisplayGraph(service.GetBestCaseEntries(1, 20, SGObj.SearchItemValue).ToArray());
+            SGObj.SearchItemValue = 0;
+            ResetGraph();
             ToggleSearchItemPicker();
         }
 
@@ -387,7 +399,7 @@ namespace Algorithms.Views
         }
 
         private readonly GraphService service = new GraphService();
-        readonly SearchingAlgorithms algorithms = new SearchingAlgorithms();
-        IEnumerable<Entry> CurrentEntriesOnGraph = new Entry[20];
+        private readonly SearchingAlgorithms algorithms = new SearchingAlgorithms();
+        private IEnumerable<Entry> CurrentEntriesOnGraph = new Entry[20];
     }
 }
