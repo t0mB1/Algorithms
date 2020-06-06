@@ -141,7 +141,7 @@ namespace Algorithms.Views
                 {
                     case "Linear Search":
                         {
-                            List<LinearSearchOperation> operations = algorithms.LinearSearch(CurrentEntriesOnGraph,
+                            List<LinearSearchOperation> operations = algorithms.LinearSearch(CurrentEntriesOnGraph.ToArray(),
                                                                                              SGObj.SearchItemValue);
                             CarryOutOperations(operations);
                             break;
@@ -149,7 +149,7 @@ namespace Algorithms.Views
                     case "Jump Search":
                         {
                             CheckCase();
-                            List<JumpSearchOperation> operations = algorithms.JumpSearch(CurrentEntriesOnGraph,
+                            List<JumpSearchOperation> operations = algorithms.JumpSearch(CurrentEntriesOnGraph.ToArray(),
                                                                                          SGObj.SearchItemValue);
                             CarryOutOperations(operations);
                             break;
@@ -157,7 +157,7 @@ namespace Algorithms.Views
                     case "Classic Binary Search":
                         {
                             CheckCase();
-                            List<BinarySearchOperation> operations = algorithms.ClassicBinarySearch(CurrentEntriesOnGraph,
+                            List<BinarySearchOperation> operations = algorithms.ClassicBinarySearch(CurrentEntriesOnGraph.ToArray(),
                                                                                                     SGObj.SearchItemValue);
                             CarryOutOperations(operations);
                             break;
@@ -165,7 +165,7 @@ namespace Algorithms.Views
                     case "Modified Binary Search":
                         {
                             CheckCase();
-                            List<BinarySearchOperation> operations = algorithms.ModifiedBinarySearch(CurrentEntriesOnGraph,
+                            List<BinarySearchOperation> operations = algorithms.ModifiedBinarySearch(CurrentEntriesOnGraph.ToArray(),
                                                                                                     SGObj.SearchItemValue);
                             CarryOutOperations(operations);
                             break;
@@ -277,7 +277,6 @@ namespace Algorithms.Views
                     CurrentEntriesOnGraph = service.GetBestCaseEntries(1, 20, SGObj.SearchItemValue).ToArray();
                     DisplayGraph(CurrentEntriesOnGraph);
                     break;
-
             }
         }
 

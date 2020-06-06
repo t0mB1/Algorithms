@@ -7,11 +7,11 @@ namespace Algorithms.Models
 {
     public class SearchingAlgorithms
     {
-        public List<LinearSearchOperation> LinearSearch(List<Entry> entries, int searchItem)
+        public List<LinearSearchOperation> LinearSearch(Entry[] entries, int searchItem)
         {
             List<LinearSearchOperation> operations = new List<LinearSearchOperation>();
             int i = 0;
-            while (i < entries.Count)
+            while (i < entries.Length)
             {
                 // highlight Entry Blue
                 operations.Add(new LinearSearchOperation {
@@ -35,10 +35,10 @@ namespace Algorithms.Models
             return operations;
         }
 
-        public List<BinarySearchOperation> ClassicBinarySearch(List<Entry> entries, int searchItem)
+        public List<BinarySearchOperation> ClassicBinarySearch(Entry[] entries, int searchItem)
         {
             int first = 0;
-            int last = entries.Count - 1;
+            int last = entries.Length - 1;
             List<BinarySearchOperation> BSOperations = new List<BinarySearchOperation>();
             while (first <= last)
             {
@@ -75,10 +75,10 @@ namespace Algorithms.Models
             return BSOperations;
         }
 
-        public List<BinarySearchOperation> ModifiedBinarySearch(List<Entry> entries, int searchItem)
+        public List<BinarySearchOperation> ModifiedBinarySearch(Entry[] entries, int searchItem)
         {
             int first = 0;
-            int last = entries.Count - 1;
+            int last = entries.Length - 1;
             List<BinarySearchOperation> BSOperations = new List<BinarySearchOperation>();
             while (entries[first].Value <= searchItem &&
                   searchItem <= entries[last].Value)
@@ -114,10 +114,10 @@ namespace Algorithms.Models
             return BSOperations;
         }
 
-        public List<JumpSearchOperation> JumpSearch(List<Entry> entries, int searchItem)
+        public List<JumpSearchOperation> JumpSearch(Entry[] entries, int searchItem)
         {
             List<JumpSearchOperation> JSOperations = new List<JumpSearchOperation>();
-            int n = entries.Count;
+            int n = entries.Length;
             // finds block size to jump
             int step = (int)Math.Floor(Math.Sqrt(n));
             // finding the block where the search item is
