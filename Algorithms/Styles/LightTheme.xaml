@@ -9,7 +9,7 @@
     <Color x:Key="buttonbordercolor">#C5C5C5</Color>
     <Color x:Key="tablebackgroundColor">#F2F2F2</Color>
     <Color x:Key="flyoutBackgroundColor">#FFFFFF</Color>
-    
+    <Color x:Key="unselectedCaseBtnTextColor">#AAAAAA</Color>
 
     <Color x:Key="TextPrimaryColor">#B0000000</Color>
     <Color x:Key="TextSecondaryColor">#000000</Color>

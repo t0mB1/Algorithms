@@ -270,27 +270,19 @@ namespace Algorithms.Views
         private void UpdateCaseBtnAppearance()
         {
             SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
-            if(App.AppTheme == "dark")
-            {
-                randomCaseBtn.BorderColor = Color.FromHex("#4C4C4C");
-                worstCaseBtn.BorderColor = Color.FromHex("#4C4C4C");
-            }
-            else if (App.AppTheme == "light")
-            {
-                randomCaseBtn.BorderColor = Color.FromHex("#CCCCCC");
-                worstCaseBtn.BorderColor = Color.FromHex("#CCCCCC");
-            }
+            randomCaseBtn.TextColor = Color.FromHex("#AAAAAA");
+            worstCaseBtn.TextColor = Color.FromHex("#AAAAAA");
             switch (SGObj.Case)
             {
                 case GraphCaseEnum.Random:
                     randomCaseBtn.FontAttributes = FontAttributes.Bold;
                     worstCaseBtn.FontAttributes = FontAttributes.None;
-                    randomCaseBtn.BorderColor = Color.FromHex("#007EFA");
+                    randomCaseBtn.TextColor = Color.FromHex("#007EFA");
                     break;
                 case GraphCaseEnum.Worst:
                     worstCaseBtn.FontAttributes = FontAttributes.Bold;
                     randomCaseBtn.FontAttributes = FontAttributes.None;
-                    worstCaseBtn.BorderColor = Color.FromHex("#007EFA");
+                    worstCaseBtn.TextColor = Color.FromHex("#007EFA");
                     break;
             }
         }

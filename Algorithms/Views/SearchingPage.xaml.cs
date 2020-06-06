@@ -389,31 +389,22 @@ namespace Algorithms.Views
             bestCaseBtn.FontAttributes = FontAttributes.None;
             worstCaseBtn.FontAttributes = FontAttributes.None;
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
-            if (App.AppTheme == "dark")
-            {
-                randomCaseBtn.BorderColor = Color.FromHex("#4C4C4C");
-                worstCaseBtn.BorderColor = Color.FromHex("#4C4C4C");
-                bestCaseBtn.BorderColor = Color.FromHex("#4C4C4C");
-            }
-            else if (App.AppTheme == "light")
-            {
-                randomCaseBtn.BorderColor = Color.FromHex("#CCCCCC");
-                worstCaseBtn.BorderColor = Color.FromHex("#CCCCCC");
-                bestCaseBtn.BorderColor = Color.FromHex("#CCCCCC");
-            }
+            randomCaseBtn.TextColor = Color.FromHex("#AAAAAA");
+            worstCaseBtn.TextColor = Color.FromHex("#AAAAAA");
+            bestCaseBtn.TextColor = Color.FromHex("#AAAAAA");
             switch (SGObj.Case)
             {
                 case GraphCaseEnum.Random:
                     randomCaseBtn.FontAttributes = FontAttributes.Bold; ;
-                    randomCaseBtn.BorderColor = Color.FromHex("#007EFA");
+                    randomCaseBtn.TextColor = Color.FromHex("#007EFA");
                     break;
                 case GraphCaseEnum.Best:
                     bestCaseBtn.FontAttributes = FontAttributes.Bold;
-                    bestCaseBtn.BorderColor = Color.FromHex("#007EFA");
+                    bestCaseBtn.TextColor = Color.FromHex("#007EFA");
                     break;
                 case GraphCaseEnum.Worst:
                     worstCaseBtn.FontAttributes = FontAttributes.Bold;
-                    worstCaseBtn.BorderColor = Color.FromHex("#007EFA");
+                    worstCaseBtn.TextColor = Color.FromHex("#007EFA");
                     break;
             }
         }

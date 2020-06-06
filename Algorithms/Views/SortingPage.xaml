@@ -31,7 +31,8 @@
                         HorizontalOptions="Center"
                         BorderWidth="1"
                         Clicked="RandomCaseBtnIsClicked"
-                        BorderColor="{DynamicResource buttonbordercolor}"/>
+                        BorderColor="{DynamicResource buttonbordercolor}"
+                        TextColor="{DynamicResource unselectedCaseBtnTextColor}"/>
 
                 <Button x:Name="worstCaseBtn"
                         Text="    Worst Case    "
@@ -40,7 +41,8 @@
                         HorizontalOptions="Center"
                         BorderWidth="1"
                         Clicked="WorstCaseBtnIsClicked"
-                        BorderColor="{DynamicResource buttonbordercolor}"/>
+                        BorderColor="{DynamicResource buttonbordercolor}"
+                        TextColor="{DynamicResource unselectedCaseBtnTextColor}"/>
             </Grid>
 
             <forms:ChartView x:Name="SortGraph"

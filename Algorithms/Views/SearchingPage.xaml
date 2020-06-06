@@ -32,7 +32,8 @@
                         HorizontalOptions="Center"
                         Clicked="BestCaseBtnIsClicked"
                         BorderWidth="1"
-                        BorderColor="{DynamicResource buttonbordercolor}"/>
+                        BorderColor="{DynamicResource buttonbordercolor}"
+                        TextColor="{DynamicResource unselectedCaseBtnTextColor}"/>
 
                 <Button x:Name="randomCaseBtn"
                         Text="    Random    "
@@ -41,7 +42,8 @@
                         HorizontalOptions="Center"
                         Clicked="RandomCaseBtnIsClicked"
                         BorderWidth="1"
-                        BorderColor="{DynamicResource buttonbordercolor}"/>
+                        BorderColor="{DynamicResource buttonbordercolor}"
+                        TextColor="{DynamicResource unselectedCaseBtnTextColor}"/>
 
                 <Button x:Name="worstCaseBtn"
                         Text="    Worst Case    "
@@ -50,7 +52,8 @@
                         HorizontalOptions="Center"
                         Clicked="WorstCaseBtnIsClicked"
                         BorderWidth="1"
-                        BorderColor="{DynamicResource buttonbordercolor}"/>
+                        BorderColor="{DynamicResource buttonbordercolor}"
+                        TextColor="{DynamicResource unselectedCaseBtnTextColor}"/>
             </Grid>
 
             <forms:ChartView x:Name="SearchGraph"
