@@ -1,10 +1,10 @@
 
-*.xml
-*.json
-*.dll
-*.exe
-*.pdb
-*.cache
-*.xml
-*.dll
-*.exe
+.xml
+.json
+.dll
+.exe
+.pdb
+.cache
+.xml
+.dll
+.exe
