@@ -46,8 +46,7 @@ namespace Algorithms.Views
         void AlgorithmPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
-            if (algorithmPicker.SelectedIndex != -1 &&
-                algorithmPicker.SelectedItem.ToString() != "")
+            if (algorithmPicker.SelectedIndex > 0)
             {
                 ToggleSearchBtn();
                 // gets selected item in picker
@@ -60,11 +59,13 @@ namespace Algorithms.Views
                             SGObj.CurrentAlg == "Jump Search")
                         {
                             SGObj.SearchItemValue = 1;
+                            searchItemPicker.SelectedItem = "1";
                         }
                         else if (SGObj.CurrentAlg == "Classic Binary Search" ||
                                  SGObj.CurrentAlg == "Modified Binary Search")
                         {
                             SGObj.SearchItemValue = 10;
+                            searchItemPicker.SelectedItem = "10";
                         }
                         OrderEntriesOnGraph();
                         break;
