@@ -52,42 +52,6 @@ namespace Algorithms.Views
                 // gets selected item in picker
                 SGObj.CurrentAlg = algorithmPicker.SelectedItem.ToString();
                 Title = SGObj.CurrentAlg;
-                switch (SGObj.Case)
-                {
-                    case GraphCaseEnum.Best:
-                        if (SGObj.CurrentAlg == "Linear Search" ||
-                            SGObj.CurrentAlg == "Jump Search")
-                        {
-                            SGObj.SearchItemValue = 1;
-                            searchItemPicker.SelectedItem = "1";
-                        }
-                        else if (SGObj.CurrentAlg == "Classic Binary Search" ||
-                                 SGObj.CurrentAlg == "Modified Binary Search")
-                        {
-                            SGObj.SearchItemValue = 10;
-                            searchItemPicker.SelectedItem = "10";
-                        }
-                        OrderEntriesOnGraph();
-                        break;
-
-                    case GraphCaseEnum.Worst:
-                        ChangeGraphToWorstCase();
-                        break;
-
-                    case GraphCaseEnum.Random:
-
-                        if (!(SGObj.CurrentAlg == "Linear Search"))
-                        {
-                            ChangeToRandomCase();
-                            OrderEntriesOnGraph();
-                        }
-                        else
-                        {
-                            ResetGraph();
-                            ChangeToRandomCase();
-                        }
-                        break;
-                }
             }
             else
             {
@@ -149,7 +113,6 @@ namespace Algorithms.Views
                         }
                     case "Jump Search":
                         {
-                            CheckCase();
                             List<JumpSearchOperation> operations = algorithms.JumpSearch(CurrentEntriesOnGraph.ToArray(),
                                                                                          SGObj.SearchItemValue);
                             CarryOutOperations(operations);
@@ -157,7 +120,6 @@ namespace Algorithms.Views
                         }
                     case "Classic Binary Search":
                         {
-                            CheckCase();
                             List<BinarySearchOperation> operations = algorithms.ClassicBinarySearch(CurrentEntriesOnGraph.ToArray(),
                                                                                                     SGObj.SearchItemValue);
                             CarryOutOperations(operations);
@@ -165,7 +127,6 @@ namespace Algorithms.Views
                         }
                     case "Modified Binary Search":
                         {
-                            CheckCase();
                             List<BinarySearchOperation> operations = algorithms.ModifiedBinarySearch(CurrentEntriesOnGraph.ToArray(),
                                                                                                     SGObj.SearchItemValue);
                             CarryOutOperations(operations);
@@ -184,9 +145,6 @@ namespace Algorithms.Views
         void RandomCaseBtnIsClicked(object sender, EventArgs e)
         {
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
-            SGObj.Case = GraphCaseEnum.Random;
-            SGObj.SearchItemValue = 0;
-
             if (SGObj.CurrentAlg == "Classic Binary Search" ||
                 SGObj.CurrentAlg == "Modified Binary Search" ||
                 SGObj.CurrentAlg == "Jump Search")
@@ -203,18 +161,19 @@ namespace Algorithms.Views
         void BestCaseBtnIsClicked(object sender, EventArgs e)
         {
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
-            SGObj.SearchItemValue = 0;
             if (algorithmPicker.SelectedItem != null)
             {
                 if (SGObj.CurrentAlg == "Linear Search" ||
                     SGObj.CurrentAlg == "Jump Search")
                 {
                     SGObj.SearchItemValue = 1;
+                    searchItemPicker.SelectedItem = "1";
                 }
                 else if (SGObj.CurrentAlg == "Binary Search" ||
                          SGObj.CurrentAlg == "Modified Binary Search")
                 {
                     SGObj.SearchItemValue = 10;
+                    searchItemPicker.SelectedItem = "10";
                 }
             }
             ChangeGraphToBestCase();
@@ -315,27 +274,6 @@ namespace Algorithms.Views
             randomCaseBtn.IsEnabled = true;
         }
 
-        private void CheckCase()
-        {
-            SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
-            if (SGObj.Case == GraphCaseEnum.Best)
-            {
-                if (SGObj.CurrentAlg == "Jump Search" ||
-                    SGObj.CurrentAlg == "Linear Search")
-                {
-                    SGObj.SearchItemValue = 1;
-                }
-                else
-                {
-                    SGObj.SearchItemValue = 10;
-                }
-            }
-            else if (SGObj.Case == GraphCaseEnum.Worst)
-            {
-                SGObj.SearchItemValue = 20;
-            }
-        }
-
         private void ToggleButtons()
         {
             bool temp = algorithmPicker.IsEnabled;
@@ -386,8 +324,8 @@ namespace Algorithms.Views
         private void ChangeToRandomCase()
         {
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
-            ToggleSearchItemPicker();
             SGObj.Case = GraphCaseEnum.Random;
+            ToggleSearchItemPicker();
             UpdateCaseBtnAppearance();
         }
 
@@ -426,26 +364,19 @@ namespace Algorithms.Views
         {
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
             SGObj.Case = GraphCaseEnum.Best;
-            CheckCase();
-            OrderEntriesOnGraph();
+            DisplayGraph(service.GetBestCaseEntries(1, 20, SGObj.SearchItemValue).ToArray());
             ToggleSearchItemPicker();
         }
 
         private void ChangeGraphToWorstCase()
         {
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
-            SGObj.SearchItemValue = 20;
             SGObj.Case = GraphCaseEnum.Worst;
-            CheckCase();
+            SGObj.SearchItemValue = 20;
+            searchItemPicker.SelectedItem = "20";
             ToggleSearchItemPicker();
-            DisplayGraph(service.GetWostCaseEntriesForSearch(1, 20).ToArray());
             UpdateCaseBtnAppearance();
-        }
-
-        private void OrderEntriesOnGraph()
-        {
-            SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
-            DisplayGraph(service.GetBestCaseEntries(1, 20, SGObj.SearchItemValue).ToArray());
+            DisplayGraph(service.GetWostCaseEntriesForSearch(1, 20).ToArray());
         }
 
         private void DisplayGraph(IEnumerable<Entry> entries)
