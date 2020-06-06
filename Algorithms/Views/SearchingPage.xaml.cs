@@ -388,10 +388,10 @@ namespace Algorithms.Views
             randomCaseBtn.FontAttributes = FontAttributes.None;
             bestCaseBtn.FontAttributes = FontAttributes.None;
             worstCaseBtn.FontAttributes = FontAttributes.None;
-            SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
             randomCaseBtn.TextColor = Color.FromHex("#AAAAAA");
             worstCaseBtn.TextColor = Color.FromHex("#AAAAAA");
             bestCaseBtn.TextColor = Color.FromHex("#AAAAAA");
+            SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
             switch (SGObj.Case)
             {
                 case GraphCaseEnum.Random:
