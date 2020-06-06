@@ -10,7 +10,6 @@ using Algorithms.Models.SortAlgorithmOperations;
 using System.Threading.Tasks;
 using Xamarin.Forms.Internals;
 using System.Linq;
-using Algorithms.Styles;
 
 namespace Algorithms.Views
 {

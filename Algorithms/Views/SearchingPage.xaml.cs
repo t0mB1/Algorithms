@@ -108,10 +108,10 @@ namespace Algorithms.Views
             SGObj.SearchItemValue = searchItemPicker.SelectedIndex;
             Entry newEntry = CurrentEntriesOnGraph.Where(p => p.Value == SGObj.SearchItemValue)
                                                   .FirstOrDefault();
-            int index = CurrentEntriesOnGraph.IndexOf(newEntry);
+            int index = CurrentEntriesOnGraph.ToList().IndexOf(newEntry);
             if (SGObj.SearchItemValue > 0)
             {
-                CurrentEntriesOnGraph[index].Color = SKColor.Parse("#0000FF");
+                CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse("#0000FF");
             }
             DisplayGraph(CurrentEntriesOnGraph);
         }
@@ -231,20 +231,20 @@ namespace Algorithms.Views
             int speed = SGObj.SpeedDictionary[SGObj.Speed];
             foreach (T operation in operations)
             {
-                int index = CurrentEntriesOnGraph.IndexOf(operation.entry);
+                int index = CurrentEntriesOnGraph.ToList().IndexOf(operation.entry);
                 if (operation.IsSearchItem is false)
                 {
                     // change to blue
-                    CurrentEntriesOnGraph[index].Color = SKColor.Parse(operation.ChangeToColour);
+                    CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse(operation.ChangeToColour);
                     DisplayGraph(CurrentEntriesOnGraph);
                     await Task.Delay(speed);
                     // change back to red
-                    CurrentEntriesOnGraph[index].Color = SKColor.Parse("#FF1493");
+                    CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse("#FF1493");
                 }
                 else
                 {
                     // change to green
-                    CurrentEntriesOnGraph[index].Color = SKColor.Parse(operation.ChangeToColour);
+                    CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse(operation.ChangeToColour);
                 }
                 DisplayGraph(CurrentEntriesOnGraph);
             }
@@ -262,14 +262,22 @@ namespace Algorithms.Views
 
         private void ResetGraph()
         {
-            foreach (Entry entry in CurrentEntriesOnGraph)
+            SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
+            switch (SGObj.Case)
             {
-                if (entry.Color == SKColor.Parse("#00FF00"))
-                {
-                    entry.Color = SKColor.Parse("#0000FF");
+                case GraphCaseEnum.Worst:
+                    CurrentEntriesOnGraph = service.GetWostCaseEntriesForSearch(1, 20).ToArray();
                     DisplayGraph(CurrentEntriesOnGraph);
+                    break;
+                case GraphCaseEnum.Random:
+                    CurrentEntriesOnGraph = service.GetRandomEntries(1, 20, SGObj.SearchItemValue).ToArray();
+                    DisplayGraph(CurrentEntriesOnGraph);
+                    break;
+                case GraphCaseEnum.Best:
+                    CurrentEntriesOnGraph = service.GetBestCaseEntries(1, 20, SGObj.SearchItemValue).ToArray();
+                    DisplayGraph(CurrentEntriesOnGraph);
+                    break;
 
-                }
             }
         }
 
@@ -385,12 +393,7 @@ namespace Algorithms.Views
 
         private void UpdateCaseBtnAppearance()
         {
-            randomCaseBtn.FontAttributes = FontAttributes.None;
-            bestCaseBtn.FontAttributes = FontAttributes.None;
-            worstCaseBtn.FontAttributes = FontAttributes.None;
-            randomCaseBtn.TextColor = Color.FromHex("#AAAAAA");
-            worstCaseBtn.TextColor = Color.FromHex("#AAAAAA");
-            bestCaseBtn.TextColor = Color.FromHex("#AAAAAA");
+            ResetCaseBtnAppearance();
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
             switch (SGObj.Case)
             {
@@ -409,6 +412,16 @@ namespace Algorithms.Views
             }
         }
 
+        private void ResetCaseBtnAppearance()
+        {
+            randomCaseBtn.FontAttributes = FontAttributes.None;
+            bestCaseBtn.FontAttributes = FontAttributes.None;
+            worstCaseBtn.FontAttributes = FontAttributes.None;
+            randomCaseBtn.TextColor = Color.FromHex("#AAAAAA");
+            worstCaseBtn.TextColor = Color.FromHex("#AAAAAA");
+            bestCaseBtn.TextColor = Color.FromHex("#AAAAAA");
+        }
+
         private void ChangeGraphToBestCase()
         {
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
@@ -425,17 +438,17 @@ namespace Algorithms.Views
             SGObj.Case = GraphCaseEnum.Worst;
             CheckCase();
             ToggleSearchItemPicker();
-            DisplayGraph(service.GetWostCaseEntriesForSearch(1, 20));
+            DisplayGraph(service.GetWostCaseEntriesForSearch(1, 20).ToArray());
             UpdateCaseBtnAppearance();
         }
 
         private void OrderEntriesOnGraph()
         {
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
-            DisplayGraph(service.GetBestCaseEntries(1, 20, SGObj.SearchItemValue));
+            DisplayGraph(service.GetBestCaseEntries(1, 20, SGObj.SearchItemValue).ToArray());
         }
 
-        private void DisplayGraph(List<Entry> entries)
+        private void DisplayGraph(IEnumerable<Entry> entries)
         {
 
             SearchGraph.Chart = new BarChart { Entries = entries, BackgroundColor = SKColors.Transparent };
@@ -444,6 +457,6 @@ namespace Algorithms.Views
 
         private readonly GraphService service = new GraphService();
         readonly SearchingAlgorithms algorithms = new SearchingAlgorithms();
-        List<Entry> CurrentEntriesOnGraph = new List<Entry>();
+        IEnumerable<Entry> CurrentEntriesOnGraph = new Entry[20];
     }
 }
