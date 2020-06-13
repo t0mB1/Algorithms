@@ -93,8 +93,9 @@ namespace Algorithms.Views
             ToggleSortBtn();
         }
 
-        void SortBtnIsClicked(object sender, EventArgs e)
+        async void SortBtnIsClicked(object sender, EventArgs e)
         {
+            
             SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
             if (IsSorted(CurrentEntriesOnGraph) is true)
             {
@@ -104,6 +105,10 @@ namespace Algorithms.Views
             if (SGObj.CurrentAlg != "" ||
                 SGObj.CurrentAlg != null)
             {
+                Console.WriteLine(scrollView.ScrollY);
+                await scrollView.ScrollToAsync(SortGraph, ScrollToPosition.Start, true);
+                //await scrollView.ScrollToAsync(0, 0, true);
+                Console.WriteLine(scrollView.ScrollY);
                 ToggleButtons();
                 switch (SGObj.CurrentAlg)
                 {

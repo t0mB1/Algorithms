@@ -5,7 +5,7 @@
              Title="Algorithms"
              BackgroundColor="{DynamicResource headerbackgroundColor}">
 
-    <ScrollView>
+    <ScrollView BackgroundColor="{DynamicResource tablebackgroundColor}">
             <TableView Intent="Settings"
                        BackgroundColor="{DynamicResource tablebackgroundColor}">
                 <TableRoot TextColor="{DynamicResource TextTernaryColor}" >
