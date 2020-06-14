@@ -32,7 +32,9 @@
                         BorderWidth="1"
                         Clicked="RandomCaseBtnIsClicked"
                         BorderColor="{DynamicResource buttonbordercolor}"
-                        TextColor="{DynamicResource unselectedCaseBtnTextColor}"/>
+                        TextColor="{DynamicResource unselectedCaseBtnTextColor}"
+                        HeightRequest="{OnIdiom 30, Phone=30, Tablet=50}"
+                        WidthRequest="{OnIdiom 90, Phone=90, Tablet=120}"/>
 
                 <Button x:Name="worstCaseBtn"
                         Text="    Worst Case    "
@@ -42,19 +44,21 @@
                         BorderWidth="1"
                         Clicked="WorstCaseBtnIsClicked"
                         BorderColor="{DynamicResource buttonbordercolor}"
-                        TextColor="{DynamicResource unselectedCaseBtnTextColor}"/>
+                        TextColor="{DynamicResource unselectedCaseBtnTextColor}"
+                        HeightRequest="{OnIdiom 30, Phone=30, Tablet=50}"
+                        WidthRequest="{OnIdiom 110, Phone=110, Tablet=140}"/>
             </Grid>
 
             <forms:ChartView x:Name="SortGraph"
-                             HeightRequest="{OnIdiom 400, Phone=400, Tablet=800}"
+                             HeightRequest="{OnIdiom 400, Phone=400, Tablet=600}"
                              WidthRequest="800"
-                             Margin="10, 0, 10, 10"/>
+                             Margin="{OnIdiom '5, 0, 5, 0', Phone='5, 0, 5, 0', Tablet='10, 0, 10, 0'}"/>
 
             <Picker x:Name="algorithmPicker"
                         Title="Choose an Algorithm"
                         SelectedIndexChanged="AlgorithmPicker_SelectedIndexChanged"
                         HorizontalOptions="Center"
-                        Margin="10, 0, 10, 10"
+                        Margin="{OnIdiom '5, 5, 5, 5', Phone='5, 0, 5, 5', Tablet='10, 0, 10, 10'}"
                         Grid.ColumnSpan="2">
                     <Picker.Items>
                         <x:String x:FieldModifier="Center"/>
@@ -69,7 +73,7 @@
                     Title="Speed"
                     SelectedIndexChanged="SpeedPicker_SelectedIndexChanged"
                     HorizontalOptions="Center"
-                    Margin="10, 0, 10, 10">
+                    Margin="{OnIdiom '5, 0, 5, 5', Phone='5, 0, 5, 5', Tablet='10, 0, 10, 10'}">
                 <Picker.Items>
                     <x:String x:FieldModifier="Center"/>
                     <x:String>Super-Duper Slow</x:String>
@@ -86,7 +90,7 @@
             <Picker x:Name="GraphElementsPicker"
                     Title="N⁰ Elements"
                     SelectedIndexChanged="GraphElementsPicker_SelectedIndexChanged"
-                    Margin="10, 0, 10, 10"
+                    Margin="{OnIdiom '5, 0, 5, 5', Phone='5, 0, 5, 5', Tablet='10, 0, 10, 10'}"
                     SelectedIndex="4"
                     SelectedItem="20"
                     HorizontalOptions="CenterAndExpand">
@@ -111,7 +115,7 @@
                     IsVisible="false"
                     IsEnabled="False"
                     Clicked="SortBtnIsClicked"
-                    Margin="10, 0, 10, 0"/>
+                    Margin="{OnIdiom '5, 0, 5, 5', Phone='5, 0, 5, 5', Tablet='10, 0, 10, 10'}"/>
 
         </StackLayout>
     </ScrollView>

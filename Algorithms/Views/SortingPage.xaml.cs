@@ -38,11 +38,7 @@ namespace Algorithms.Views
 
         void RandomCaseBtnIsClicked(object sender, EventArgs e)
         {
-            SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
-            SGObj.Case = GraphCaseEnum.Random;
-            CurrentEntriesOnGraph = service.GetRandomEntries(1, SGObj.GraphElementNumber, 0).ToArray();
-            DisplayGraph(CurrentEntriesOnGraph);
-            UpdateCaseBtnAppearance();
+            ChangeToRandomCase();
         }
 
         void SpeedPicker_SelectedIndexChanged(object sender, EventArgs e)
@@ -93,41 +89,35 @@ namespace Algorithms.Views
             ToggleSortBtn();
         }
 
-        async void SortBtnIsClicked(object sender, EventArgs e)
+        void SortBtnIsClicked(object sender, EventArgs e)
         {
-            
             SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
             if (IsSorted(CurrentEntriesOnGraph) is true)
             {
                 ResetGraph();
             }
-            
             if (SGObj.CurrentAlg != "" ||
                 SGObj.CurrentAlg != null)
             {
-                Console.WriteLine(scrollView.ScrollY);
-                await scrollView.ScrollToAsync(SortGraph, ScrollToPosition.Start, true);
-                //await scrollView.ScrollToAsync(0, 0, true);
-                Console.WriteLine(scrollView.ScrollY);
                 ToggleButtons();
                 switch (SGObj.CurrentAlg)
                 {
                     case "Bubble Sort":
                         {
                             List<BubbleSortOperation> operations = algorithms.BubbleSort(CurrentEntriesOnGraph.ToArray());
-                            CarryOutOpsWithoutPivot(operations);
+                            CarryOutOperations(operations);
                             break;
                         }
                     case "Heap Sort":
                         {
                             IEnumerable<HeapSortOperation> operations = algorithms.HeapSort(CurrentEntriesOnGraph.ToArray());
-                            CarryOutOpsWithoutPivot(operations.ToList());
+                            CarryOutOperations(operations.ToList());
                             break;
                         }
                     case "Insertion Sort":
                         {
                             List<InsertionSortOperation> operations = algorithms.InsertionSort(CurrentEntriesOnGraph.ToArray());
-                            CarryOutOpsWithoutPivot(operations);
+                            CarryOutOperations(operations);
                             break;
                         }
                     case "Quick Sort":
@@ -137,7 +127,7 @@ namespace Algorithms.Views
                                                                                        0,
                                                                                        SGObj.GraphElementNumber-1,
                                                                                        ops);
-                            CarryOutOpsWithoutPivot(operations);
+                            CarryOutOperations(operations);
                             break; 
                         }
                 }
@@ -156,7 +146,7 @@ namespace Algorithms.Views
             return true;
         }
 
-        private async void CarryOutOpsWithoutPivot<T>(List<T> operations) where T : ISortOperation
+        private async void CarryOutOperations<T>(List<T> operations) where T : ISortOperation
         {
             SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
             int speed = SGObj.SpeedDictionary[SGObj.Speed];

@@ -56,7 +56,7 @@
                                   TextColor="{DynamicResource TextSecondaryColor}"/>
 
                         <TextCell x:Name="ModBinarySearchTextCell"
-                                  Text="Modified BinarySearch"
+                                  Text="Modified Binary Search"
                                   Tapped="ModBinarySearchTextCell_Tapped"
                                   TextColor="{DynamicResource TextSecondaryColor}"/>
 
