@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using SkiaSharp;
 using Entry = Microcharts.Entry;
@@ -8,7 +8,7 @@ namespace Algorithms.Services
 {
     public class GraphService
     {
-        public List<Entry> GetBestCaseEntries(int minVal, int maxVal, int searchItem)
+        public IEnumerable<Entry> GetBestCaseEntries(int minVal, int maxVal, int searchItem)
         {
             List<Entry> entries = new List<Entry>();
             for (int i = minVal; i < maxVal + 1; i++)
@@ -22,10 +22,20 @@ namespace Algorithms.Services
                     entries.Add(GenerateEntry(i));
                 }
             }
-            return entries;
+            return entries.ToArray();
         }
 
-        public List<Entry> GetWostCaseEntriesForSearch(int minVal, int maxVal)
+        public IEnumerable<Entry> GetBestCaseEntries(int minVal, int maxVal)
+        {
+            List<Entry> entries = new List<Entry>();
+            for (int i = minVal; i < maxVal + 1; i++)
+            {
+                entries.Add(GenerateEntry(i));
+            }
+            return entries.ToArray();
+        }
+
+        public IEnumerable<Entry> GetWostCaseEntriesForSearch(int minVal, int maxVal)
         {
             List<Entry> entries = new List<Entry>();
             for (int i = minVal; i < maxVal + 1; i++)
@@ -42,20 +52,26 @@ namespace Algorithms.Services
             return entries;
         }
 
-        public List<Entry> GetWostCaseEntriesForSort(int maxVal, int minVal)
+        public IEnumerable<Entry> GetWostCaseEntriesForSort(int minVal, int maxVal)
         {
             List<Entry> entries = new List<Entry>();
             for (int i = maxVal; i > minVal-1; i--)
             {
                 entries.Add(GenerateEntry(i));
             }
-            return entries;
+            return entries.ToArray();
         }
 
-        public List<Entry> GetRandomEntries(int minVal, int maxVal, int SearchItem)
+        public IEnumerable<Entry> GetRandomEntries(int minVal, int maxVal, int SearchItem)
         {
-            List<Entry> entries = GetBestCaseEntries(minVal, maxVal, SearchItem);
-            return ShuffleList(entries);
+            IEnumerable<Entry> entries = GetBestCaseEntries(minVal, maxVal, SearchItem);
+            return ShuffleList(entries.ToArray());
+        }
+
+        public IEnumerable<Entry> GetRandomEntries(int minVal, int maxVal)
+        {
+            IEnumerable<Entry> entries = GetBestCaseEntries(minVal, maxVal);
+            return ShuffleList(entries.ToArray());
         }
 
         public Entry GenerateEntry(int value)
@@ -74,11 +90,10 @@ namespace Algorithms.Services
             };
         }
 
-
-        private List<Entry> ShuffleList(List<Entry> entries)
+        private IEnumerable<Entry> ShuffleList(Entry[] entries)
         {
             RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
-            int n = entries.Count;
+            int n = entries.Length;
             while (n > 1)
             {
                 byte[] box = new byte[1];

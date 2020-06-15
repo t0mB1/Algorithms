@@ -43,6 +43,21 @@ namespace Algorithms.Views
             ResetGraph();
         }
 
+        private void RandomCaseBtnIsClicked(object sender, EventArgs e)
+        {
+            ChangeToRandomCase();
+        }
+
+        private void BestCaseBtnIsClicked(object sender, EventArgs e)
+        {
+            ChangeGraphToBestCase();
+        }
+
+        private void WorstCaseBtnIsClicked(object sender, EventArgs e)
+        {
+            ChangeGraphToWorstCase();
+        }
+
         void AlgorithmPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
@@ -172,22 +187,6 @@ namespace Algorithms.Views
             DisplayCaseBtns();
         }
 
-        private void RandomCaseBtnIsClicked(object sender, EventArgs e)
-        {
-            ChangeToRandomCase();
-        }
-
-        private void BestCaseBtnIsClicked(object sender, EventArgs e)
-        {
-            ChangeGraphToBestCase();
-            UpdateCaseBtnAppearance();
-        }
-
-        private void WorstCaseBtnIsClicked(object sender, EventArgs e)
-        {
-            ChangeGraphToWorstCase();
-        }
-
         private void SetBindingContext()
         {
             BindingContext = new SearchingGraphObject
@@ -220,7 +219,7 @@ namespace Algorithms.Views
                     break;
                 case GraphCaseEnum.Best:
                     SGObj.SearchItemValue = 0;
-                    if (algorithmPicker.SelectedItem != null)
+                    if (algorithmPicker.SelectedIndex > 0)
                     {
                         if (SGObj.CurrentAlg == "Linear Search" ||
                             SGObj.CurrentAlg == "Jump Search")
@@ -322,24 +321,6 @@ namespace Algorithms.Views
             }
         }
 
-        private void ChangeToRandomCase()
-        {
-            SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
-            SGObj.Case = GraphCaseEnum.Random;
-            if (SGObj.CurrentAlg == "Classic Binary Search" ||
-                SGObj.CurrentAlg == "Modified Binary Search" ||
-                SGObj.CurrentAlg == "Jump Search")
-            {
-                DisplayGraph(service.GetBestCaseEntries(1, 20, SGObj.SearchItemValue));
-            }
-            else
-            {
-                DisplayGraph(service.GetRandomEntries(1, 20, SGObj.SearchItemValue));
-            }
-            ToggleSearchItemPicker();
-            UpdateCaseBtnAppearance();
-        }
-
         private void UpdateCaseBtnAppearance()
         {
             ResetCaseBtnAppearance();
@@ -376,7 +357,10 @@ namespace Algorithms.Views
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
             SGObj.Case = GraphCaseEnum.Best;
             SGObj.SearchItemValue = 0;
+            searchItemPicker.SelectedIndex = 0;
+            searchItemPicker.SelectedItem = 0;
             ResetGraph();
+            UpdateCaseBtnAppearance();
             ToggleSearchItemPicker();
         }
 
@@ -391,9 +375,27 @@ namespace Algorithms.Views
             DisplayGraph(service.GetWostCaseEntriesForSearch(1, 20).ToArray());
         }
 
+        private void ChangeToRandomCase()
+        {
+            SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
+            SGObj.Case = GraphCaseEnum.Random;
+            //if (SGObj.CurrentAlg == "Classic Binary Search" ||
+            //    SGObj.CurrentAlg == "Modified Binary Search" ||
+            //    SGObj.CurrentAlg == "Jump Search")
+            //{
+            //    DisplayGraph(service.GetBestCaseEntries(1, 20, SGObj.SearchItemValue));
+            //}
+            //else
+            //{
+            //    DisplayGraph(service.GetRandomEntries(1, 20, SGObj.SearchItemValue));
+            //}
+            ResetGraph();
+            ToggleSearchItemPicker();
+            UpdateCaseBtnAppearance();
+        }
+
         private void DisplayGraph(IEnumerable<Entry> entries)
         {
-
             SearchGraph.Chart = new BarChart { Entries = entries, BackgroundColor = SKColors.Transparent };
             CurrentEntriesOnGraph = entries;
         }

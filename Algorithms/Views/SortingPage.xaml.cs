@@ -29,11 +29,7 @@ namespace Algorithms.Views
 
         void WorstCaseBtnIsClicked(object sender, EventArgs e)
         {
-            SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
-            SGObj.Case = GraphCaseEnum.Worst;
-            CurrentEntriesOnGraph = service.GetWostCaseEntriesForSort(SGObj.GraphElementNumber, 1).ToArray();
-            DisplayGraph(CurrentEntriesOnGraph);
-            UpdateCaseBtnAppearance();
+            ChangeToWorstCase();
         }
 
         void RandomCaseBtnIsClicked(object sender, EventArgs e)
@@ -85,6 +81,7 @@ namespace Algorithms.Views
             else
             {
                 SGObj.GraphElementNumber = 0;
+                
             }
             ToggleSortBtn();
         }
@@ -134,18 +131,6 @@ namespace Algorithms.Views
             }
         }
 
-        private static bool IsSorted(IEnumerable<Entry> arr)
-        {
-            for (int i = 1; i < arr.Count(); i++)
-            {
-                if (arr.ToArray()[i - 1].Value > arr.ToArray()[i].Value)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
         private async void CarryOutOperations<T>(List<T> operations) where T : ISortOperation
         {
             SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
@@ -177,6 +162,18 @@ namespace Algorithms.Views
             DisplayCaseBtns();
         }
 
+        private static bool IsSorted(IEnumerable<Entry> arr)
+        {
+            for (int i = 1; i < arr.Count(); i++)
+            {
+                if (arr.ToArray()[i - 1].Value > arr.ToArray()[i].Value)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         private void SetBindingContext()
         {
             BindingContext = new SortingGraphObject
@@ -192,12 +189,26 @@ namespace Algorithms.Views
             switch (SGObj.Case)
             {
                 case GraphCaseEnum.Worst:
-                    CurrentEntriesOnGraph = service.GetWostCaseEntriesForSort(SGObj.GraphElementNumber, 1).ToArray();
+                    if (SGObj.GraphElementNumber > 0)
+                    {
+                        CurrentEntriesOnGraph = service.GetWostCaseEntriesForSort(1, SGObj.GraphElementNumber);
+                    }
+                    else
+                    {
+                        CurrentEntriesOnGraph = service.GetWostCaseEntriesForSort(1, 20);
+                    }
                     DisplayGraph(CurrentEntriesOnGraph);
                     break;
 
                 case GraphCaseEnum.Random:
-                    CurrentEntriesOnGraph = service.GetRandomEntries(1, SGObj.GraphElementNumber, 0).ToArray();
+                    if (SGObj.GraphElementNumber > 0)
+                    {
+                        CurrentEntriesOnGraph = service.GetRandomEntries(1, SGObj.GraphElementNumber, 0);
+                    }
+                    else
+                    {
+                        CurrentEntriesOnGraph = service.GetRandomEntries(1, 20, 0);
+                    }
                     DisplayGraph(CurrentEntriesOnGraph);
                     break;
             }
@@ -256,7 +267,30 @@ namespace Algorithms.Views
         {
             SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
             SGObj.Case = GraphCaseEnum.Random;
-            CurrentEntriesOnGraph = service.GetRandomEntries(1, SGObj.GraphElementNumber, 0).ToArray();
+            if (SGObj.GraphElementNumber > 0)
+            {
+                CurrentEntriesOnGraph = service.GetRandomEntries(1, SGObj.GraphElementNumber, 0);
+            }
+            else
+            {
+                CurrentEntriesOnGraph = service.GetRandomEntries(1, 20, 0);
+            }
+            DisplayGraph(CurrentEntriesOnGraph);
+            UpdateCaseBtnAppearance();
+        }
+
+        private void ChangeToWorstCase()
+        {
+            SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
+            SGObj.Case = GraphCaseEnum.Worst;
+            if (SGObj.GraphElementNumber > 0)
+            {
+                CurrentEntriesOnGraph = service.GetWostCaseEntriesForSort(1, SGObj.GraphElementNumber);
+            }
+            else
+            {
+                CurrentEntriesOnGraph = service.GetWostCaseEntriesForSort(1, 20);
+            }
             DisplayGraph(CurrentEntriesOnGraph);
             UpdateCaseBtnAppearance();
         }
