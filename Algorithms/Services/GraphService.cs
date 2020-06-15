@@ -74,7 +74,7 @@ namespace Algorithms.Services
             return ShuffleList(entries.ToArray());
         }
 
-        public Entry GenerateEntry(int value)
+        private Entry GenerateEntry(int value)
         {
             return new Entry(value)
             {
@@ -82,7 +82,7 @@ namespace Algorithms.Services
             };
         }
 
-        public Entry GenerateSearchItemEntry(int value)
+        private Entry GenerateSearchItemEntry(int value)
         {
             return new Entry(value)
             {
