@@ -1,23 +1,12 @@
 ﻿<Properties StartupConfiguration="{51A0C8EF-8F7B-4CB9-8A9E-6964FB17D443}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Algorithms/Services/GraphService.cs">
-    <Files>
-      <File FileName="Algorithms/Views/SortingPage.xaml.cs" Line="183" Column="15" />
-      <File FileName="Algorithms/Services/GraphService.cs" Line="37" Column="16" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Algorithms" expanded="True">
             <Node name="Algorithms" expanded="True">
-              <Node name="Services" expanded="True">
-                <Node name="GraphService.cs" selected="True" />
-              </Node>
-              <Node name="Views" expanded="True">
-                <Node name="SearchingPage.xaml" expanded="True" />
-                <Node name="SortingPage.xaml" expanded="True" />
-              </Node>
+              <Node name="Views" expanded="True" />
             </Node>
-            <Node name="Algorithms.iOS" expanded="True" />
           </Node>
         </State>
       </Pad>

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Algorithms.Models
+﻿namespace Algorithms.Models
 {
     public enum AlgorithmNameEnumeration
     {

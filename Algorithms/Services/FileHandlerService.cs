@@ -51,16 +51,16 @@ namespace Algorithms.Services
             return null;
         }
 
-        public string[] GetAllImplementations(List<string> TextArr)
+        public IEnumerable<string> GetAllImplementations(string[] TextArr)
         {
             List<string> implementations = new List<string>();
-            for (int i = 0; i < TextArr.Count - 1; i++)
+            for (int i = 0; i < TextArr.Length - 1; i++)
             {
                 // C# Implementation
                 if (TextArr[i] == "C#")
                 {
                     string CSharpImp = "";
-                    for (int j = i + 1; j < TextArr.Count - 1; j++)
+                    for (int j = i + 1; j < TextArr.Length - 1; j++)
                     {
                         if (TextArr[j] == "Java")
                         {
@@ -75,7 +75,7 @@ namespace Algorithms.Services
                 if (TextArr[i] == "Java")
                 {
                     string JavaImp = "";
-                    for (int j = i + 1; j < TextArr.Count - 1; j++)
+                    for (int j = i + 1; j < TextArr.Length - 1; j++)
                     {
                         if (TextArr[j] == "Python")
                         {
@@ -90,7 +90,7 @@ namespace Algorithms.Services
                 if (TextArr[i] == "Python")
                 {
                     string PythonImp = "";
-                    for (int j = i + 1; j < TextArr.Count - 1; j++)
+                    for (int j = i + 1; j < TextArr.Length - 1; j++)
                     {
                         PythonImp += TextArr[j];
                         PythonImp += "\n";
