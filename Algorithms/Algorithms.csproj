@@ -23,23 +23,28 @@
     <Folder Include="Models\SortAlgorithmOperations\" />
     <Folder Include="AlgorithmInfomation\" />
     <Folder Include="Styles\" />
+    <Folder Include="AlgorithmInfomation\Sorting\" />
+    <Folder Include="AlgorithmInfomation\Searching\" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="AlgorithmInfomation\BubbleSortInfo.txt" />
     <None Remove="AlgorithmInfomation\MergeSortInfo.txt" />
-    <None Remove="AlgorithmInfomation\InsertionSortInfo.txt" />
-    <None Remove="AlgorithmInfomation\QuickSortInfo.txt" />
-    <None Remove="AlgorithmInfomation\LinearSearchInfo.txt" />
-    <None Remove="AlgorithmInfomation\ModifiedBinarySearchInfo.txt" />
-    <None Remove="AlgorithmInfomation\JumpSearchInfo.txt" />
+    <None Remove="AlgorithmInfomation\Sorting\BubbleSortInfo.txt" />
+    <None Remove="AlgorithmInfomation\Sorting\HeapSortInfo.txt" />
+    <None Remove="AlgorithmInfomation\Sorting\InsertionSortInfo.txt" />
+    <None Remove="AlgorithmInfomation\Sorting\QuickSortInfo.txt" />
+    <None Remove="AlgorithmInfomation\Searching\JumpSearchInfo.txt" />
+    <None Remove="AlgorithmInfomation\Searching\LinearSearchInfo.txt" />
+    <None Remove="AlgorithmInfomation\Searching\ModifiedBinarySearchInfo.txt" />
+    <None Remove="AlgorithmInfomation\Searching\ClassicBinarySearchInfo.txt" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AlgorithmInfomation\BubbleSortInfo.txt" />
-    <EmbeddedResource Include="AlgorithmInfomation\HeapSortInfo.txt" />
-    <EmbeddedResource Include="AlgorithmInfomation\InsertionSortInfo.txt" />
-    <EmbeddedResource Include="AlgorithmInfomation\QuickSortInfo.txt" />
-    <EmbeddedResource Include="AlgorithmInfomation\LinearSearchInfo.txt" />
-    <EmbeddedResource Include="AlgorithmInfomation\ModifiedBinarySearchInfo.txt" />
-    <EmbeddedResource Include="AlgorithmInfomation\JumpSearchInfo.txt" />
+    <EmbeddedResource Include="AlgorithmInfomation\Sorting\BubbleSortInfo.txt" />
+    <EmbeddedResource Include="AlgorithmInfomation\Sorting\HeapSortInfo.txt" />
+    <EmbeddedResource Include="AlgorithmInfomation\Sorting\InsertionSortInfo.txt" />
+    <EmbeddedResource Include="AlgorithmInfomation\Sorting\QuickSortInfo.txt" />
+    <EmbeddedResource Include="AlgorithmInfomation\Searching\JumpSearchInfo.txt" />
+    <EmbeddedResource Include="AlgorithmInfomation\Searching\LinearSearchInfo.txt" />
+    <EmbeddedResource Include="AlgorithmInfomation\Searching\ModifiedBinarySearchInfo.txt" />
+    <EmbeddedResource Include="AlgorithmInfomation\Searching\ClassicBinarySearchInfo.txt" />
   </ItemGroup>
 </Project>

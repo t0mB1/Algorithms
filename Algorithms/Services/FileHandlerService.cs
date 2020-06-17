@@ -13,29 +13,31 @@ namespace Algorithms.Services
             string _filename = "";
             switch (alg)
             {
+                // sorting algorithms
                 case AlgorithmNameEnumeration.BubbleSort:
-                    _filename = "Algorithms.AlgorithmInfomation.BubbleSortInfo.txt";
+                    _filename = "Algorithms.AlgorithmInfomation.Sorting.BubbleSortInfo.txt";
                     break;
                 case AlgorithmNameEnumeration.HeapSort:
-                    _filename = "Algorithms.AlgorithmInfomation.HeapSortInfo.txt";
+                    _filename = "Algorithms.AlgorithmInfomation.Sorting.HeapSortInfo.txt";
                     break;
                 case AlgorithmNameEnumeration.InsertionSort:
-                    _filename = "Algorithms.AlgorithmInfomation.InsertionSortInfo.txt";
+                    _filename = "Algorithms.AlgorithmInfomation.Sorting.InsertionSortInfo.txt";
                     break;
                 case AlgorithmNameEnumeration.QuickSort:
-                    _filename = "Algorithms.AlgorithmInfomation.QuickSortInfo.txt";
+                    _filename = "Algorithms.AlgorithmInfomation.Sorting.QuickSortInfo.txt";
                     break;
+                // searching algorithms
                 case AlgorithmNameEnumeration.ClassicBinarySearch:
-                    _filename = "Algorithms.AlgorithmInfomation.ClassicBinarySearchInfo.txt";
+                    _filename = "Algorithms.AlgorithmInfomation.Searching.ClassicBinarySearchInfo.txt";
                     break;
                 case AlgorithmNameEnumeration.ModBinarySearch:
-                    _filename = "Algorithms.AlgorithmInfomation.ModifiedBinarySearchInfo.txt";
+                    _filename = "Algorithms.AlgorithmInfomation.Searching.ModifiedBinarySearchInfo.txt";
                     break;
                 case AlgorithmNameEnumeration.LinearSearch:
-                    _filename = "Algorithms.AlgorithmInfomation.LinearSearchInfo.txt";
+                    _filename = "Algorithms.AlgorithmInfomation.Searching.LinearSearchInfo.txt";
                     break;
                 case AlgorithmNameEnumeration.JumpSearch:
-                    _filename = "Algorithms.AlgorithmInfomation.JumpSearchInfo.txt";
+                    _filename = "Algorithms.AlgorithmInfomation.Searching.JumpSearchInfo.txt";
                     break;
             }
             if (_filename != "")

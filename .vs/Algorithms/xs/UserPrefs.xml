@@ -5,8 +5,14 @@
         <State name="__root__">
           <Node name="Algorithms" expanded="True">
             <Node name="Algorithms" expanded="True">
-              <Node name="Views" expanded="True" />
+              <Node name="AlgorithmInfomation" expanded="True">
+                <Node name="Searching" expanded="True">
+                  <Node name="ModifiedBinarySearchInfo.txt" selected="True" />
+                </Node>
+              </Node>
+              <Node name="Services" expanded="True" />
             </Node>
+            <Node name="Algorithms.iOS" expanded="True" />
           </Node>
         </State>
       </Pad>
