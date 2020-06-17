@@ -17,6 +17,8 @@ This app supports the following alogirithms
 3. A Modified Binary Search
 4. Jump Search
 
+![alt-text](Screenshots/BigScreenShot.png)
+
 ## Light and Dark Mode
 
-![alt-text](Screenshots/Screenshot%202020-06-17%20at%2022.03.07.png)
+![alt-text](Screenshots/LAndDMode.png)
