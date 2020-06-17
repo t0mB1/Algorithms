@@ -4,6 +4,9 @@ A Sorting and Searching Algorithms Visualiser.
 
 ![alt-text](Screenshots/BigScreenshot.png)
 
+The app displays information about each algorithm with implementations in C#, Java and Python.
+
+
 ## Meet the Algorithms
 This app supports the following alogirithms
 ### Sorts:
