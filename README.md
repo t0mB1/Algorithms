@@ -2,9 +2,6 @@
  
 A Sorting and Searching Algorithms Visualiser.
 
-![alt-text](Screenshots/BigScreenshot.png)
-
-
 ## Meet the Algorithms
 The app displays information about each algorithm with implementations in C#, Java and Python.
 #### This app supports the following alogirithms
@@ -19,6 +16,7 @@ The app displays information about each algorithm with implementations in C#, Ja
 3. A Modified Binary Search
 4. Jump Search
 
+![alt-text](Screenshots/BigScreenshot.png)
 
 ## Light and Dark Mode
 
