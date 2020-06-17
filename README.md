@@ -7,7 +7,7 @@ A Sorting and Searching Algorithms Visualiser.
 
 ## Meet the Algorithms
 The app displays information about each algorithm with implementations in C#, Java and Python.
-This app supports the following alogirithms
+#####This app supports the following alogirithms
 ### Sorts:
 1. Bubble Sort
 2. Insertion Sort
