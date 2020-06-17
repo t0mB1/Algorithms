@@ -2,7 +2,7 @@
  
 A Sorting and Searching Algorithms Visualiser.
 
-![alt-text](SortingAlgorithmsGIF.gif)
+![alt-text](Screenshots/BigScreenshot.png)
 
 ## Meet the Algorithms
 This app supports the following alogirithms
@@ -17,7 +17,6 @@ This app supports the following alogirithms
 3. A Modified Binary Search
 4. Jump Search
 
-![alt-text](Screenshots/BigScreenshot.png)
 
 ## Light and Dark Mode
 
