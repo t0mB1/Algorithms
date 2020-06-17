@@ -4,10 +4,9 @@ A Sorting and Searching Algorithms Visualiser.
 
 ![alt-text](Screenshots/BigScreenshot.png)
 
-The app displays information about each algorithm with implementations in C#, Java and Python.
-
 
 ## Meet the Algorithms
+The app displays information about each algorithm with implementations in C#, Java and Python.
 This app supports the following alogirithms
 ### Sorts:
 1. Bubble Sort
