@@ -2,7 +2,7 @@
  
 A Sorting and Searching Algorithms Visualiser.
 
-![alt-text](SortingAlgsGIF.gif)
+![alt-text](SortingAlgorithmsGIF.gif)
 
 ## Light and Dark Mode
 
