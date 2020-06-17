@@ -5,6 +5,7 @@ A Sorting and Searching Algorithms Visualiser.
 ![alt-text](SortingAlgorithmsGIF.gif)
 
 ## Meet the Algorithms
+This app supports the following alogirithms
 ### Searches:
 1. Linear Search
 2. Binary Search
