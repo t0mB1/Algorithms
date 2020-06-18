@@ -1,6 +1,6 @@
 # Algorithms
  
-A Sorting and Searching Algorithms Visualiser.
+## Sorting and Searching Algorithms Visualiser.
 
 ![alt-text-1](iPhoneGIF.gif) ![alt-text-2](iPadGIF.gif) 
 
@@ -35,7 +35,8 @@ The app displays information about each algorithm with simple implementations in
 | iPad Air (3rd Gen)        |
 | iPad (7th Gen)            |
 
-Graphing API used: [](https://devblogs.microsoft.com/xamarin/microcharts-elegant-cross-platform-charts-for-any-app/ "Microcharts")
+### Graphing API used: ["Microcharts"](https://devblogs.microsoft.com/xamarin/microcharts-elegant-cross-platform-charts-for-any-app/)
+## More Screemshots:
 
 ![alt-text](Screenshots/BigScreenshot.png)
 
