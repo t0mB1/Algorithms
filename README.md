@@ -21,7 +21,7 @@ The app displays information about each algorithm with simple implementations in
 4. Jump Search
 
 ## About
-### Graphing API used: ["Microcharts"](https://devblogs.microsoft.com/xamarin/microcharts-elegant-cross-platform-charts-for-any-app/)
+#### Graphing API: ["Microcharts"](https://devblogs.microsoft.com/xamarin/microcharts-elegant-cross-platform-charts-for-any-app/)
 #### The app was developed using Xamarin.Forms and supports all iOS 13.5 devices:
 
 | Device                    |
