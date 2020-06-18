@@ -2,7 +2,7 @@
  
 A Sorting and Searching Algorithms Visualiser.
 
-![alt-text](SortingAlgsGIF.gif)
+![alt-text](AppGIF.gif)
 
 ## Meet the Algorithms
 The app displays information about each algorithm with simple implementations in C#, Java and Python.
