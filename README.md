@@ -3,8 +3,6 @@
 
 ## Sorting and Searching Algorithms Visualiser.
 
-------------------------------
-
 #### Sorting on iPhone 11: 
 ![alt-text-1](GIFs/SortingGIF2.gif) ![alt-text-2](GIFs/iPhoneGIF.gif) 
 #### Searching on iPad Pro (12.9-inch)
