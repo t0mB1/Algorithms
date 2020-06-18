@@ -6,19 +6,20 @@
 
 ## Meet the Algorithms
 The app displays information about each algorithm with simple implementations in C#, Java and Python.
-#### This app supports the following alogirithms
-### Sorts:
+
+#### Sorts:
 1. Bubble Sort
 2. Insertion Sort
 3. Heap Sort
 4. Quick Sort
-### Searches:
+#### Searches:
 1. Linear Search
 2. Binary Search
 3. A Modified Binary Search
 4. Jump Search
 
 ## About
+### Graphing API used: ["Microcharts"](https://devblogs.microsoft.com/xamarin/microcharts-elegant-cross-platform-charts-for-any-app/)
 #### The app was developed using Xamarin.Forms and supports all iOS 13.5 devices:
 
 | Device                    |
@@ -35,8 +36,8 @@ The app displays information about each algorithm with simple implementations in
 | iPad Air (3rd Gen)        |
 | iPad (7th Gen)            |
 
-### Graphing API used: ["Microcharts"](https://devblogs.microsoft.com/xamarin/microcharts-elegant-cross-platform-charts-for-any-app/)
-## More Screemshots:
+
+## More Screenshots:
 
 ![alt-text](Screenshots/BigScreenshot.png)
 
