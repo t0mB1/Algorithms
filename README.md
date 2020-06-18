@@ -18,6 +18,25 @@ The app displays information about each algorithm with simple implementations in
 3. A Modified Binary Search
 4. Jump Search
 
+## About
+#### The app was developed using Xamarin.Forms and supports all iOS 13.5 devices:
+
+| Device                    |
+| ------------------------- |
+| iPhone 11                 |
+| iPhone 11 Pro             |
+| iPhone 11 Pro Max         |
+| iPhone 8                  |
+| iPhone 8 Plus             |
+| iPhone SE (2nd Gen)       |
+| iPad Pro (9.7")           |
+| iPad Pro (12.9")(4th Gen) |
+| iPad Pro (11")(2nd Gen)   |
+| iPad Air (3rd Gen)        |
+| iPad (7th Gen)            |
+
+Graphing API used: [](https://devblogs.microsoft.com/xamarin/microcharts-elegant-cross-platform-charts-for-any-app/ "Microcharts")
+
 ![alt-text](Screenshots/BigScreenshot.png)
 
 ## Light and Dark Mode
