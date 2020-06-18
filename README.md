@@ -56,3 +56,6 @@ The app displays information about each algorithm with simple implementations in
 ## Screenshots of iPhone 11 in Light Mode
 
 ![alt-text](Screenshots/LightModeScreenshot.png)
+
+------------------------------
+
