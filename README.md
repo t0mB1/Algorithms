@@ -1,13 +1,20 @@
 # Algorithms
- 
+
+
 ## Sorting and Searching Algorithms Visualiser.
+
+------------------------------
+
 #### Sorting on iPhone 11: 
 ![alt-text-1](GIFs/SortingGIF2.gif) ![alt-text-2](GIFs/iPhoneGIF.gif) 
 #### Searching on iPad Pro (12.9-inch)
 ![alt-text](GIFs/iPadGIF.gif) 
 
+------------------------------
+
 ## Meet the Algorithms
 The app displays information about each algorithm with simple implementations in C#, Java and Python.
+
 
 #### Sorts:
 1. Bubble Sort
@@ -20,8 +27,12 @@ The app displays information about each algorithm with simple implementations in
 3. A Modified Binary Search
 4. Jump Search
 
+------------------------------
+
 ## About
 #### Graphing API: ["Microcharts"](https://devblogs.microsoft.com/xamarin/microcharts-elegant-cross-platform-charts-for-any-app/)
+
+
 #### The app was developed using Xamarin.Forms and supports all iOS 13.5 devices:
 
 | Device                    |
@@ -36,9 +47,13 @@ The app displays information about each algorithm with simple implementations in
 | iPad (7th Gen)            |
 
 
+------------------------------
+
 ## Screenshots of iPhone 11 in Dark Mode
 
 ![alt-text](Screenshots/DarkModeScreenshot.png)
+
+------------------------------
 
 ## Screenshots of iPhone 11 in Light Mode
 
