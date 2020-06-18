@@ -2,9 +2,9 @@
  
 ## Sorting and Searching Algorithms Visualiser.
 #### Sorting on iPhone 11: 
-![alt-text-1](SortingGIF2.gif) ![alt-text-2](iPhoneGIF.gif) 
+![alt-text-1](GIFs/SortingGIF2.gif) ![alt-text-2](GIFs/iPhoneGIF.gif) 
 #### Searching on iPad Pro (12.9-inch)
-![alt-text](iPadGIF.gif) 
+![alt-text](GIFs/iPadGIF.gif) 
 
 ## Meet the Algorithms
 The app displays information about each algorithm with simple implementations in C#, Java and Python.
