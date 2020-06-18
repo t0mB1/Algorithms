@@ -57,18 +57,18 @@
 /Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/bin/iPhoneSimulator/Debug/SkiaSharp.dll
 /Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/bin/iPhoneSimulator/Debug/SkiaSharp.Views.iOS.dll
 /Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/bin/iPhoneSimulator/Debug/SkiaSharp.Views.Forms.dll
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.5/ibtool/_BundleResourceWithLogicalName.items
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.5/actool/_PartialAppManifest.items
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.5/actool/_BundleResourceWithLogicalName.items
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.5/coremlc/_PartialAppManifest.items
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.5/coremlc/_BundleResourceWithLogicalName.items
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.5/optimized/tab_about.png
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.5/optimized/tab_about@2x.png
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.5/optimized/tab_about@3x.png
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.5/optimized/tab_feed.png
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.5/optimized/tab_feed@2x.png
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.5/optimized/tab_feed@3x.png
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.5/optimized/xamarin_logo.png
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.5/optimized/xamarin_logo@2x.png
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.5/optimized/xamarin_logo@3x.png
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.5/optimized/
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad pro (12.9-inch) (4th generation)-13.5/ibtool/_BundleResourceWithLogicalName.items
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad pro (12.9-inch) (4th generation)-13.5/actool/_PartialAppManifest.items
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad pro (12.9-inch) (4th generation)-13.5/actool/_BundleResourceWithLogicalName.items
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad pro (12.9-inch) (4th generation)-13.5/coremlc/_PartialAppManifest.items
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad pro (12.9-inch) (4th generation)-13.5/coremlc/_BundleResourceWithLogicalName.items
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad pro (12.9-inch) (4th generation)-13.5/optimized/tab_about.png
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad pro (12.9-inch) (4th generation)-13.5/optimized/tab_about@2x.png
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad pro (12.9-inch) (4th generation)-13.5/optimized/tab_about@3x.png
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad pro (12.9-inch) (4th generation)-13.5/optimized/tab_feed.png
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad pro (12.9-inch) (4th generation)-13.5/optimized/tab_feed@2x.png
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad pro (12.9-inch) (4th generation)-13.5/optimized/tab_feed@3x.png
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad pro (12.9-inch) (4th generation)-13.5/optimized/xamarin_logo.png
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad pro (12.9-inch) (4th generation)-13.5/optimized/xamarin_logo@2x.png
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad pro (12.9-inch) (4th generation)-13.5/optimized/xamarin_logo@3x.png
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad pro (12.9-inch) (4th generation)-13.5/optimized/

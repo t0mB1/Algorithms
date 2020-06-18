@@ -6,137 +6,158 @@
              Title="Searches"
              BackgroundColor="{DynamicResource headerbackgroundColor}">
 
+
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="ResetToolBarItem"
                      Text="Reset"
                      Clicked="ResetButtonIsClicked" />
     </ContentPage.ToolbarItems>
 
-    <ScrollView BackgroundColor="{DynamicResource backgroundColor}">
-        <StackLayout>
-            <Grid x:Name="grid"
-                  Margin="10, 20, 10, 10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+
+    <StackLayout x:Name="stackLayout"
+                    BackgroundColor="{DynamicResource backgroundColor}">
+
+        <Grid x:Name="grid"
+                Margin="10, 20, 10, 10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
             
-                <Button x:Name="bestCaseBtn"
-                        Text="    Best Case    "
-                        Grid.Column="0"
-                        Grid.Row="0"
+            <Button x:Name="bestCaseBtn"
+                    Text="    Best Case    "
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    HorizontalOptions="Center"
+                    Clicked="BestCaseBtnIsClicked"
+                    BorderWidth="1"
+                    BorderColor="{DynamicResource buttonbordercolor}"
+                    TextColor="{DynamicResource unselectedCaseBtnTextColor}"
+                    HeightRequest="{OnIdiom 30, Phone=30, Tablet=50}"
+                    WidthRequest="{OnIdiom 110, Phone=110, Tablet=140}"/>
+
+            <Button x:Name="randomCaseBtn"
+                    Text="    Random    "
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    HorizontalOptions="Center"
+                    Clicked="RandomCaseBtnIsClicked"
+                    BorderWidth="1"
+                    BorderColor="{DynamicResource buttonbordercolor}"
+                    TextColor="{DynamicResource unselectedCaseBtnTextColor}"
+                    HeightRequest="{OnIdiom 30, Phone=30, Tablet=50}"
+                    WidthRequest="{OnIdiom 90, Phone=90, Tablet=120}"/>
+
+            <Button x:Name="worstCaseBtn"
+                    Text="    Worst Case    "
+                    Grid.Column="2"
+                    Grid.Row="0"
+                    HorizontalOptions="Center"
+                    Clicked="WorstCaseBtnIsClicked"
+                    BorderWidth="1"
+                    BorderColor="{DynamicResource buttonbordercolor}"
+                    TextColor="{DynamicResource unselectedCaseBtnTextColor}"
+                    HeightRequest="{OnIdiom 30, Phone=30, Tablet=50}"
+                    WidthRequest="{OnIdiom 110, Phone=110, Tablet=140}"/>
+        </Grid>
+
+        <ScrollView x:Name="GraphScrollView"
+                BackgroundColor="{DynamicResource backgroundColor}"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                Margin="{OnIdiom '5, 0, 5, 5', Phone='5, 0, 5, 5', Tablet='5, 0, 5, 10'}">
+
+            <StackLayout VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand">
+
+                <forms:ChartView x:Name="SearchGraph"
+                                    VerticalOptions="FillAndExpand"
+                                    HorizontalOptions="FillAndExpand"/>
+
+            </StackLayout>
+        </ScrollView>
+
+        <ScrollView x:Name="PickersScrollView"
+                    BackgroundColor="{DynamicResource backgroundColor}"
+                    Margin="{OnIdiom '0, 0, 0, 10', Phone='0, 0, 0, 10', Tablet='0, 0, 0, 20'}">
+
+            <StackLayout HorizontalOptions="Fill"
+                         VerticalOptions="Fill">
+
+                <Picker x:Name="algorithmPicker"
+                        Title="Choose an Algorithm"
+                        SelectedIndexChanged="AlgorithmPicker_SelectedIndexChanged"
                         HorizontalOptions="Center"
-                        Clicked="BestCaseBtnIsClicked"
-                        BorderWidth="1"
-                        BorderColor="{DynamicResource buttonbordercolor}"
-                        TextColor="{DynamicResource unselectedCaseBtnTextColor}"
-                        HeightRequest="{OnIdiom 30, Phone=30, Tablet=50}"
-                        WidthRequest="{OnIdiom 110, Phone=110, Tablet=140}"/>
+                        Margin="{OnIdiom '5, 5, 5, 5', Phone='5, 0, 5, 5', Tablet='10, 0, 10, 10'}">
+                    <Picker.Items>
+                        <x:String x:FieldModifier="Center"/>
+                        <x:String>Jump Search</x:String>
+                        <x:String>Linear Search</x:String>
+                        <x:String>Classic Binary Search</x:String>
+                        <x:String>Modified Binary Search</x:String>
+                    </Picker.Items>
+                </Picker>
 
-                <Button x:Name="randomCaseBtn"
-                        Text="    Random    "
-                        Grid.Column="1"
-                        Grid.Row="0"
+                <Picker x:Name="searchItemPicker"
+                        Title="Search Item"
+                        SelectedIndexChanged="SearchItemPicker_SelectedIndexChanged"
                         HorizontalOptions="Center"
-                        Clicked="RandomCaseBtnIsClicked"
-                        BorderWidth="1"
-                        BorderColor="{DynamicResource buttonbordercolor}"
-                        TextColor="{DynamicResource unselectedCaseBtnTextColor}"
-                        HeightRequest="{OnIdiom 30, Phone=30, Tablet=50}"
-                        WidthRequest="{OnIdiom 90, Phone=90, Tablet=120}"/>
+                        Margin="{OnIdiom '0, 0, 0, 5', Phone='0, 0, 0, 5', Tablet='0, 0, 0, 10'}">
+                    <Picker.Items>
+                        <x:String x:FieldModifier="Center"/>
+                        <x:String>1</x:String>
+                        <x:String>2</x:String>
+                        <x:String>3</x:String>
+                        <x:String>4</x:String>
+                        <x:String>5</x:String>
+                        <x:String>6</x:String>
+                        <x:String>7</x:String>
+                        <x:String>8</x:String>
+                        <x:String>9</x:String>
+                        <x:String>10</x:String>
+                        <x:String>11</x:String>
+                        <x:String>12</x:String>
+                        <x:String>13</x:String>
+                        <x:String>14</x:String>
+                        <x:String>15</x:String>
+                        <x:String>16</x:String>
+                        <x:String>17</x:String>
+                        <x:String>18</x:String>
+                        <x:String>19</x:String>
+                        <x:String>20</x:String>
+                    </Picker.Items>
+                </Picker>
 
-                <Button x:Name="worstCaseBtn"
-                        Text="    Worst Case    "
-                        Grid.Column="2"
-                        Grid.Row="0"
+                <Picker x:Name="SpeedPicker"
+                        Title="Speed"
+                        SelectedIndexChanged="SpeedPicker_SelectedIndexChanged"
                         HorizontalOptions="Center"
-                        Clicked="WorstCaseBtnIsClicked"
-                        BorderWidth="1"
-                        BorderColor="{DynamicResource buttonbordercolor}"
-                        TextColor="{DynamicResource unselectedCaseBtnTextColor}"
-                        HeightRequest="{OnIdiom 30, Phone=30, Tablet=50}"
-                        WidthRequest="{OnIdiom 110, Phone=110, Tablet=140}"/>
-            </Grid>
+                        Margin="{OnIdiom '0, 0, 0, 5', Phone='0, 0, 0, 5', Tablet='0, 0, 0, 10'}">
+                    <Picker.Items>
+                        <x:String x:FieldModifier="Center"/>
+                        <x:String>Super-Duper Slow</x:String>
+                        <x:String>Super Slow</x:String>
+                        <x:String>Slow</x:String>
+                        <x:String>Medium</x:String>
+                        <x:String>Fast Ish</x:String>
+                        <x:String>Fast</x:String>
+                        <x:String>Super Fast</x:String>
+                        <x:String>Super-Duper Fast</x:String>
+                        <x:String>If You Blink, You'll Miss It</x:String>
+                    </Picker.Items>
+                </Picker>
 
-            <forms:ChartView x:Name="SearchGraph"
-                         Margin="{OnIdiom '5, 0, 5, 0', Phone='5, 0, 5, 0', Tablet='10, 0, 10, 0'}"
-                         HeightRequest="{OnIdiom 400, Phone=400, Tablet=600}"
-                         WidthRequest="800"
-                         BackgroundColor="Transparent"/>
+                <Button x:Name="SearchBtn"
+                        Text="  Search  "
+                        HorizontalOptions="Center"
+                        IsVisible="false"
+                        IsEnabled="False"
+                        Clicked="SearchBtnIsClicked"
+                        Margin="{OnIdiom '0, 0, 0, 5', Phone='0, 0, 0, 5', Tablet='0, 0, 0, 10'}"/>
 
-            <Picker x:Name="algorithmPicker"
-                    Title="Choose an Algorithm"
-                    SelectedIndexChanged="AlgorithmPicker_SelectedIndexChanged"
-                    HorizontalOptions="Center"
-                    Margin="{OnIdiom '5, 5, 5, 5', Phone='5, 0, 5, 5', Tablet='10, 0, 10, 10'}">
-                <Picker.Items>
-                    <x:String x:FieldModifier="Center"/>
-                    <x:String>Jump Search</x:String>
-                    <x:String>Linear Search</x:String>
-                    <x:String>Classic Binary Search</x:String>
-                    <x:String>Modified Binary Search</x:String>
-                </Picker.Items>
-            </Picker>
-
-            <Picker x:Name="searchItemPicker"
-                    Title="Search Item"
-                    SelectedIndexChanged="SearchItemPicker_SelectedIndexChanged"
-                    HorizontalOptions="Center"
-                    Margin="{OnIdiom '5, 0, 5, 5', Phone='5, 0, 5, 5', Tablet='10, 0, 10, 10'}">
-                <Picker.Items>
-                    <x:String x:FieldModifier="Center"/>
-                    <x:String>1</x:String>
-                    <x:String>2</x:String>
-                    <x:String>3</x:String>
-                    <x:String>4</x:String>
-                    <x:String>5</x:String>
-                    <x:String>6</x:String>
-                    <x:String>7</x:String>
-                    <x:String>8</x:String>
-                    <x:String>9</x:String>
-                    <x:String>10</x:String>
-                    <x:String>11</x:String>
-                    <x:String>12</x:String>
-                    <x:String>13</x:String>
-                    <x:String>14</x:String>
-                    <x:String>15</x:String>
-                    <x:String>16</x:String>
-                    <x:String>17</x:String>
-                    <x:String>18</x:String>
-                    <x:String>19</x:String>
-                    <x:String>20</x:String>
-                </Picker.Items>
-            </Picker>
-
-            <Picker x:Name="SpeedPicker"
-                    Title="Speed"
-                    SelectedIndexChanged="SpeedPicker_SelectedIndexChanged"
-                    HorizontalOptions="Center"
-                    Margin="{OnIdiom '5, 0, 5, 5', Phone='5, 0, 5, 5', Tablet='10, 0, 10, 10'}">
-                <Picker.Items>
-                    <x:String x:FieldModifier="Center"/>
-                    <x:String>Super-Duper Slow</x:String>
-                    <x:String>Super Slow</x:String>
-                    <x:String>Slow</x:String>
-                    <x:String>Medium</x:String>
-                    <x:String>Fast Ish</x:String>
-                    <x:String>Fast</x:String>
-                    <x:String>Super Fast</x:String>
-                    <x:String>Super-Duper Fast</x:String>
-                    <x:String>If You Blink, You'll Miss It</x:String>
-                </Picker.Items>
-            </Picker>
-
-            <Button x:Name="SearchBtn"
-                    Text="  Search  "
-                    HorizontalOptions="Center"
-                    IsVisible="false"
-                    IsEnabled="False"
-                    Clicked="SearchBtnIsClicked"
-                    Margin="{OnIdiom '5, 0, 5, 5', Phone='5, 0, 5, 5', Tablet='10, 0, 10, 10'}"/>
-
-        </StackLayout>
-    </ScrollView>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
 </ContentPage>
