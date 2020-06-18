@@ -1,8 +1,10 @@
 # Algorithms
  
 ## Sorting and Searching Algorithms Visualiser.
-
-![alt-text-1](iPhoneGIF.gif) ![alt-text-2](iPadGIF.gif) 
+### Sorting on iPhone 11: 
+![alt-text](iPhoneGIF.gif) 
+### Searching on iPad Pro (12.9-inch)
+![alt-text](iPadGIF.gif) 
 
 ## Meet the Algorithms
 The app displays information about each algorithm with simple implementations in C#, Java and Python.
@@ -24,11 +26,8 @@ The app displays information about each algorithm with simple implementations in
 
 | Device                    |
 | ------------------------- |
-| iPhone 11                 |
-| iPhone 11 Pro             |
-| iPhone 11 Pro Max         |
-| iPhone 8                  |
-| iPhone 8 Plus             |
+| iPhone 8 and above        |
+| iPhone 8 Plus and above   |
 | iPhone SE (2nd Gen)       |
 | iPad Pro (9.7")           |
 | iPad Pro (12.9")(4th Gen) |
@@ -37,10 +36,10 @@ The app displays information about each algorithm with simple implementations in
 | iPad (7th Gen)            |
 
 
-## More Screenshots:
+## Screenshots of iPhone 11 in Dark Mode
 
-![alt-text](Screenshots/BigScreenshot.png)
+![alt-text](Screenshots/DarkModeScreenshot.png)
 
-## Light and Dark Mode
+## Screenshots of iPhone 11 in Light Mode
 
-![alt-text](Screenshots/LAndDMode.png)
+![alt-text](Screenshots/LightModeScreenshot.png)
