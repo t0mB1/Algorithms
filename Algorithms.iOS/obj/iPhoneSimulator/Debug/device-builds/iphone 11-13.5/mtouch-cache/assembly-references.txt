@@ -24,9 +24,9 @@
 /Users/tombrayshaw/.nuget/packages/xamarin.forms/4.4.0.991265/lib/Xamarin.iOS10/Xamarin.Forms.Platform.iOS.dll
 /Users/tombrayshaw/Projects/Algorithms/Algorithms/bin/Debug/netstandard2.0/Algorithms.dll
 /Users/tombrayshaw/.nuget/packages/xamarin.forms/4.4.0.991265/lib/Xamarin.iOS10/Xamarin.Forms.Xaml.dll
+/Users/tombrayshaw/.nuget/packages/skiasharp/1.59.1/lib/XamariniOS/SkiaSharp.dll
 /Users/tombrayshaw/.nuget/packages/microcharts/0.7.1/lib/Xamarin.iOS10/Microcharts.dll
 /Library/Frameworks/Xamarin.iOS.framework/Versions/13.18.2.1/lib/mono/Xamarin.iOS/Facades/System.Runtime.dll
-/Users/tombrayshaw/.nuget/packages/skiasharp/1.59.1/lib/XamariniOS/SkiaSharp.dll
 /Library/Frameworks/Xamarin.iOS.framework/Versions/13.18.2.1/lib/mono/Xamarin.iOS/Facades/System.Collections.dll
 /Library/Frameworks/Xamarin.iOS.framework/Versions/13.18.2.1/lib/mono/Xamarin.iOS/Facades/System.ValueTuple.dll
 /Library/Frameworks/Xamarin.iOS.framework/Versions/13.18.2.1/lib/mono/Xamarin.iOS/Facades/System.Runtime.Extensions.dll

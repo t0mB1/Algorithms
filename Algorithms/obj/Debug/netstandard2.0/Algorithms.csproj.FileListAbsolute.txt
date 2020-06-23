@@ -23,3 +23,5 @@
 /Users/tombrayshaw/Projects/Algorithms/Algorithms/obj/Debug/netstandard2.0/Styles/Global.xaml.g.cs
 /Users/tombrayshaw/Projects/Algorithms/Algorithms/obj/Debug/netstandard2.0/Styles/Sizes.xaml.g.cs
 /Users/tombrayshaw/Projects/Algorithms/Algorithms/obj/Debug/netstandard2.0/Styles/Text.xaml.g.cs
+/Users/tombrayshaw/Projects/Algorithms/Algorithms/obj/Debug/netstandard2.0/Views/SettingsPage.xaml.g.cs
+/Users/tombrayshaw/Projects/Algorithms/Algorithms/obj/Debug/netstandard2.0/Views/SelectedSettingsPage.xaml.g.cs

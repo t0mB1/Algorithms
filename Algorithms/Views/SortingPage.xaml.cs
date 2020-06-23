@@ -22,6 +22,12 @@ namespace Algorithms.Views
             ChangeToRandomCase();
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            ResetGraph();
+        }
+
         void ResetButtonIsClicked(object sender, EventArgs e)
         {
             ResetGraph();
@@ -155,7 +161,7 @@ namespace Algorithms.Views
                 {
                     // change colour back to red
                     index = CurrentEntriesOnGraph.IndexOf(entry);
-                    CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse("#FF1493");
+                    CurrentEntriesOnGraph.ToArray()[index].Color = App.GraphColour;
                 }
             }
             ToggleButtons();
