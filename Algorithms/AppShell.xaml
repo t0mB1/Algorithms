@@ -49,5 +49,13 @@
             </ShellContent>
         </ShellSection>
     </FlyoutItem>
+    <FlyoutItem x:Name="SettingsFlyoutItem"
+                Title="Settings">
+        <ShellSection Title="Settings">
+            <ShellContent>
+                <views:SettingsPage BackgroundColor="{DynamicResource flyoutBackgroundColor}"/>
+            </ShellContent>
+        </ShellSection>
+    </FlyoutItem>
 
 </Shell>
