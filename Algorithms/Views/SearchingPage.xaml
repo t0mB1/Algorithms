@@ -64,17 +64,17 @@
         </Grid>
 
         <ScrollView x:Name="GraphScrollView"
-                BackgroundColor="{DynamicResource backgroundColor}"
-                VerticalOptions="FillAndExpand"
-                HorizontalOptions="FillAndExpand"
-                Margin="{OnIdiom '5, 0, 5, 5', Phone='5, 0, 5, 5', Tablet='5, 0, 5, 10'}">
+                    BackgroundColor="{DynamicResource backgroundColor}"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="{OnIdiom '5, 0, 5, 5', Phone='5, 0, 5, 5', Tablet='5, 0, 5, 10'}">
 
             <StackLayout VerticalOptions="FillAndExpand"
                             HorizontalOptions="FillAndExpand">
 
                 <forms:ChartView x:Name="SearchGraph"
-                                    VerticalOptions="FillAndExpand"
-                                    HorizontalOptions="FillAndExpand"/>
+                                 VerticalOptions="FillAndExpand"
+                                 HorizontalOptions="FillAndExpand"/>
 
             </StackLayout>
         </ScrollView>
