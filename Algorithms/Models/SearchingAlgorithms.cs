@@ -2,6 +2,7 @@
 using Microcharts;
 using System;
 using Algorithms.Models.SearchAlgorithmOperations;
+using SkiaSharp;
 
 namespace Algorithms.Models
 {
@@ -16,7 +17,7 @@ namespace Algorithms.Models
                 // highlight Entry Blue
                 operations.Add(new LinearSearchOperation {
                     entry = entries[i],
-                    ChangeToColour = "#FFFF00",
+                    ChangeToColour = GetColourWhenSearchItemIsFalse(),
                     IsSearchItem = false
                 });
                 if (entries[i].Value == searchItem)
@@ -47,7 +48,7 @@ namespace Algorithms.Models
                 BSOperations.Add(new BinarySearchOperation() {
                                  entry = entries[midpoint],
                                  IsSearchItem = false,
-                                 ChangeToColour = "#FFFF00"
+                                 ChangeToColour = GetColourWhenSearchItemIsFalse()
                 });
                 if (entries[midpoint].Value == searchItem)
                 {
@@ -89,7 +90,7 @@ namespace Algorithms.Models
                 {
                     entry = entries[mid],
                     IsSearchItem = false,
-                    ChangeToColour = "#FFFF00"
+                    ChangeToColour = GetColourWhenSearchItemIsFalse()
                 });
                 if (searchItem == entries[mid].Value)
                 {
@@ -128,7 +129,7 @@ namespace Algorithms.Models
             {
                 entry = entries[prev],
                 IsSearchItem = false,
-                ChangeToColour = "#FFFF00"
+                ChangeToColour = GetColourWhenSearchItemIsFalse()
             });
 
             if (entries[prev].Value == searchItem)
@@ -149,7 +150,7 @@ namespace Algorithms.Models
                 {
                     entry = entries[Math.Min(step, n) - 1],
                     IsSearchItem = false,
-                    ChangeToColour = "#FFFF00"
+                    ChangeToColour = GetColourWhenSearchItemIsFalse()
                 });
 
                 prev = step;
@@ -168,7 +169,7 @@ namespace Algorithms.Models
                 {
                     entry = entries[prev],
                     IsSearchItem = false,
-                    ChangeToColour = "#FFFF00"
+                    ChangeToColour = GetColourWhenSearchItemIsFalse()
                 });
                 prev++;
                 int ting = Math.Min(step, n);
@@ -191,5 +192,23 @@ namespace Algorithms.Models
             }
             return JSOperations;
         }
+
+        private string GetColourWhenSearchItemIsFalse()
+        {
+            // blue, item is yellow
+            if (App.GraphColour == SKColor.Parse("#0000FF"))
+            {
+                return "#FFFF00";
+            }
+            // blue, item is yellow
+            if (App.GraphColour == SKColor.Parse("#0000FF"))
+            {
+                return "#0000FF";
+            }
+            // pink, item is yellow
+            return "#FFFF00";
+        }
     }
 }
+
+
