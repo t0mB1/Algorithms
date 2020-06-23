@@ -1,25 +1,16 @@
 ﻿<Properties StartupConfiguration="{51A0C8EF-8F7B-4CB9-8A9E-6964FB17D443}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Algorithms/Views/SearchingPage.xaml">
-    <Files>
-      <File FileName="Algorithms/Views/SortingPage.xaml" Line="72" Column="9" />
-      <File FileName="Algorithms/Views/SearchingPage.xaml" Line="86" Column="50" NotebookId="1" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Algorithms" expanded="True">
-            <Node name="Algorithms" expanded="True">
-              <Node name="Views" expanded="True">
-                <Node name="SearchingPage.xaml" selected="True" />
-                <Node name="SortingPage.xaml" expanded="True" />
-              </Node>
-            </Node>
+            <Node name="Algorithms" expanded="True" />
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.Algorithms.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.44956E21-33F6-432A-AE74-AE019CA6E8AB" />
+  <MonoDevelop.Ide.ItemProperties.Algorithms.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.873C6178-AF6C-4F97-B288-DFA4A476E0D1" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
