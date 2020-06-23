@@ -2,8 +2,8 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Algorithms/Models/SortingAlgorithms.cs">
     <Files>
       <File FileName="Algorithms/Views/SelectedSettingsPage.xaml" Line="6" Column="65" />
-      <File FileName="Algorithms/Views/SearchingPage.xaml.cs" Line="59" Column="10" />
-      <File FileName="Algorithms/Models/SortingAlgorithms.cs" Line="230" Column="10" />
+      <File FileName="Algorithms/Views/SearchingPage.xaml.cs" />
+      <File FileName="Algorithms/Models/SortingAlgorithms.cs" Line="5" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
