@@ -74,16 +74,59 @@ namespace Algorithms.Services
             return ShuffleList(entries.ToArray());
         }
 
+        public SKColor ConvertGraphColourToSKColor(string colour)
+        {
+            switch (colour)
+            {
+                case "Pink":
+                    return SKColor.Parse("#FF1493");
+                case "Blue":
+                    return SKColor.Parse("#0000FF");
+                case "Yellow":
+                    return SKColor.Parse("#FFFF00");
+            }
+            return SKColor.Parse("#FF1493");
+        }
+
         private Entry GenerateEntry(int value)
         {
-            return new Entry(value)
+            if(App.GraphColour == SKColor.Parse("#00000000"))
             {
-                Color = SKColor.Parse("#FF1493")
-            };
+                return new Entry(value)
+                {
+                    Color = SKColor.Parse("#FF1493")
+                };
+            }
+            else
+            {
+                return new Entry(value)
+                {
+                    Color = App.GraphColour
+                };
+            }
         }
 
         private Entry GenerateSearchItemEntry(int value)
         {
+            // blue, searchitem is pink
+            if (App.GraphColour == SKColor.Parse("#0000FF"))
+            {
+                return new Entry(value)
+                {
+                    Color = SKColor.Parse("#FF1493")
+                };
+            }
+
+            // yellow, searchitem is pink
+            else if (App.GraphColour == SKColor.Parse("#FFFF00"))
+            {
+                return new Entry(value)
+                {
+                    Color = SKColor.Parse("#FF1493")
+                };
+            }
+
+            // pink, searchitem is blue
             return new Entry(value)
             {
                 Color = SKColor.Parse("#0000FF")
@@ -109,3 +152,16 @@ namespace Algorithms.Services
         }
     }
 }
+
+/// Graph is Pink:
+///     - Search item = blue
+///     - swap item = yellow
+
+
+/// Graph is Blue:
+///     - Search item = Pink
+///     - swap item = yellow
+
+/// Graph is Yellow:
+///     - Search item = Pink
+///     - swap item = blue
