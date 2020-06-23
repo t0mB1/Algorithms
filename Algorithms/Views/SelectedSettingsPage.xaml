@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             x:Class="Algorithms.Views.SelectedSettingsPage"
+             BackgroundColor="{DynamicResource backgroundColor}">
+
+    <StackLayout BackgroundColor="{DynamicResource backgroundColor}"
+                 VerticalOptions="FillAndExpand"
+                 HorizontalOptions="FillAndExpand">
+
+        <forms:ChartView x:Name="Graph"
+                         HeightRequest="500"
+                         WidthRequest="800"
+                         Margin="10, 30, 10, 30"/>
+
+            <StackLayout HorizontalOptions="FillAndExpand"
+                         VerticalOptions="FillAndExpand">
+
+                <Picker x:Name="GraphColourPicker"
+                        Title="Choose a Colour"
+                        SelectedIndexChanged="ColourPicker_SelectedIndexChanged"
+                        HorizontalOptions="Center"
+                        Margin="{OnIdiom '5, 5, 5, 5', Phone='5, 0, 5, 5', Tablet='10, 0, 10, 10'}">
+                    <Picker.Items>
+                        <x:String x:FieldModifier="Center"/>
+                        <x:String>Pink</x:String>
+                        <x:String>Blue</x:String>
+                        <x:String>Yellow</x:String>
+                        <x:String></x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <!--
+                <Picker x:Name="TextColourPicker"
+                        Title="Choose a Colour"
+                        SelectedIndexChanged="ColourPicker_SelectedIndexChanged"
+                        HorizontalOptions="Center"
+                        Margin="{OnIdiom '5, 5, 5, 5', Phone='5, 0, 5, 5', Tablet='10, 0, 10, 10'}"
+                        IsVisible="False"
+                        IsEnabled="False">
+                    <Picker.Items>
+                        <x:String x:FieldModifier="Center"/>
+                        <x:String></x:String>
+                        <x:String></x:String>
+                        <x:String></x:String>
+                        <x:String></x:String>
+                    </Picker.Items>
+                </Picker>
+                -->
+
+            </StackLayout>
+    </StackLayout>
+</ContentPage>
