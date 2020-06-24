@@ -3,12 +3,6 @@ using Xamarin.Forms;
 
 namespace Algorithms.Views
 {
-    public enum Setting
-    {
-        GraphColour,
-        TextColour
-    }
-
     public partial class SettingsPage : ContentPage
     {
         public SettingsPage()
@@ -16,20 +10,39 @@ namespace Algorithms.Views
             InitializeComponent();
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            SetTableSectionsColours();
+        }
+
+        private void SetTableSectionsColours()
+        {
+            if(App.TextColour != null)
+            {
+                ColoursSection.TextColor = Color.FromHex(App.TextColour);
+                DeveloperSection.TextColor = Color.FromHex(App.TextColour);
+            }
+            else
+            {
+                ColoursSection.TextColor = Color.FromHex("#FF1493");
+                DeveloperSection.TextColor = Color.FromHex("#FF1493");
+            }
+        }
+
         void GraphColourTextCell_Tapped(object sender, EventArgs e)
         {
-            NavToSelectedSettingsPage(Setting.GraphColour);
+            NavToSelectedSettingsPage();
         }
 
-        void TextColourTextCell_Tapped(object sender, EventArgs e)
+        void DarkModeSwitch_OnChanged(object sender, EventArgs e)
         {
-            NavToSelectedSettingsPage(Setting.TextColour);
+            
         }
-        
 
-        private void NavToSelectedSettingsPage(Setting setting)
+        private void NavToSelectedSettingsPage()
         {
-            Navigation.PushAsync(new SelectedSettingsPage(setting));
+            Navigation.PushAsync(new SelectedSettingsPage());
         }
     }
 }
