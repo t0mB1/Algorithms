@@ -161,7 +161,7 @@ namespace Algorithms.Views
                 {
                     // change colour back to red
                     index = CurrentEntriesOnGraph.IndexOf(entry);
-                    CurrentEntriesOnGraph.ToArray()[index].Color = App.GraphColour;
+                    CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse(App.GraphColour);
                 }
             }
             ToggleButtons();
