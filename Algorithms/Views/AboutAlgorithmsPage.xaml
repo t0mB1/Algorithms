@@ -11,8 +11,7 @@
                 <TableRoot TextColor="{DynamicResource TextTernaryColor}" >
 
                     <TableSection x:Name="SortTableSection"
-                                  Title="Sort"
-                                  TextColor="#FF1493">
+                                  Title="Sort">
 
                         <TextCell x:Name="BubbleSortTextCell"
                                   Text="Bubble Sort"
@@ -37,8 +36,7 @@
                     </TableSection>
 
                     <TableSection x:Name="SearchTableSection"
-                                  Title="Search"
-                                  TextColor="#FF1493">
+                                  Title="Search">
 
                         <TextCell x:Name="JumpSearchTextCell"
                                   Text="Jump Search"
