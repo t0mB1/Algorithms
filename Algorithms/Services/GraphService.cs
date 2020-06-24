@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Security.Cryptography;
 using SkiaSharp;
+using Xamarin.Forms;
 using Entry = Microcharts.Entry;
 
 namespace Algorithms.Services
@@ -74,42 +75,41 @@ namespace Algorithms.Services
             return ShuffleList(entries.ToArray());
         }
 
-        public SKColor ConvertGraphColourToSKColor(string colour)
+        public string ConvertColourToHex(string colour)
         {
             switch (colour)
             {
                 case "Pink":
-                    return SKColor.Parse("#FF1493");
+                    return "#FF1493";
                 case "Blue":
-                    return SKColor.Parse("#0000FF");
+                    return "#0000FF";
                 case "Yellow":
-                    return SKColor.Parse("#FFFF00");
+                    return "#FFFF00";
+                case "Green":
+                    return "#00FF00";
             }
-            return SKColor.Parse("#FF1493");
+            return "#FF1493";
         }
 
         private Entry GenerateEntry(int value)
         {
-            if(App.GraphColour == SKColor.Parse("#00000000"))
+            if (App.GraphColour != null)
             {
                 return new Entry(value)
                 {
-                    Color = SKColor.Parse("#FF1493")
+                    Color = SKColor.Parse(App.GraphColour)
                 };
             }
-            else
+            return new Entry(value)
             {
-                return new Entry(value)
-                {
-                    Color = App.GraphColour
-                };
-            }
+                Color = SKColor.Parse("#FF1493")
+            };
         }
 
         private Entry GenerateSearchItemEntry(int value)
         {
             // blue, searchitem is pink
-            if (App.GraphColour == SKColor.Parse("#0000FF"))
+            if (App.GraphColour == "#0000FF")
             {
                 return new Entry(value)
                 {
@@ -118,7 +118,7 @@ namespace Algorithms.Services
             }
 
             // yellow, searchitem is pink
-            else if (App.GraphColour == SKColor.Parse("#FFFF00"))
+            else if (App.GraphColour == "#FFFF00")
             {
                 return new Entry(value)
                 {
