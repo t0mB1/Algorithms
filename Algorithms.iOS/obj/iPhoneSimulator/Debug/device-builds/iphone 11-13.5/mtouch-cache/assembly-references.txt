@@ -24,9 +24,9 @@
 /Users/tombrayshaw/.nuget/packages/xamarin.forms/4.4.0.991265/lib/Xamarin.iOS10/Xamarin.Forms.Platform.iOS.dll
 /Users/tombrayshaw/Projects/Algorithms/Algorithms/bin/Debug/netstandard2.0/Algorithms.dll
 /Users/tombrayshaw/.nuget/packages/xamarin.forms/4.4.0.991265/lib/Xamarin.iOS10/Xamarin.Forms.Xaml.dll
-/Users/tombrayshaw/.nuget/packages/skiasharp/1.59.1/lib/XamariniOS/SkiaSharp.dll
 /Users/tombrayshaw/.nuget/packages/microcharts/0.7.1/lib/Xamarin.iOS10/Microcharts.dll
 /Library/Frameworks/Xamarin.iOS.framework/Versions/13.18.2.1/lib/mono/Xamarin.iOS/Facades/System.Runtime.dll
+/Users/tombrayshaw/.nuget/packages/skiasharp/1.59.1/lib/XamariniOS/SkiaSharp.dll
 /Library/Frameworks/Xamarin.iOS.framework/Versions/13.18.2.1/lib/mono/Xamarin.iOS/Facades/System.Collections.dll
 /Library/Frameworks/Xamarin.iOS.framework/Versions/13.18.2.1/lib/mono/Xamarin.iOS/Facades/System.ValueTuple.dll
 /Library/Frameworks/Xamarin.iOS.framework/Versions/13.18.2.1/lib/mono/Xamarin.iOS/Facades/System.Runtime.Extensions.dll
@@ -34,3 +34,9 @@
 /Users/tombrayshaw/.nuget/packages/microcharts.forms/0.7.1/lib/netstandard1.4/Microcharts.Forms.dll
 /Users/tombrayshaw/.nuget/packages/skiasharp.views.forms/1.59.1.1/lib/XamariniOS/SkiaSharp.Views.Forms.dll
 /Users/tombrayshaw/.nuget/packages/skiasharp.views/1.59.1.1/lib/XamariniOS/SkiaSharp.Views.iOS.dll
+/Users/tombrayshaw/.nuget/packages/sqlite-net-pcl/1.7.335/lib/netstandard2.0/SQLite-net.dll
+/Users/tombrayshaw/.nuget/packages/sqlitepclraw.core/2.0.3/lib/netstandard2.0/SQLitePCLRaw.core.dll
+/Library/Frameworks/Xamarin.iOS.framework/Versions/13.18.2.1/lib/mono/Xamarin.iOS/Facades/System.Memory.dll
+/Users/tombrayshaw/.nuget/packages/sqlitepclraw.bundle_green/2.0.3/lib/Xamarin.iOS10/SQLitePCLRaw.batteries_v2.dll
+/Users/tombrayshaw/.nuget/packages/sqlitepclraw.bundle_green/2.0.3/lib/Xamarin.iOS10/SQLitePCLRaw.nativelibrary.dll
+/Users/tombrayshaw/.nuget/packages/sqlitepclraw.provider.dynamic_cdecl/2.0.3/lib/netstandard2.0/SQLitePCLRaw.provider.dynamic_cdecl.dll

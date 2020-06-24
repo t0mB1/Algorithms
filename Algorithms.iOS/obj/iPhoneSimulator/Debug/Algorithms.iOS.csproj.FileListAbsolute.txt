@@ -72,3 +72,9 @@
 /Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.5/optimized/xamarin_logo@2x.png
 /Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.5/optimized/xamarin_logo@3x.png
 /Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.5/optimized/
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/bin/iPhoneSimulator/Debug/SQLite-net.dll
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/bin/iPhoneSimulator/Debug/SQLitePCLRaw.batteries_v2.dll
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/bin/iPhoneSimulator/Debug/SQLitePCLRaw.nativelibrary.dll
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/bin/iPhoneSimulator/Debug/SQLitePCLRaw.core.dll
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/bin/iPhoneSimulator/Debug/SQLitePCLRaw.provider.dynamic_cdecl.dll
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/bin/iPhoneSimulator/Debug/System.Runtime.CompilerServices.Unsafe.dll

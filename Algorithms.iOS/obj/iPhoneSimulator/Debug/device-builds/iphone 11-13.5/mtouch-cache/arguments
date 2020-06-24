@@ -172,6 +172,12 @@
 	-r=/Users/tombrayshaw/.nuget/packages/skiasharp/1.59.1/lib/XamariniOS/SkiaSharp.dll \
 	-r=/Users/tombrayshaw/.nuget/packages/skiasharp.views/1.59.1.1/lib/XamariniOS/SkiaSharp.Views.iOS.dll \
 	-r=/Users/tombrayshaw/.nuget/packages/skiasharp.views.forms/1.59.1.1/lib/XamariniOS/SkiaSharp.Views.Forms.dll \
+	-r=/Users/tombrayshaw/.nuget/packages/sqlite-net-pcl/1.7.335/lib/netstandard2.0/SQLite-net.dll \
+	-r=/Users/tombrayshaw/.nuget/packages/sqlitepclraw.bundle_green/2.0.3/lib/Xamarin.iOS10/SQLitePCLRaw.batteries_v2.dll \
+	-r=/Users/tombrayshaw/.nuget/packages/sqlitepclraw.bundle_green/2.0.3/lib/Xamarin.iOS10/SQLitePCLRaw.nativelibrary.dll \
+	-r=/Users/tombrayshaw/.nuget/packages/sqlitepclraw.core/2.0.3/lib/netstandard2.0/SQLitePCLRaw.core.dll \
+	-r=/Users/tombrayshaw/.nuget/packages/sqlitepclraw.provider.dynamic_cdecl/2.0.3/lib/netstandard2.0/SQLitePCLRaw.provider.dynamic_cdecl.dll \
+	-r=/Users/tombrayshaw/.nuget/packages/system.runtime.compilerservices.unsafe/4.5.2/lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll \
 	-r=/Users/tombrayshaw/.nuget/packages/xamarin.essentials/1.3.1/lib/xamarinios10/Xamarin.Essentials.dll \
 	-r=/Users/tombrayshaw/.nuget/packages/xamarin.forms/4.4.0.991265/lib/Xamarin.iOS10/Xamarin.Forms.Core.dll \
 	-r=/Users/tombrayshaw/.nuget/packages/xamarin.forms/4.4.0.991265/lib/Xamarin.iOS10/Xamarin.Forms.Platform.dll \

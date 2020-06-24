@@ -17,10 +17,16 @@ namespace Algorithms.Views {
     public partial class SelectedAlgorithmPage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.TableSection InfoTableSection;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.ViewCell InfoViewCell;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.Label InfomationLabel;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.TableSection BigOTableSection;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.ViewCell BigOViewCell;
@@ -64,8 +70,10 @@ namespace Algorithms.Views {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private void InitializeComponent() {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(SelectedAlgorithmPage));
+            InfoTableSection = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.TableSection>(this, "InfoTableSection");
             InfoViewCell = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ViewCell>(this, "InfoViewCell");
             InfomationLabel = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "InfomationLabel");
+            BigOTableSection = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.TableSection>(this, "BigOTableSection");
             BigOViewCell = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.ViewCell>(this, "BigOViewCell");
             BestCaseLabel = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "BestCaseLabel");
             WorstCaseLabel = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.Label>(this, "WorstCaseLabel");

@@ -23,7 +23,7 @@ namespace Algorithms.Views {
         private global::Xamarin.Forms.TextCell GraphColourTextCell;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
-        private global::Xamarin.Forms.TextCell TextColourTextCell;
+        private global::Xamarin.Forms.SwitchCell DarkModeSwitch;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.TableSection DeveloperSection;
@@ -36,7 +36,7 @@ namespace Algorithms.Views {
             global::Xamarin.Forms.Xaml.Extensions.LoadFromXaml(this, typeof(SettingsPage));
             ColoursSection = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.TableSection>(this, "ColoursSection");
             GraphColourTextCell = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.TextCell>(this, "GraphColourTextCell");
-            TextColourTextCell = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.TextCell>(this, "TextColourTextCell");
+            DarkModeSwitch = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.SwitchCell>(this, "DarkModeSwitch");
             DeveloperSection = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.TableSection>(this, "DeveloperSection");
             DeveloperTextCell = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.TextCell>(this, "DeveloperTextCell");
         }
