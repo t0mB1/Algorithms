@@ -1,19 +1,21 @@
 ﻿using Algorithms.Styles;
 using Xamarin.Forms;
-using SkiaSharp;
+using Algorithms.Database;
+using System.IO;
+using System;
 
 namespace Algorithms
 {
     public partial class App : Application
     {
         public static string AppTheme { get; set; }
-        public static SKColor GraphColour { get; set; }
+        public static string GraphColour { get; set; }
+        public static string TextColour { get; set; }
 
         public App()
         {
             InitializeComponent();
             MainPage = new AppShell();
-            GraphColour = SKColor.Parse("#FF1493");
         }
 
         protected override void OnStart()
@@ -33,6 +35,25 @@ namespace Algorithms
             else if (AppTheme == "light")
             {
                 Current.Resources = new LightTheme();
+            }
+        }
+
+        static ColourSchemeDatabase database;
+
+        public static ColourSchemeDatabase Database
+        {
+            get
+            {
+                if (database == null)
+                {
+                    database = new ColourSchemeDatabase(
+                                        Path.Combine(
+                                             Environment.GetFolderPath(
+                                             Environment.SpecialFolder
+                                                        .LocalApplicationData),
+                                             "Notes.db3"));
+                }
+                return database;
             }
         }
     }
