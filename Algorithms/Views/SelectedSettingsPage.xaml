@@ -3,52 +3,66 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              x:Class="Algorithms.Views.SelectedSettingsPage"
-             BackgroundColor="{DynamicResource backgroundColor}">
+             BackgroundColor="{DynamicResource backgroundColor}"
+             Title="Colour Scheme">
 
-    <StackLayout BackgroundColor="{DynamicResource backgroundColor}"
+    <ScrollView BackgroundColor="{DynamicResource backgroundColor}">
+        <StackLayout BackgroundColor="{DynamicResource backgroundColor}"
                  VerticalOptions="FillAndExpand"
                  HorizontalOptions="FillAndExpand">
 
-        <forms:ChartView x:Name="Graph"
-                         HeightRequest="500"
-                         WidthRequest="800"
-                         Margin="10, 30, 10, 30"/>
+        <StackLayout BackgroundColor="{DynamicResource backgroundColor}"
+                     VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand">
 
-            <StackLayout HorizontalOptions="FillAndExpand"
-                         VerticalOptions="FillAndExpand">
+             <forms:ChartView x:Name="graph"
+                              HeightRequest="300"
+                              WidthRequest="800"
+                              Margin="10, 30, 10, 30"/>
 
-                <Picker x:Name="GraphColourPicker"
-                        Title="Choose a Colour"
-                        SelectedIndexChanged="ColourPicker_SelectedIndexChanged"
-                        HorizontalOptions="Center"
-                        Margin="{OnIdiom '5, 5, 5, 5', Phone='5, 0, 5, 5', Tablet='10, 0, 10, 10'}">
-                    <Picker.Items>
-                        <x:String x:FieldModifier="Center"/>
-                        <x:String>Pink</x:String>
-                        <x:String>Blue</x:String>
-                        <x:String>Yellow</x:String>
-                        <x:String></x:String>
-                    </Picker.Items>
-                </Picker>
+            <Picker x:Name="GraphColourPicker"
+                    Title="Choose a Colour"
+                    SelectedIndexChanged="GraphColourPicker_SelectedIndexChanged"
+                    HorizontalOptions="Center"
+                    Margin="{OnIdiom '5, 5, 5, 5', Phone='5, 0, 5, 5', Tablet='10, 0, 10, 10'}">
+                <Picker.Items>
+                    <x:String x:FieldModifier="Center"/>
+                    <x:String>Pink</x:String>
+                    <x:String>Blue</x:String>
+                    <x:String>Yellow</x:String>
+                    <x:String></x:String>
+                </Picker.Items>
+            </Picker>
 
-                <!--
-                <Picker x:Name="TextColourPicker"
-                        Title="Choose a Colour"
-                        SelectedIndexChanged="ColourPicker_SelectedIndexChanged"
-                        HorizontalOptions="Center"
-                        Margin="{OnIdiom '5, 5, 5, 5', Phone='5, 0, 5, 5', Tablet='10, 0, 10, 10'}"
-                        IsVisible="False"
-                        IsEnabled="False">
-                    <Picker.Items>
-                        <x:String x:FieldModifier="Center"/>
-                        <x:String></x:String>
-                        <x:String></x:String>
-                        <x:String></x:String>
-                        <x:String></x:String>
-                    </Picker.Items>
-                </Picker>
-                -->
+        </StackLayout>
 
-            </StackLayout>
+        <StackLayout HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
+
+            <Label x:Name="TextLbl"
+                    Text="Text"
+                    FontSize="Title"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Margin="{OnIdiom '10, 20, 10, 20', Phone='10, 20, 10, 20', Tablet='10, 40, 10, 40'}"/>
+
+                
+            <Picker x:Name="TextColourPicker"
+                    Title="Choose a Colour"
+                    SelectedIndexChanged="TextColourPicker_SelectedIndexChanged"
+                    HorizontalOptions="Center"
+                    Margin="{OnIdiom '5, 5, 5, 5', Phone='5, 0, 5, 5', Tablet='10, 0, 10, 10'}">
+                <Picker.Items>
+                    <x:String x:FieldModifier="Center"/>
+                    <x:String>Pink</x:String>
+                    <x:String>Blue</x:String>
+                    <x:String>Yellow</x:String>
+                    <x:String>Green</x:String>
+                </Picker.Items>
+            </Picker>
+                
+        </StackLayout>
     </StackLayout>
+    </ScrollView>
+    
 </ContentPage>

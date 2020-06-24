@@ -5,15 +5,15 @@ using Xamarin.Forms;
 using Algorithms.Services;
 using Microcharts;
 using SkiaSharp;
+using Algorithms.Database;
 
 namespace Algorithms.Views
 {
     public partial class SelectedSettingsPage : ContentPage
     {
-        public SelectedSettingsPage(Setting setting)
+        public SelectedSettingsPage()
         {
             InitializeComponent();
-            ViewSetting = setting;
         }
 
         protected override void OnAppearing()
@@ -22,66 +22,87 @@ namespace Algorithms.Views
             DisplayView();
         }
 
+
+
         private void DisplayView()
         {
-            switch (ViewSetting)
-            {
-                case Setting.GraphColour:
-                    Title = "Graph Colour";
-                    GraphColourPicker.SelectedItem = App.GraphColour;
-                    ChangeGraphPickerIndex();
-                    CurrentEntriesOnGraph = service.GetRandomEntries(1, 20);
-                    DisplayGraph(CurrentEntriesOnGraph);
-                    break;
-            }
+            TextLbl.TextColor = Color.FromHex(App.TextColour);
+            CurrentEntriesOnGraph = service.GetRandomEntries(1, 20);
+            DisplayGraph(CurrentEntriesOnGraph);
         }
 
-        void ColourPicker_SelectedIndexChanged(object sender, EventArgs e)
+        void GraphColourPicker_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(GraphColourPicker.SelectedIndex > 0)
             {
-                SKColor colour = service.ConvertGraphColourToSKColor(GraphColourPicker.SelectedItem.ToString());
-                if (colour != App.GraphColour)
+                string colour = service.ConvertColourToHex(GraphColourPicker
+                                        .SelectedItem
+                                        .ToString());
+
+                if (App.GraphColour != colour)
                 {
                     App.GraphColour = colour;
                     UpdateColoursOnGraph();
                     DisplayGraph(CurrentEntriesOnGraph);
+                    UpdateDbEntity();
                 }
+                DisplayAlertForRestart();
             }
         }
 
-        private void ChangeGraphPickerIndex()
+        private void DisplayAlertForRestart()
         {
-            if (App.GraphColour == SKColor.Parse("#FF1493"))
+            DisplayAlert("Alert", "Restart the App to see changes", "Ok");
+        }
+
+        void TextColourPicker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (TextColourPicker.SelectedIndex > 0)
             {
-                GraphColourPicker.SelectedIndex = 1;
+                // get hex colour
+                string colour = service.ConvertColourToHex(TextColourPicker
+                                      .SelectedItem
+                                      .ToString());
+                // update App text colour property
+                if(App.TextColour != colour)
+                {
+                    App.TextColour = colour;
+                    TextLbl.TextColor = Color.FromHex(App.TextColour);
+                    UpdateDbEntity();
+                }
+                DisplayAlertForRestart();
             }
-            else if (App.GraphColour == SKColor.Parse("#FF1493"))
-            {
-                GraphColourPicker.SelectedIndex = 2;
-            }
-            else if (App.GraphColour == SKColor.Parse("#FF1493"))
-            {
-                GraphColourPicker.SelectedIndex = 3;
-            }
+        }
+
+        private void UpdateDbEntity()
+        {
+            ColourSchemeEntity colourScheme = App.Database.GetColourSchemeDb();
+            // map properties
+            colourScheme.GraphColourHex = App.GraphColour;
+            colourScheme.TextColourHex = App.TextColour;
+            // update
+            App.Database.UpdateColourScheme(colourScheme);
         }
 
         private void UpdateColoursOnGraph()
         {
             foreach (Entry entry in CurrentEntriesOnGraph)
             {
-                entry.Color = App.GraphColour;
+                if(graph.IsEnabled == true &&
+                   graph.IsVisible == true)
+                {
+                    entry.Color = SKColor.Parse(App.GraphColour);
+                }
             }
         }
 
         private void DisplayGraph(IEnumerable<Entry> entries)
         {
-            Graph.Chart = new BarChart { Entries = entries,
+            graph.Chart = new BarChart { Entries = entries,
                                          BackgroundColor = SKColors.Transparent };
         }
 
         private readonly GraphService service = new GraphService();
         private IEnumerable<Entry> CurrentEntriesOnGraph = new Entry[20];
-        private Setting ViewSetting;
     }
 }
