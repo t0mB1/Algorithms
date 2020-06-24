@@ -11,12 +11,11 @@ namespace Algorithms.Views
             InitializeComponent();
         }
 
-        private void NavToAlgPage(AlgorithmNameEnumeration Algorithm)
+        protected override void OnAppearing()
         {
-            Navigation.PushAsync(new SelectedAlgorithmPage(Algorithm));
+            base.OnAppearing();
+            SetTableSectionTextColours();
         }
-
-
 
         //                           *** Sort ***
 
@@ -41,7 +40,6 @@ namespace Algorithms.Views
         }
 
 
-
         //                              *** Search ***
 
         void JumpSearchTextCell_Tapped(object sender, EventArgs e)
@@ -62,6 +60,26 @@ namespace Algorithms.Views
         void ModBinarySearchTextCell_Tapped(object sender, EventArgs e)
         {
             NavToAlgPage(AlgorithmNameEnumeration.ModBinarySearch);
+        }
+
+
+        private void NavToAlgPage(AlgorithmNameEnumeration Algorithm)
+        {
+            Navigation.PushAsync(new SelectedAlgorithmPage(Algorithm));
+        }
+
+        private void SetTableSectionTextColours()
+        {
+            if (App.TextColour != null)
+            {
+                SortTableSection.TextColor = Color.FromHex(App.TextColour);
+                SearchTableSection.TextColor = Color.FromHex(App.TextColour);
+            }
+            else
+            {
+                SortTableSection.TextColor = Color.FromHex("#FF1493");
+                SearchTableSection.TextColor = Color.FromHex("#FF1493");
+            }
         }
     }
 }
