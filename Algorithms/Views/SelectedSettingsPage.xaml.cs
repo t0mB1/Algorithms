@@ -52,7 +52,7 @@ namespace Algorithms.Views
 
         private void DisplayAlertForRestart()
         {
-            DisplayAlert("Alert", "Restart the App to see changes", "Ok");
+            DisplayAlert("Alert", "You many need to restart the App to see changes", "Ok");
         }
 
         void TextColourPicker_SelectedIndexChanged(object sender, EventArgs e)
