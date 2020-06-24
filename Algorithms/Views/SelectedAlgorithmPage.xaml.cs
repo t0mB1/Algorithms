@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Algorithms.Models;
 using Xamarin.Forms;
 using System.Linq;
@@ -15,6 +14,34 @@ namespace Algorithms.Views
         {
             InitializeComponent();
             SetAllInfo(alg);
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            SetTableSectionColours();
+        }
+
+        private void SetTableSectionColours()
+        {
+            if (App.TextColour != null)
+            {
+                Color colour = Color.FromHex(App.TextColour);
+                // set section colours
+                InfoTableSection.TextColor = colour;
+                BigOTableSection.TextColor = colour;
+                ImpSection1.TextColor = colour;
+                ImpSection2.TextColor = colour;
+                ImpSection3.TextColor = colour;
+            }
+            else
+            {
+                // set section colours
+                InfoTableSection.TextColor = Color.FromHex("#FF1493");
+                BigOTableSection.TextColor = Color.FromHex("#FF1493");
+                ImpSection1.TextColor = Color.FromHex("#FF1493");
+                ImpSection2.TextColor = Color.FromHex("#FF1493");
+                ImpSection3.TextColor = Color.FromHex("#FF1493");
+            }
         }
 
         private void SetAllInfo(AlgorithmNameEnumeration alg)
