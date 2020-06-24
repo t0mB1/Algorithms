@@ -173,7 +173,7 @@ namespace Algorithms.Views
                     DisplayGraph(CurrentEntriesOnGraph);
                     await Task.Delay(speed);
                     // change back to original colour
-                    CurrentEntriesOnGraph.ToArray()[index].Color = App.GraphColour;
+                    CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse(App.GraphColour);
                 }
                 else
                 {
