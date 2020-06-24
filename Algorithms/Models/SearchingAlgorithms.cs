@@ -196,12 +196,12 @@ namespace Algorithms.Models
         private string GetColourWhenSearchItemIsFalse()
         {
             // blue, item is yellow
-            if (App.GraphColour == SKColor.Parse("#0000FF"))
+            if (App.GraphColour == "#0000FF")
             {
                 return "#FFFF00";
             }
             // blue, item is yellow
-            if (App.GraphColour == SKColor.Parse("#0000FF"))
+            if (App.GraphColour == "#0000FF")
             {
                 return "#0000FF";
             }
