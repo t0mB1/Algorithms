@@ -13,12 +13,14 @@
                                   Title="Colour Scheme">
 
                         <TextCell x:Name="GraphColourTextCell"
-                                  Text="Graph Colour"
+                                  Text="Custom Colour Schemes"
                                   Tapped="GraphColourTextCell_Tapped"
                                   TextColor="{DynamicResource TextSecondaryColor}"/>
 
                         <SwitchCell x:Name="DarkModeSwitch"
-                                    Text="Dark Mode" OnChanged="DarkModeSwitch_OnChanged"/>
+                                    Text="Dark Mode"
+                                    OnChanged="DarkModeSwitch_OnChanged"
+                                    On="True"/>
 
                     </TableSection>
 
