@@ -9,7 +9,8 @@
                HorizontalOptions="StartAndExpand"
                BackgroundColor="{DynamicResource tablebackgroundColor}">
         <TableRoot TextColor="{DynamicResource TextTernaryColor}">
-            <TableSection Title="Information"
+            <TableSection x:Name="InfoTableSection"
+                          Title="Information"
                           AbsoluteLayout.LayoutBounds="10, 10, 10, 10"
                           TextColor="#FF1493">
                 <ViewCell x:Name="InfoViewCell">
@@ -21,7 +22,8 @@
                     </StackLayout>
                 </ViewCell>
             </TableSection>
-            <TableSection Title="Big(O)"
+            <TableSection x:Name="BigOTableSection"
+                          Title="Big(O)"
                           TextColor="#FF1493">
                 <ViewCell x:Name="BigOViewCell">
                     <StackLayout Margin="20, 10, 20, 10">
