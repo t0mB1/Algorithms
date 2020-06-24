@@ -1,11 +1,9 @@
 ﻿<Properties StartupConfiguration="{51A0C8EF-8F7B-4CB9-8A9E-6964FB17D443}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="Algorithms/Views/SelectedAlgorithmPage.xaml.cs">
     <Files>
-      <File FileName="Algorithms/Views/SelectedSettingsPage.xaml" Line="36" Column="1" />
       <File FileName="Algorithms/Views/SelectedSettingsPage.xaml.cs" Line="31" Column="49" />
-      <File FileName="Algorithms/AppShell.xaml.cs" Line="17" Column="1" />
-      <File FileName="Algorithms/Views/SettingsPage.xaml.cs" Line="19" Column="47" />
-      <File FileName="Algorithms/Views/SelectedAlgorithmPage.xaml.cs" Line="26" Column="1" />
+      <File FileName="Algorithms/AppShell.xaml.cs" Line="35" Column="1" />
+      <File FileName="Algorithms/Views/SelectedAlgorithmPage.xaml.cs" Line="16" Column="29" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,15 +12,6 @@
             <Node name="Algorithms" expanded="True">
               <Node name="Services" expanded="True" />
               <Node name="Styles" expanded="True" />
-              <Node name="Views" expanded="True">
-                <Node name="AboutAlgorithmsPage.xaml" expanded="True" />
-                <Node name="SelectedAlgorithmPage.xaml" expanded="True">
-                  <Node name="SelectedAlgorithmPage.xaml.cs" selected="True" />
-                </Node>
-                <Node name="SelectedSettingsPage.xaml" expanded="True" />
-                <Node name="SettingsPage.xaml" expanded="True" />
-              </Node>
-              <Node name="AppShell.xaml" expanded="True" />
             </Node>
           </Node>
         </State>
