@@ -47,13 +47,17 @@ The app displays information about each algorithm with simple implementations in
 
 ------------------------------
 
-## Screenshots of iPhone 11 in Dark Mode
+## Colour Themes
+
+#### This app now supports customizable colour schemes thoughout the app as well as Dark and Light modes.
+
+![alt-text-1](GIFs/ColourSchemesGIF.gif)  ![alt-text-2](GIFs/ColourSchemesGIF2.gif)
+
+### Screenshots of iPhone 11 in Dark Mode
 
 ![alt-text](Screenshots/DarkModeScreenshot.png)
 
-------------------------------
-
-## Screenshots of iPhone 11 in Light Mode
+### Screenshots of iPhone 11 in Light Mode
 
 ![alt-text](Screenshots/LightModeScreenshot.png)
 
