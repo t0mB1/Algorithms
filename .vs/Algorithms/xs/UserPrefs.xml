@@ -1,13 +1,22 @@
 ﻿<Properties StartupConfiguration="{51A0C8EF-8F7B-4CB9-8A9E-6964FB17D443}|Default">
+<<<<<<< Updated upstream
   <MonoDevelop.Ide.Workbench ActiveDocument="Algorithms/Services/GraphService.cs">
     <Files>
       <File FileName="Algorithms/Services/GraphService.cs" Line="19" Column="61" />
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="Algorithms/Views/SelectedAlgorithmPage.xaml.cs">
+    <Files>
+      <File FileName="Algorithms/Views/SelectedSettingsPage.xaml.cs" Line="31" Column="49" />
+      <File FileName="Algorithms/AppShell.xaml.cs" Line="12" Column="1" />
+      <File FileName="Algorithms/Views/SelectedAlgorithmPage.xaml.cs" Line="19" Column="1" />
+>>>>>>> Stashed changes
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Algorithms" expanded="True">
             <Node name="Algorithms" expanded="True">
+<<<<<<< Updated upstream
               <Node name="Services" expanded="True">
                 <Node name="GraphService.cs" selected="True" />
               </Node>
@@ -16,13 +25,28 @@
                 <Node name="SelectedSettingsPage.xaml" expanded="True" />
                 <Node name="SettingsPage.xaml" expanded="True" />
               </Node>
+=======
+              <Node name="Services" expanded="True" />
+              <Node name="Styles" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="AboutAlgorithmsPage.xaml" expanded="True" />
+                <Node name="SelectedAlgorithmPage.xaml" expanded="True">
+                  <Node name="SelectedAlgorithmPage.xaml.cs" selected="True" />
+                </Node>
+              </Node>
+              <Node name="AppShell.xaml" expanded="True" />
+>>>>>>> Stashed changes
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+<<<<<<< Updated upstream
   <MonoDevelop.Ide.ItemProperties.Algorithms.iOS Xamarin.HotReload.UnhandledDeviceException.Algorithms.iOS.HideInfoBar="True" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.CF997730-0AA7-430C-B1E6-0F569F7BFD10" />
+=======
+  <MonoDevelop.Ide.ItemProperties.Algorithms.iOS Xamarin.HotReload.UnhandledDeviceException.Algorithms.iOS.HideInfoBar="True" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.44956E21-33F6-432A-AE74-AE019CA6E8AB" />
+>>>>>>> Stashed changes
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
