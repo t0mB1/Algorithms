@@ -53,7 +53,7 @@ namespace Algorithms.Services
             return null;
         }
 
-        public IEnumerable<string> GetAllImplementations(string[] TextArr)
+        public IEnumerable<string> GetImplementations(string[] TextArr)
         {
             List<string> implementations = new List<string>();
             for (int i = 0; i < TextArr.Length - 1; i++)
