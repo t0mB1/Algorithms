@@ -76,7 +76,7 @@ namespace Algorithms.Views
         {
             string[] TextArr = AllText.Split(new string[] { "\n" },
                                              StringSplitOptions.None);
-            string[] arr = FileService.GetAllImplementations(TextArr).ToArray();
+            string[] arr = FileService.GetImplementations(TextArr).ToArray();
             // set views
             if (arr.Count() == 3)
             {
