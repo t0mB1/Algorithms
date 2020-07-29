@@ -107,8 +107,8 @@ namespace Algorithms.Views
                 {
                     case "Bubble Sort":
                         {
-                            List<BubbleSortOperation> operations = algorithms.BubbleSort(CurrentEntriesOnGraph.ToArray());
-                            CarryOutOperations(operations);
+                            IEnumerable<BubbleSortOperation> operations = algorithms.BubbleSort(CurrentEntriesOnGraph.ToArray());
+                            CarryOutOperations(operations.ToList());
                             break;
                         }
                     case "Heap Sort":
@@ -119,8 +119,8 @@ namespace Algorithms.Views
                         }
                     case "Insertion Sort":
                         {
-                            List<InsertionSortOperation> operations = algorithms.InsertionSort(CurrentEntriesOnGraph.ToArray());
-                            CarryOutOperations(operations);
+                            IEnumerable<InsertionSortOperation> operations = algorithms.InsertionSort(CurrentEntriesOnGraph.ToArray());
+                            CarryOutOperations(operations.ToList());
                             break;
                         }
                     case "Quick Sort":
@@ -132,6 +132,12 @@ namespace Algorithms.Views
                                                                                        ops);
                             CarryOutOperations(operations);
                             break; 
+                        }
+                    case "Selection Sort":
+                        {
+                            IEnumerable<SelectionSortOperation> operations = algorithms.SelectionSort(CurrentEntriesOnGraph.ToArray());
+                            CarryOutOperations(operations.ToList());
+                            break;
                         }
                 }
             }
