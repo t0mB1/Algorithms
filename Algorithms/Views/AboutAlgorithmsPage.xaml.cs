@@ -39,6 +39,11 @@ namespace Algorithms.Views
             NavToAlgPage(AlgorithmNameEnumeration.QuickSort);
         }
 
+        void SelectionSortTextCell_Tapped(object sender, EventArgs e)
+        {
+            NavToAlgPage(AlgorithmNameEnumeration.SelectionSort);
+        }
+
 
         //                              *** Search ***
 
