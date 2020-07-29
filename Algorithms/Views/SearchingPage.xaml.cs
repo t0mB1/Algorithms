@@ -150,6 +150,16 @@ namespace Algorithms.Views
                             CarryOutOperations(operations);
                             break;
                         }
+
+                    case "Interpolation Search":
+                        {
+                            IEnumerable<SearchOperation> operations = algorithms.InterpolationSearch(CurrentEntriesOnGraph.ToArray(),
+                                                                                                     SGObj.SearchItemValue);
+                            CarryOutOperations(operations.ToList());
+                            break;
+                        }
+                    default:
+                        break;
                 }
             }
             else
@@ -166,7 +176,7 @@ namespace Algorithms.Views
             int speed = SGObj.SpeedDictionary[SGObj.Speed];
             foreach (T operation in operations)
             {
-                int index = CurrentEntriesOnGraph.ToList().IndexOf(operation.entry);
+                int index = CurrentEntriesOnGraph.ToList().IndexOf(operation.Entry);
                 if (operation.IsSearchItem is false)
                 {
                     CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse(operation.ChangeToColour);
@@ -199,13 +209,21 @@ namespace Algorithms.Views
             switch (SGObj.Case)
             {
                 case GraphCaseEnum.Worst:
-                    CurrentEntriesOnGraph = service.GetWostCaseEntriesForSearch(1, 20).ToArray();
+                    if(SGObj.CurrentAlg == "Interpolation Search")
+                    {
+                        CurrentEntriesOnGraph = service.GetWostCaseEntriesForSearch(1, 20, 10).ToArray();
+                    }
+                    else
+                    {
+                        CurrentEntriesOnGraph = service.GetWostCaseEntriesForSearch(1, 20).ToArray();
+                    }
                     DisplayGraph(CurrentEntriesOnGraph);
                     break;
                 case GraphCaseEnum.Random:
                     if (SGObj.CurrentAlg == "Classic Binary Search" ||
                         SGObj.CurrentAlg == "Modified Binary Search" ||
-                        SGObj.CurrentAlg == "Jump Search")
+                        SGObj.CurrentAlg == "Jump Search" ||
+                        SGObj.CurrentAlg == "Interpolation Search")
                     {
                         if(SGObj.SearchItemValue == 0)
                         {
@@ -234,7 +252,8 @@ namespace Algorithms.Views
                     if (algorithmPicker.SelectedIndex > 0)
                     {
                         if (SGObj.CurrentAlg == "Linear Search" ||
-                            SGObj.CurrentAlg == "Jump Search")
+                            SGObj.CurrentAlg == "Jump Search" ||
+                            SGObj.CurrentAlg == "Interpolation Search")
                         {
                             SGObj.SearchItemValue = 1;
                             searchItemPicker.SelectedItem = "1";
