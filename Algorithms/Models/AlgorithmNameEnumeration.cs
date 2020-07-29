@@ -10,6 +10,7 @@
         JumpSearch,
         LinearSearch,
         ClassicBinarySearch,
-        ModBinarySearch
+        ModBinarySearch,
+        InterpolationSearch
     }
 }
