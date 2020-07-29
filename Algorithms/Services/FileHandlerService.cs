@@ -26,6 +26,10 @@ namespace Algorithms.Services
                 case AlgorithmNameEnumeration.QuickSort:
                     _filename = "Algorithms.AlgorithmInfomation.Sorting.QuickSortInfo.txt";
                     break;
+                case AlgorithmNameEnumeration.SelectionSort:
+                    _filename = "Algorithms.AlgorithmInfomation.Sorting.SelectionSortInfo.txt";
+                    break;
+
                 // searching algorithms
                 case AlgorithmNameEnumeration.ClassicBinarySearch:
                     _filename = "Algorithms.AlgorithmInfomation.Searching.ClassicBinarySearchInfo.txt";
