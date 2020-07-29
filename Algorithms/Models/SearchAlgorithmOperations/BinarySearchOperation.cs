@@ -4,7 +4,7 @@ namespace Algorithms.Models.SearchAlgorithmOperations
 {
     public class BinarySearchOperation : ISearchOperation
     {
-        public Entry entry { get; set; }
+        public Entry Entry { get; set; }
         public bool IsSearchItem { get; set; }
         public string ChangeToColour { get; set; }
     }

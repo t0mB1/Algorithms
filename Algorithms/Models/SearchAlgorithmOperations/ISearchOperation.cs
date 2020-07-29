@@ -4,7 +4,7 @@ namespace Algorithms.Models.SearchAlgorithmOperations
 {
     public interface ISearchOperation
     {
-        Entry entry { get; set; }
+        Entry Entry { get; set; }
         string ChangeToColour { get; set; }
         bool IsSearchItem { get; set; }
     }
