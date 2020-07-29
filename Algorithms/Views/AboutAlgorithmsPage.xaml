@@ -33,6 +33,11 @@
                                   Tapped="QuickSortTextCell_Tapped"
                                   TextColor="{DynamicResource TextSecondaryColor}"/>
 
+                        <TextCell x:Name="SelectionSortTextCell"
+                                  Text="Selection Sort"
+                                  Tapped="SelectionSortTextCell_Tapped"
+                                  TextColor="{DynamicResource TextSecondaryColor}"/>
+
                     </TableSection>
 
                     <TableSection x:Name="SearchTableSection"
