@@ -38,6 +38,7 @@
     <None Remove="AlgorithmInfomation\Searching\LinearSearchInfo.txt" />
     <None Remove="AlgorithmInfomation\Searching\ModifiedBinarySearchInfo.txt" />
     <None Remove="AlgorithmInfomation\Searching\ClassicBinarySearchInfo.txt" />
+    <None Remove="AlgorithmInfomation\Sorting\SelectionSortInfo.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AlgorithmInfomation\Sorting\BubbleSortInfo.txt" />
@@ -48,5 +49,6 @@
     <EmbeddedResource Include="AlgorithmInfomation\Searching\LinearSearchInfo.txt" />
     <EmbeddedResource Include="AlgorithmInfomation\Searching\ModifiedBinarySearchInfo.txt" />
     <EmbeddedResource Include="AlgorithmInfomation\Searching\ClassicBinarySearchInfo.txt" />
+    <EmbeddedResource Include="AlgorithmInfomation\Sorting\SelectionSortInfo.txt" />
   </ItemGroup>
 </Project>

@@ -32,6 +32,9 @@ namespace Algorithms.Views {
         private global::Xamarin.Forms.TextCell QuickSortTextCell;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
+        private global::Xamarin.Forms.TextCell SelectionSortTextCell;
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
         private global::Xamarin.Forms.TableSection SearchTableSection;
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]
@@ -54,6 +57,7 @@ namespace Algorithms.Views {
             HeapSortTextCell = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.TextCell>(this, "HeapSortTextCell");
             InsertionSortTextCell = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.TextCell>(this, "InsertionSortTextCell");
             QuickSortTextCell = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.TextCell>(this, "QuickSortTextCell");
+            SelectionSortTextCell = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.TextCell>(this, "SelectionSortTextCell");
             SearchTableSection = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.TableSection>(this, "SearchTableSection");
             JumpSearchTextCell = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.TextCell>(this, "JumpSearchTextCell");
             LinearSearchTextCell = global::Xamarin.Forms.NameScopeExtensions.FindByName<global::Xamarin.Forms.TextCell>(this, "LinearSearchTextCell");
