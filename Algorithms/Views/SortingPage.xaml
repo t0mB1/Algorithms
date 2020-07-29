@@ -87,6 +87,7 @@
                         <x:String>Heap Sort</x:String>
                         <x:String>Insertion Sort</x:String>
                         <x:String>Quick Sort</x:String>
+                        <x:String>Selection Sort</x:String>
                     </Picker.Items>
                 </Picker>
 
