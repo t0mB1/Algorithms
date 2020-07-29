@@ -7,7 +7,7 @@ namespace Algorithms.Models
 {
     public class SortingAlgorithms
     {
-        public List<BubbleSortOperation> BubbleSort(Entry[] entries)
+        public IEnumerable<BubbleSortOperation> BubbleSort(Entry[] entries)
         {
             List<BubbleSortOperation> operations = new List<BubbleSortOperation>();
             int n = entries.Count();
@@ -119,7 +119,7 @@ namespace Algorithms.Models
             }
         }
 
-        public List<InsertionSortOperation> InsertionSort(Entry[] entries)
+        public IEnumerable<InsertionSortOperation> InsertionSort(Entry[] entries)
         {
             List<InsertionSortOperation> operations = new List<InsertionSortOperation>();
             int n = entries.Length;
@@ -151,6 +151,54 @@ namespace Algorithms.Models
                     {
                         entries.Select(hr => hr).ToArray()[pos]
                     },
+                    NewEntries = entries.Select(hr => hr).ToArray(),
+                    ChangeToColour = "#FFFF00",
+                    IsSwitchOperation = true
+                });
+            }
+            return operations;
+        }
+
+        public IEnumerable<SelectionSortOperation> SelectionSort(Entry[] entries)
+        {
+            List<SelectionSortOperation> operations = new List<SelectionSortOperation>();
+            int n = entries.Length;
+            for (int i = 0; i < n - 1; i++)
+            {
+                operations.Add(new SelectionSortOperation {
+                    EntriesToChange = new Entry[]
+                    {
+                        entries.Select(hr => hr).ToArray()[i]
+                    },
+                    NewEntries = entries.Select(hr => hr).ToArray(),
+                    ChangeToColour = "#00FFFF",
+                    IsSwitchOperation = false
+                });
+
+                // Find the minimum element in unsorted array 
+                int min_index = i;
+                for (int j = i + 1; j < n; j++)
+                {
+                    if (entries[j].Value < entries[min_index].Value)
+                    {
+                        min_index = j;
+                    }
+                }
+                
+                Entry[] EntriesToChange = new Entry[]
+                {
+                    entries.Select(hr => hr).ToArray()[min_index],
+                    entries.Select(hr => hr).ToArray()[i]
+                };
+                // Swap the found minimum element with the first 
+                // element 
+                Entry temp = entries[min_index];
+                entries[min_index] = entries[i];
+                entries[i] = temp;
+                // add operation
+                operations.Add(new SelectionSortOperation
+                {
+                    EntriesToChange = EntriesToChange,
                     NewEntries = entries.Select(hr => hr).ToArray(),
                     ChangeToColour = "#FFFF00",
                     IsSwitchOperation = true
