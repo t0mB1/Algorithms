@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Security.Cryptography;
 using SkiaSharp;
-using Xamarin.Forms;
 using Entry = Microcharts.Entry;
 
 namespace Algorithms.Services
