@@ -1,7 +1,7 @@
 ﻿<Properties StartupConfiguration="{51A0C8EF-8F7B-4CB9-8A9E-6964FB17D443}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="Algorithms/Views/SortingPage.xaml.cs">
     <Files>
-      <File FileName="Algorithms/Views/SortingPage.xaml.cs" Line="95" Column="30" />
+      <File FileName="Algorithms/Views/SortingPage.xaml.cs" Line="92" Column="29" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
