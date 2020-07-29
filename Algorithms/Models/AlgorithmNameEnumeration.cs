@@ -6,6 +6,7 @@
         HeapSort,
         InsertionSort,
         QuickSort,
+        SelectionSort,
         JumpSearch,
         LinearSearch,
         ClassicBinarySearch,
