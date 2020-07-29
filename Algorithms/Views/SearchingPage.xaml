@@ -97,6 +97,7 @@
                         <x:String>Linear Search</x:String>
                         <x:String>Classic Binary Search</x:String>
                         <x:String>Modified Binary Search</x:String>
+                        <x:String>Interpolation Search</x:String>
                     </Picker.Items>
                 </Picker>
 
