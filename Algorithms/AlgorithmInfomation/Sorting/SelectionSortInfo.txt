@@ -1,0 +1,15 @@
+﻿this is selection sort
+Best: O(nlog(n))
+Worst: O(n)
+Average: O(nlog(n))
+C#
+
+implementation 
+
+Java
+
+implementation 
+
+Python
+
+implementation
