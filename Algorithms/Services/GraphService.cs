@@ -52,6 +52,23 @@ namespace Algorithms.Services
             return entries;
         }
 
+        public IEnumerable<Entry> GetWostCaseEntriesForSearch(int minVal, int maxVal, int searchItem)
+        {
+            List<Entry> entries = new List<Entry>();
+            for (int i = minVal; i < maxVal + 1; i++)
+            {
+                if (i == searchItem)
+                {
+                    entries.Add(GenerateSearchItemEntry(i));
+                }
+                else
+                {
+                    entries.Add(GenerateEntry(i));
+                }
+            }
+            return entries;
+        }
+
         public IEnumerable<Entry> GetWostCaseEntriesForSort(int minVal, int maxVal)
         {
             List<Entry> entries = new List<Entry>();
@@ -86,6 +103,8 @@ namespace Algorithms.Services
                     return "#FFFF00";
                 case "Green":
                     return "#00FF00";
+                default:
+                    break;
             }
             return "#FF1493";
         }
