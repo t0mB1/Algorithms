@@ -260,10 +260,13 @@ namespace Algorithms.Views
                 // change colour of current markers back
                 foreach (Entry marker in markers)
                 {
-                    int index = CurrentEntriesOnGraph.ToList().IndexOf(marker);
-                    CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse(App.GraphColour);
-                    DisplayGraph(CurrentEntriesOnGraph);
-                    await Task.Delay(SGObj.SpeedDictionary[SGObj.Speed]);
+                    if (marker.Value != SGObj.SearchItemValue)
+                    {
+                        int index = CurrentEntriesOnGraph.ToList().IndexOf(marker);
+                        CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse(App.GraphColour);
+                        DisplayGraph(CurrentEntriesOnGraph);
+                        await Task.Delay(SGObj.SpeedDictionary[SGObj.Speed]);
+                    }
                 }
                 CurrentMarkers.Clear();
             }
