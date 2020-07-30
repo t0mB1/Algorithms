@@ -81,7 +81,7 @@
 
         <ScrollView x:Name="PickersScrollView"
                     BackgroundColor="{DynamicResource backgroundColor}"
-                    Margin="{OnIdiom '0, 0, 0, 10', Phone='0, 0, 0, 10', Tablet='0, 0, 0, 20'}">
+                    Margin="{OnIdiom '0, 0, 0, 5', Phone='0, 0, 0, 5', Tablet='0, 0, 0, 10'}">
 
             <StackLayout HorizontalOptions="Fill"
                          VerticalOptions="Fill">
@@ -90,7 +90,7 @@
                         Title="Choose an Algorithm"
                         SelectedIndexChanged="AlgorithmPicker_SelectedIndexChanged"
                         HorizontalOptions="Center"
-                        Margin="{OnIdiom '5, 5, 5, 5', Phone='5, 0, 5, 5', Tablet='10, 0, 10, 10'}">
+                        Margin="{OnIdiom '0, 0, 0, 5', Phone='0, 0, 0, 5', Tablet='0, 0, 0, 10'}">
                     <Picker.Items>
                         <x:String x:FieldModifier="Center"/>
                         <x:String>Jump Search</x:String>

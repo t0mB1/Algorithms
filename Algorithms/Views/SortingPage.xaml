@@ -57,7 +57,7 @@
                     BackgroundColor="{DynamicResource backgroundColor}"
                     VerticalOptions="FillAndExpand"
                     HorizontalOptions="FillAndExpand"
-                    Margin="{OnIdiom '5, 0, 5, 5', Phone='5, 0, 5, 5', Tablet='5, 0, 5, 10'}">
+                    Margin="{OnIdiom '5, 0, 5, 0', Phone='5, 0, 5, 0', Tablet='5, 0, 5, 5'}">
 
             <StackLayout VerticalOptions="FillAndExpand"
                          HorizontalOptions="FillAndExpand">
@@ -69,12 +69,12 @@
             </StackLayout>
         </ScrollView>
 
+
         <ScrollView x:Name="PickersScrollView"
                     BackgroundColor="{DynamicResource backgroundColor}"
-                    Margin="{OnIdiom '0, 0, 0, 10', Phone='0, 0, 0, 10', Tablet='0, 0, 0, 20'}">
+                    Margin="{OnIdiom '0, 0, 0, 5', Phone='0, 0, 0, 5', Tablet='0, 0, 0, 10'}">
 
-            <StackLayout HorizontalOptions="Fill"
-                         VerticalOptions="Fill">
+            <StackLayout HorizontalOptions="Fill">
 
                 <Picker x:Name="algorithmPicker"
                         Title="Choose an Algorithm"
