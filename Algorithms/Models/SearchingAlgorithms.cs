@@ -7,14 +7,14 @@ namespace Algorithms.Models
 {
     public class SearchingAlgorithms
     {
-        public List<LinearSearchOperation> LinearSearch(Entry[] entries, int searchItem)
+        public List<SearchOperation> LinearSearch(Entry[] entries, int searchItem)
         {
-            List<LinearSearchOperation> operations = new List<LinearSearchOperation>();
+            List<SearchOperation> operations = new List<SearchOperation>();
             int i = 0;
             while (i < entries.Length)
             {
                 // highlight Entry Blue
-                operations.Add(new LinearSearchOperation
+                operations.Add(new SearchOperation
                 {
                     Entry = entries[i],
                     ChangeToColour = GetColourWhenSearchItemIsFalse(),
@@ -23,7 +23,7 @@ namespace Algorithms.Models
                 if (entries[i].Value == searchItem)
                 {
                     // highlight Entry Green
-                    operations.Add(new LinearSearchOperation
+                    operations.Add(new SearchOperation
                     {
                         Entry = entries[i],
                         ChangeToColour = "#00FF00",
@@ -36,17 +36,17 @@ namespace Algorithms.Models
             return operations;
         }
 
-        public List<BinarySearchOperation> ClassicBinarySearch(Entry[] entries, int searchItem)
+        public List<SearchOperation> ClassicBinarySearch(Entry[] entries, int searchItem)
         {
             // *** requires a sorted array ***
             int first = 0;
             int last = entries.Length - 1;
-            List<BinarySearchOperation> BSOperations = new List<BinarySearchOperation>();
+            List<SearchOperation> BSOperations = new List<SearchOperation>();
             while (first <= last)
             {
                 int midpoint = (first + last) / 2;
                 // highlight Entry Blue
-                BSOperations.Add(new BinarySearchOperation()
+                BSOperations.Add(new SearchOperation()
                 {
                     Entry = entries[midpoint],
                     IsSearchItem = false,
@@ -55,7 +55,7 @@ namespace Algorithms.Models
                 if (entries[midpoint].Value == searchItem)
                 {
                     // highlight Entry green
-                    BSOperations.Add(new BinarySearchOperation()
+                    BSOperations.Add(new SearchOperation()
                     {
                         Entry = entries[midpoint],
                         IsSearchItem = true,
@@ -78,18 +78,18 @@ namespace Algorithms.Models
             return BSOperations;
         }
 
-        public List<BinarySearchOperation> ModifiedBinarySearch(Entry[] entries, int searchItem)
+        public List<SearchOperation> ModifiedBinarySearch(Entry[] entries, int searchItem)
         {
             // *** requires a sorted array ***
             int first = 0;
             int last = entries.Length - 1;
-            List<BinarySearchOperation> BSOperations = new List<BinarySearchOperation>();
+            List<SearchOperation> BSOperations = new List<SearchOperation>();
             while (entries[first].Value <= searchItem &&
                   searchItem <= entries[last].Value)
             {
                 int mid = first + ((last - first) / 2);
                 // highlight entries[mid] Blue
-                BSOperations.Add(new BinarySearchOperation()
+                BSOperations.Add(new SearchOperation()
                 {
                     Entry = entries[mid],
                     IsSearchItem = false,
@@ -98,7 +98,7 @@ namespace Algorithms.Models
                 if (searchItem == entries[mid].Value)
                 {
                     // highlight entries[mid] Green
-                    BSOperations.Add(new BinarySearchOperation()
+                    BSOperations.Add(new SearchOperation()
                     {
                         Entry = entries[mid],
                         IsSearchItem = true,
@@ -118,10 +118,10 @@ namespace Algorithms.Models
             return BSOperations;
         }
 
-        public List<JumpSearchOperation> JumpSearch(Entry[] entries, int searchItem)
+        public List<SearchOperation> JumpSearch(Entry[] entries, int searchItem)
         {
             // *** requires a sorted array ***
-            List<JumpSearchOperation> JSOperations = new List<JumpSearchOperation>();
+            List<SearchOperation> JSOperations = new List<SearchOperation>();
             int n = entries.Length;
             // finds block size to jump
             int step = (int)Math.Floor(Math.Sqrt(n));
@@ -129,7 +129,7 @@ namespace Algorithms.Models
             // present (if it is present)
             int prev = 0;
 
-            JSOperations.Add(new JumpSearchOperation
+            JSOperations.Add(new SearchOperation
             {
                 Entry = entries[prev],
                 IsSearchItem = false,
@@ -138,7 +138,7 @@ namespace Algorithms.Models
 
             if (entries[prev].Value == searchItem)
             {
-                JSOperations.Add(new JumpSearchOperation
+                JSOperations.Add(new SearchOperation
                 {
                     Entry = entries[prev],
                     IsSearchItem = true,
@@ -150,7 +150,7 @@ namespace Algorithms.Models
             while (entries[Math.Min(step, n) - 1].Value < searchItem)
             {
                 // highlight entries[Math.Min(step, n)-1] Blue
-                JSOperations.Add(new JumpSearchOperation
+                JSOperations.Add(new SearchOperation
                 {
                     Entry = entries[Math.Min(step, n) - 1],
                     IsSearchItem = false,
@@ -169,7 +169,7 @@ namespace Algorithms.Models
             while (!(entries[prev].Value == searchItem))
             {
                 // highlight entries[prev] Blue
-                JSOperations.Add(new JumpSearchOperation
+                JSOperations.Add(new SearchOperation
                 {
                     Entry = entries[prev],
                     IsSearchItem = false,
@@ -186,7 +186,7 @@ namespace Algorithms.Models
             if (entries[prev].Value == searchItem)
             {
                 // highlight entries[prev] Green
-                JSOperations.Add(new JumpSearchOperation
+                JSOperations.Add(new SearchOperation
                 {
                     Entry = entries[prev],
                     IsSearchItem = true,
@@ -197,10 +197,10 @@ namespace Algorithms.Models
             return JSOperations;
         }
 
-        public IEnumerable<SearchOperation> InterpolationSearch(Entry[] entries, int searchItem)
+        public IEnumerable<InterpolationOperation> InterpolationSearch(Entry[] entries, int searchItem)
         {
             // *** requires a sorted array ***
-            List<SearchOperation> operations = new List<SearchOperation>();
+            List<InterpolationOperation> operations = new List<InterpolationOperation>();
             // Find indexes of 
             // two corners 
             int left = 0;
@@ -214,28 +214,29 @@ namespace Algorithms.Models
                    searchItem <= entries[right].Value &&
                    left <= right)
             {
+                // search item is a marker
                 if (left == right)
                 {
-                    operations.Add(new SearchOperation
+                    operations.Add(new InterpolationOperation
                     {
                         Entry = entries[left],
                         ChangeToColour = "#00FF00",
-                        IsSearchItem = true
+                        IsSearchItem = true,
+                        SearchItemIsMarker = true
                     });
                     return operations;
                 }
-                operations.Add(new SearchOperation
+
+                operations.Add(new InterpolationOperation
                 {
-                    Entry = entries[left],
-                    ChangeToColour = GetColourWhenSearchItemIsFalse(),
+                    Markers = new Entry[]{
+                        entries[left],
+                        entries[right]
+                    },
+                    ChangeToColour = "#00FFFF",
                     IsSearchItem = false
                 });
-                operations.Add(new SearchOperation
-                {
-                    Entry = entries[right],
-                    ChangeToColour = GetColourWhenSearchItemIsFalse(),
-                    IsSearchItem = false
-                });
+
                 // Probing the position
                 // with keeping uniform
                 // distribution in mind
@@ -243,7 +244,7 @@ namespace Algorithms.Models
                           (entries[right].Value - entries[left].Value) *
                           (searchItem - entries[left].Value)));
 
-                operations.Add(new SearchOperation
+                operations.Add(new InterpolationOperation
                 {
                     Entry = entries[pos],
                     ChangeToColour = GetColourWhenSearchItemIsFalse(),
@@ -253,12 +254,26 @@ namespace Algorithms.Models
                 // search item is found 
                 if (entries[pos].Value == searchItem)
                 {
-                    operations.Add(new SearchOperation
+                    if(entries[pos] == entries[left] ||
+                       entries[pos] == entries[right])
                     {
-                        Entry = entries[pos],
-                        ChangeToColour = "#00FF00",
-                        IsSearchItem = true
-                    });
+                        operations.Add(new InterpolationOperation
+                        {
+                            Entry = entries[pos],
+                            ChangeToColour = "#00FF00",
+                            IsSearchItem = true,
+                            SearchItemIsMarker = true
+                        });
+                    }
+                    else
+                    {
+                        operations.Add(new InterpolationOperation
+                        {
+                            Entry = entries[pos],
+                            ChangeToColour = "#00FF00",
+                            IsSearchItem = true
+                        });
+                    }
                     return operations;
                 }
                 if (entries[pos].Value < searchItem)
@@ -292,5 +307,3 @@ namespace Algorithms.Models
         }
     }
 }
-
-
