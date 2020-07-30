@@ -124,38 +124,38 @@ namespace Algorithms.Views
                 {
                     case "Linear Search":
                         {
-                            List<LinearSearchOperation> operations = algorithms.LinearSearch(CurrentEntriesOnGraph.ToArray(),
+                            List<SearchOperation> operations = algorithms.LinearSearch(CurrentEntriesOnGraph.ToArray(),
                                                                                              SGObj.SearchItemValue);
-                            CarryOutOperations(operations);
+                            CarryOutSearchOperations(operations);
                             break;
                         }
                     case "Jump Search":
                         {
-                            List<JumpSearchOperation> operations = algorithms.JumpSearch(CurrentEntriesOnGraph.ToArray(),
+                            List<SearchOperation> operations = algorithms.JumpSearch(CurrentEntriesOnGraph.ToArray(),
                                                                                          SGObj.SearchItemValue);
-                            CarryOutOperations(operations);
+                            CarryOutSearchOperations(operations);
                             break;
                         }
                     case "Classic Binary Search":
                         {
-                            List<BinarySearchOperation> operations = algorithms.ClassicBinarySearch(CurrentEntriesOnGraph.ToArray(),
+                            List<SearchOperation> operations = algorithms.ClassicBinarySearch(CurrentEntriesOnGraph.ToArray(),
                                                                                                     SGObj.SearchItemValue);
-                            CarryOutOperations(operations);
+                            CarryOutSearchOperations(operations);
                             break;
                         }
                     case "Modified Binary Search":
                         {
-                            List<BinarySearchOperation> operations = algorithms.ModifiedBinarySearch(CurrentEntriesOnGraph.ToArray(),
+                            List<SearchOperation> operations = algorithms.ModifiedBinarySearch(CurrentEntriesOnGraph.ToArray(),
                                                                                                     SGObj.SearchItemValue);
-                            CarryOutOperations(operations);
+                            CarryOutSearchOperations(operations);
                             break;
                         }
 
                     case "Interpolation Search":
                         {
-                            IEnumerable<SearchOperation> operations = algorithms.InterpolationSearch(CurrentEntriesOnGraph.ToArray(),
+                            IEnumerable<InterpolationOperation> operations = algorithms.InterpolationSearch(CurrentEntriesOnGraph.ToArray(),
                                                                                                      SGObj.SearchItemValue);
-                            CarryOutOperations(operations.ToList());
+                            CarryOutInterpolationOperations(operations.ToList());
                             break;
                         }
                     default:
@@ -170,29 +170,103 @@ namespace Algorithms.Views
             }
         }
 
-        private async void CarryOutOperations<T>(List<T> operations) where T : ISearchOperation
+        private async void CarryOutSearchOperations(List<SearchOperation> operations) 
         {
-            SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
-            int speed = SGObj.SpeedDictionary[SGObj.Speed];
-            foreach (T operation in operations)
+            foreach (SearchOperation operation in operations)
             {
+                if (operation.Entry != null)
+                {
+                    await ChangeOperationEntry(operation);
+                }
+            }
+            ToggleButtons();
+            DisplayCaseBtns();
+        }
+
+        private async void CarryOutInterpolationOperations(List<InterpolationOperation> operations)
+        {
+            foreach (InterpolationOperation operation in operations)
+            {
+                if (operation.Markers != null &&
+                    operation.Markers.Count() != 0)
+                {
+                    await HandleMarkers(operation);
+                }
+                if (operation.Entry != null)
+                {
+                    await ChangeOperationEntry(operation);
+                }
+            }
+            // clear current markers from graph
+            ClearMarkersOnGraph(CurrentMarkers);
+            ToggleButtons();
+            DisplayCaseBtns();
+        }
+
+        private async Task ChangeOperationEntry<T>(T operation) where T : ISearchOperation
+        {
+            if (operation.Entry != null)
+            {
+                SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
                 int index = CurrentEntriesOnGraph.ToList().IndexOf(operation.Entry);
                 if (operation.IsSearchItem is false)
                 {
+                    Console.WriteLine(index);
                     CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse(operation.ChangeToColour);
                     DisplayGraph(CurrentEntriesOnGraph);
-                    await Task.Delay(speed);
+                    await Task.Delay(SGObj.SpeedDictionary[SGObj.Speed]);
                     // change back to original colour
                     CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse(App.GraphColour);
                 }
-                else
+                else if (operation.IsSearchItem is true)
                 {
                     CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse(operation.ChangeToColour);
                 }
                 DisplayGraph(CurrentEntriesOnGraph);
             }
-            ToggleButtons();
-            DisplayCaseBtns();
+        }
+
+        private async Task HandleMarkers(InterpolationOperation operation)
+        {
+            if (operation.Markers != null &&
+                operation.Markers.Length != 0)
+            {
+                SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
+                if (CurrentMarkers.Count() != 0)
+                {
+                    // change colour of current markers on graph
+                    ClearMarkersOnGraph(CurrentMarkers);
+                    await Task.Delay(SGObj.SpeedDictionary[SGObj.Speed]);
+                }
+
+                // add new markers
+                foreach (Entry entry in operation.Markers)
+                {
+                    int index = CurrentEntriesOnGraph.ToList().IndexOf(entry);
+                    CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse(operation.ChangeToColour);
+                    CurrentMarkers.Add(entry);
+                }
+                DisplayGraph(CurrentEntriesOnGraph);
+                await Task.Delay(SGObj.SpeedDictionary[SGObj.Speed]);
+            }
+        }
+
+        private async void ClearMarkersOnGraph(IEnumerable<Entry> markers)
+        {
+            if(markers != null &&
+               markers.Count() != 0)
+            {
+                SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
+                // change colour of current markers back
+                foreach (Entry marker in markers)
+                {
+                    int index = CurrentEntriesOnGraph.ToList().IndexOf(marker);
+                    CurrentEntriesOnGraph.ToArray()[index].Color = SKColor.Parse(App.GraphColour);
+                    DisplayGraph(CurrentEntriesOnGraph);
+                    await Task.Delay(SGObj.SpeedDictionary[SGObj.Speed]);
+                }
+                CurrentMarkers.Clear();
+            }
         }
 
         private void SetBindingContext()
@@ -424,5 +498,6 @@ namespace Algorithms.Views
         private readonly GraphService service = new GraphService();
         private readonly SearchingAlgorithms algorithms = new SearchingAlgorithms();
         private IEnumerable<Entry> CurrentEntriesOnGraph = new Entry[20];
+        private List<Entry> CurrentMarkers = new List<Entry>();
     }
 }
