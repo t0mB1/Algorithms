@@ -7,9 +7,9 @@ namespace Algorithms.Models
 {
     public class SortingAlgorithms
     {
-        public IEnumerable<BubbleSortOperation> BubbleSort(Entry[] entries)
+        public IEnumerable<SortOperation> BubbleSort(Entry[] entries)
         {
-            List<BubbleSortOperation> operations = new List<BubbleSortOperation>();
+            List<SortOperation> operations = new List<SortOperation>();
             int n = entries.Count();
 
             for (int i = 0; i < n - 1; i++)
@@ -29,7 +29,7 @@ namespace Algorithms.Models
                         entries[j] = entries[j + 1];
                         entries[j + 1] = temp;
                         // add swap operation
-                        operations.Add(new BubbleSortOperation
+                        operations.Add(new SortOperation
                         {
                             EntriesToChange = EntriesToChange,
                             NewEntries = entries.Select(hr => hr).ToArray(),
@@ -41,9 +41,9 @@ namespace Algorithms.Models
             return operations;
         }
 
-        public IEnumerable<HeapSortOperation> HeapSort(Entry[] entries)
+        public IEnumerable<SortOperation> HeapSort(Entry[] entries)
         {
-            List<HeapSortOperation> HSOperations = new List<HeapSortOperation>();
+            List<SortOperation> HSOperations = new List<SortOperation>();
             Entry[] tings = entries.Select(hr => hr).ToArray();
             int n = entries.Length;
             // Build heap (rearrange array) 
@@ -62,7 +62,7 @@ namespace Algorithms.Models
                 Entry temp = entries[0];
                 entries[0] = entries[i];
                 entries[i] = temp;
-                HSOperations.Add(new HeapSortOperation
+                HSOperations.Add(new SortOperation
                 {
                     EntriesToChange = entries1,
                     NewEntries = entries.Select(hr => hr).ToArray(),
@@ -75,7 +75,7 @@ namespace Algorithms.Models
             return HSOperations.Select(hr => hr);
         }
 
-        private void Heapify(Entry[] entries, int n, int i, List<HeapSortOperation> HSOperations)
+        private void Heapify(Entry[] entries, int n, int i, List<SortOperation> HSOperations)
         {
             int largest = i; // Initialize largest as root
             int left = 2 * i + 1; // left = 2*i + 1
@@ -107,7 +107,7 @@ namespace Algorithms.Models
                 entries[i] = entries[largest];
                 entries[largest] = temp;
 
-                HSOperations.Add(new HeapSortOperation
+                HSOperations.Add(new SortOperation
                 {
                     EntriesToChange = entries1,
                     NewEntries = entries.Select(hr => hr).ToArray(),
@@ -119,16 +119,16 @@ namespace Algorithms.Models
             }
         }
 
-        public IEnumerable<InsertionSortOperation> InsertionSort(Entry[] entries)
+        public IEnumerable<SortOperation> InsertionSort(Entry[] entries)
         {
-            List<InsertionSortOperation> operations = new List<InsertionSortOperation>();
+            List<SortOperation> operations = new List<SortOperation>();
             int n = entries.Length;
             for(int i = 0; i < n; i++)
             {
                 Entry currentEntry = entries[i];
                 int pos = i;
 
-                operations.Add(new InsertionSortOperation
+                operations.Add(new SortOperation
                 {
                     EntriesToChange = new Entry[]
                     {
@@ -145,7 +145,7 @@ namespace Algorithms.Models
                     pos--;
                 }
                 entries[pos] = currentEntry;
-                operations.Add(new InsertionSortOperation
+                operations.Add(new SortOperation
                 {
                     EntriesToChange = new Entry[]
                     {
@@ -159,13 +159,14 @@ namespace Algorithms.Models
             return operations;
         }
 
-        public IEnumerable<SelectionSortOperation> SelectionSort(Entry[] entries)
+        public IEnumerable<SortOperation> SelectionSort(Entry[] entries)
         {
-            List<SelectionSortOperation> operations = new List<SelectionSortOperation>();
+            List<SortOperation> operations = new List<SortOperation>();
             int n = entries.Length;
             for (int i = 0; i < n - 1; i++)
             {
-                operations.Add(new SelectionSortOperation {
+                operations.Add(new SortOperation
+                {
                     EntriesToChange = new Entry[]
                     {
                         entries.Select(hr => hr).ToArray()[i]
@@ -196,7 +197,7 @@ namespace Algorithms.Models
                 entries[min_index] = entries[i];
                 entries[i] = temp;
                 // add operation
-                operations.Add(new SelectionSortOperation
+                operations.Add(new SortOperation
                 {
                     EntriesToChange = EntriesToChange,
                     NewEntries = entries.Select(hr => hr).ToArray(),
@@ -207,7 +208,7 @@ namespace Algorithms.Models
             return operations;
         }
 
-        public List<QuickSortOperation> QuickSort(Entry[] entries, int start, int end, List<QuickSortOperation> QSOperations)
+        public List<SortOperation> QuickSort(Entry[] entries, int start, int end, List<SortOperation> QSOperations)
         {
             int pivot;
             if (start < end)
@@ -225,11 +226,11 @@ namespace Algorithms.Models
             return QSOperations.Select(hr => hr).ToList();
         }
 
-        private int Partition(Entry[] entries, int left, int right, List<QuickSortOperation> QSOperations)
+        private int Partition(Entry[] entries, int left, int right, List<SortOperation> QSOperations)
         {
             int pivot = (int)entries[left].Value;
             
-            QSOperations.Add(new QuickSortOperation
+            QSOperations.Add(new SortOperation
             {
                 EntriesToChange = new Entry[]
                 {
@@ -260,7 +261,7 @@ namespace Algorithms.Models
                     Entry temp = entries[right];
                     entries[right] = entries[left];
                     entries[left] = temp;
-                    QSOperations.Add(new QuickSortOperation
+                    QSOperations.Add(new SortOperation
                     {
                         EntriesToChange = EntriesToChange,
                         NewEntries = entries.Select(hr => hr).ToArray(),
