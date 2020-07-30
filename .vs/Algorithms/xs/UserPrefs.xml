@@ -1,26 +1,23 @@
 ﻿<Properties StartupConfiguration="{51A0C8EF-8F7B-4CB9-8A9E-6964FB17D443}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Algorithms.iOS/Main.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Algorithms/Models/AlgorithmNameEnumeration.cs">
     <Files>
-      <File FileName="Algorithms/Views/SearchingPage.xaml" Line="100" Column="66" />
-      <File FileName="Algorithms/Views/SearchingPage.xaml.cs" Line="256" Column="72" />
-      <File FileName="Algorithms/Models/SearchingAlgorithms.cs" Line="262" Column="1" />
-      <File FileName="Algorithms/Services/GraphService.cs" Line="60" Column="37" />
-      <File FileName="Algorithms.iOS/Main.cs" Line="17" Column="1" />
+      <File FileName="Algorithms/Views/SearchingPage.xaml.cs" Line="228" Column="1" />
+      <File FileName="Algorithms/Models/SearchingAlgorithms.cs" Line="227" Column="39" />
+      <File FileName="Algorithms/Models/AlgorithmNameEnumeration.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Algorithms" expanded="True">
             <Node name="Algorithms" expanded="True">
-              <Node name="Models" expanded="True" />
-              <Node name="Services" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="AlgorithmNameEnumeration.cs" selected="True" />
+              </Node>
               <Node name="Views" expanded="True">
                 <Node name="SearchingPage.xaml" expanded="True" />
               </Node>
             </Node>
-            <Node name="Algorithms.iOS" expanded="True">
-              <Node name="Main.cs" selected="True" />
-            </Node>
+            <Node name="Algorithms.iOS" expanded="True" />
           </Node>
         </State>
       </Pad>
@@ -30,14 +27,7 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/tombrayshaw/Projects/Algorithms/Algorithms/Models/SearchingAlgorithms.cs" relfile="Algorithms/Models/SearchingAlgorithms.cs" line="213" column="1" />
-      <Breakpoint file="/Users/tombrayshaw/Projects/Algorithms/Algorithms/Models/SearchingAlgorithms.cs" relfile="Algorithms/Models/SearchingAlgorithms.cs" line="217" column="1" />
-      <Breakpoint file="/Users/tombrayshaw/Projects/Algorithms/Algorithms/Models/SearchingAlgorithms.cs" relfile="Algorithms/Models/SearchingAlgorithms.cs" line="272" column="1" />
-      <Breakpoint file="/Users/tombrayshaw/Projects/Algorithms/Algorithms/Models/SearchingAlgorithms.cs" relfile="Algorithms/Models/SearchingAlgorithms.cs" line="267" column="1" />
-      <Breakpoint file="/Users/tombrayshaw/Projects/Algorithms/Algorithms/Models/SearchingAlgorithms.cs" relfile="Algorithms/Models/SearchingAlgorithms.cs" line="262" column="1" />
-      <Breakpoint file="/Users/tombrayshaw/Projects/Algorithms/Algorithms/Models/SearchingAlgorithms.cs" relfile="Algorithms/Models/SearchingAlgorithms.cs" line="254" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.Algorithms.Android PreferredExecutionTarget="Android.Android_Accelerated_Oreo" />
