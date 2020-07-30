@@ -107,26 +107,26 @@ namespace Algorithms.Views
                 {
                     case "Bubble Sort":
                         {
-                            IEnumerable<BubbleSortOperation> operations = algorithms.BubbleSort(CurrentEntriesOnGraph.ToArray());
+                            IEnumerable<SortOperation> operations = algorithms.BubbleSort(CurrentEntriesOnGraph.ToArray());
                             CarryOutOperations(operations.ToList());
                             break;
                         }
                     case "Heap Sort":
                         {
-                            IEnumerable<HeapSortOperation> operations = algorithms.HeapSort(CurrentEntriesOnGraph.ToArray());
+                            IEnumerable<SortOperation> operations = algorithms.HeapSort(CurrentEntriesOnGraph.ToArray());
                             CarryOutOperations(operations.ToList());
                             break;
                         }
                     case "Insertion Sort":
                         {
-                            IEnumerable<InsertionSortOperation> operations = algorithms.InsertionSort(CurrentEntriesOnGraph.ToArray());
+                            IEnumerable<SortOperation> operations = algorithms.InsertionSort(CurrentEntriesOnGraph.ToArray());
                             CarryOutOperations(operations.ToList());
                             break;
                         }
                     case "Quick Sort":
                         {
-                            List<QuickSortOperation> ops = new List<QuickSortOperation>();
-                            List<QuickSortOperation> operations = algorithms.QuickSort(CurrentEntriesOnGraph.ToArray(),
+                            List<SortOperation> ops = new List<SortOperation>();
+                            List<SortOperation> operations = algorithms.QuickSort(CurrentEntriesOnGraph.ToArray(),
                                                                                        0,
                                                                                        SGObj.GraphElementNumber-1,
                                                                                        ops);
@@ -135,7 +135,7 @@ namespace Algorithms.Views
                         }
                     case "Selection Sort":
                         {
-                            IEnumerable<SelectionSortOperation> operations = algorithms.SelectionSort(CurrentEntriesOnGraph.ToArray());
+                            IEnumerable<SortOperation> operations = algorithms.SelectionSort(CurrentEntriesOnGraph.ToArray());
                             CarryOutOperations(operations.ToList());
                             break;
                         }
