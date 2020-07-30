@@ -139,6 +139,8 @@ namespace Algorithms.Views
                             CarryOutOperations(operations.ToList());
                             break;
                         }
+                    default:
+                        break;
                 }
             }
         }
