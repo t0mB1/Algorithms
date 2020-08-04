@@ -29,6 +29,9 @@ namespace Algorithms.Services
                 case AlgorithmNameEnumeration.SelectionSort:
                     _filename = "Algorithms.AlgorithmInfomation.Sorting.SelectionSortInfo.txt";
                     break;
+                case AlgorithmNameEnumeration.MergeSort:
+                    _filename = "Algorithms.AlgorithmInfomation.Sorting.MergeSortInfo.txt";
+                    break;
 
                 // searching algorithms
                 case AlgorithmNameEnumeration.ClassicBinarySearch:
@@ -42,6 +45,12 @@ namespace Algorithms.Services
                     break;
                 case AlgorithmNameEnumeration.JumpSearch:
                     _filename = "Algorithms.AlgorithmInfomation.Searching.JumpSearchInfo.txt";
+                    break;
+                case AlgorithmNameEnumeration.InterpolationSearch:
+                    _filename = "Algorithms.AlgorithmInfomation.Searching.InterpolationSearchInfo.txt";
+                    break;
+                case AlgorithmNameEnumeration.FibonacciSearch:
+                    _filename = "Algorithms.AlgorithmInfomation.Searching.FibonacciSearchInfo.txt";
                     break;
             }
             if (_filename != "")
