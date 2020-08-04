@@ -39,6 +39,9 @@
     <None Remove="AlgorithmInfomation\Searching\ModifiedBinarySearchInfo.txt" />
     <None Remove="AlgorithmInfomation\Searching\ClassicBinarySearchInfo.txt" />
     <None Remove="AlgorithmInfomation\Sorting\SelectionSortInfo.txt" />
+    <None Remove="AlgorithmInfomation\Searching\FibonacciSearchInfo.txt" />
+    <None Remove="AlgorithmInfomation\Searching\InterpolationSearchInfo.txt" />
+    <None Remove="AlgorithmInfomation\Sorting\MergeSortInfo.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AlgorithmInfomation\Sorting\BubbleSortInfo.txt" />
@@ -50,5 +53,8 @@
     <EmbeddedResource Include="AlgorithmInfomation\Searching\ModifiedBinarySearchInfo.txt" />
     <EmbeddedResource Include="AlgorithmInfomation\Searching\ClassicBinarySearchInfo.txt" />
     <EmbeddedResource Include="AlgorithmInfomation\Sorting\SelectionSortInfo.txt" />
+    <EmbeddedResource Include="AlgorithmInfomation\Searching\FibonacciSearchInfo.txt" />
+    <EmbeddedResource Include="AlgorithmInfomation\Searching\InterpolationSearchInfo.txt" />
+    <EmbeddedResource Include="AlgorithmInfomation\Sorting\MergeSortInfo.txt" />
   </ItemGroup>
 </Project>
