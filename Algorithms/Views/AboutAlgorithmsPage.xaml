@@ -28,6 +28,11 @@
                                   Tapped="InsertionSortTextCell_Tapped"
                                   TextColor="{DynamicResource TextSecondaryColor}"/>
 
+                        <TextCell x:Name="MergeSortTextCell"
+                                  Text="Merge Sort"
+                                  Tapped="MergeSortTextCell_Tapped"
+                                  TextColor="{DynamicResource TextSecondaryColor}"/>
+
                         <TextCell x:Name="QuickSortTextCell"
                                   Text="Quick Sort"
                                   Tapped="QuickSortTextCell_Tapped"
@@ -61,6 +66,16 @@
                         <TextCell x:Name="ModBinarySearchTextCell"
                                   Text="Modified Binary Search"
                                   Tapped="ModBinarySearchTextCell_Tapped"
+                                  TextColor="{DynamicResource TextSecondaryColor}"/>
+
+                        <TextCell x:Name="InterpolationSearchTextCell"
+                                  Text="Interpolation Binary Search"
+                                  Tapped="InterpolationSearchTextCell_Tapped"
+                                  TextColor="{DynamicResource TextSecondaryColor}"/>
+
+                        <TextCell x:Name="FibonacciSearchTextCell"
+                                  Text="Fibonacci Search"
+                                  Tapped="FibonacciSearchTextCell_Tapped"
                                   TextColor="{DynamicResource TextSecondaryColor}"/>
 
                     </TableSection>

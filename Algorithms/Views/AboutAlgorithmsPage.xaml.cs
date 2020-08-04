@@ -17,6 +17,25 @@ namespace Algorithms.Views
             SetTableSectionTextColours();
         }
 
+        private void NavToAlgPage(AlgorithmNameEnumeration Algorithm)
+        {
+            Navigation.PushAsync(new SelectedAlgorithmPage(Algorithm));
+        }
+
+        private void SetTableSectionTextColours()
+        {
+            if (App.TextColour != null)
+            {
+                SortTableSection.TextColor = Color.FromHex(App.TextColour);
+                SearchTableSection.TextColor = Color.FromHex(App.TextColour);
+            }
+            else
+            {
+                SortTableSection.TextColor = Color.FromHex("#FF1493");
+                SearchTableSection.TextColor = Color.FromHex("#FF1493");
+            }
+        }
+
         //                           *** Sort ***
 
         void BubbleSortTextCell_Tapped(object sender, EventArgs e)
@@ -34,6 +53,11 @@ namespace Algorithms.Views
             NavToAlgPage(AlgorithmNameEnumeration.InsertionSort);
         }
 
+        void MergeSortTextCell_Tapped(object sender, EventArgs e)
+        {
+            NavToAlgPage(AlgorithmNameEnumeration.MergeSort);
+        }
+
         void QuickSortTextCell_Tapped(object sender, EventArgs e)
         {
             NavToAlgPage(AlgorithmNameEnumeration.QuickSort);
@@ -45,7 +69,7 @@ namespace Algorithms.Views
         }
 
 
-        //                              *** Search ***
+        //                          *** Search ***
 
         void JumpSearchTextCell_Tapped(object sender, EventArgs e)
         {
@@ -67,24 +91,14 @@ namespace Algorithms.Views
             NavToAlgPage(AlgorithmNameEnumeration.ModBinarySearch);
         }
 
-
-        private void NavToAlgPage(AlgorithmNameEnumeration Algorithm)
+        void InterpolationSearchTextCell_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SelectedAlgorithmPage(Algorithm));
+            NavToAlgPage(AlgorithmNameEnumeration.InterpolationSearch);
         }
 
-        private void SetTableSectionTextColours()
+        void FibonacciSearchTextCell_Tapped(object sender, EventArgs e)
         {
-            if (App.TextColour != null)
-            {
-                SortTableSection.TextColor = Color.FromHex(App.TextColour);
-                SearchTableSection.TextColor = Color.FromHex(App.TextColour);
-            }
-            else
-            {
-                SortTableSection.TextColor = Color.FromHex("#FF1493");
-                SearchTableSection.TextColor = Color.FromHex("#FF1493");
-            }
+            NavToAlgPage(AlgorithmNameEnumeration.FibonacciSearch);
         }
     }
 }

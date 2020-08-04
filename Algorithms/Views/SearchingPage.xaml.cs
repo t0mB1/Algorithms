@@ -124,30 +124,30 @@ namespace Algorithms.Views
                 {
                     case "Linear Search":
                         {
-                            List<SearchOperation> operations = algorithms.LinearSearch(CurrentEntriesOnGraph.ToArray(),
+                            IEnumerable<SearchOperation> operations = algorithms.LinearSearch(CurrentEntriesOnGraph.ToArray(),
                                                                                              SGObj.SearchItemValue);
-                            CarryOutSearchOperations(operations);
+                            CarryOutSearchOperations(operations.ToList());
                             break;
                         }
                     case "Jump Search":
                         {
-                            List<SearchOperation> operations = algorithms.JumpSearch(CurrentEntriesOnGraph.ToArray(),
+                            IEnumerable<SearchOperation> operations = algorithms.JumpSearch(CurrentEntriesOnGraph.ToArray(),
                                                                                          SGObj.SearchItemValue);
-                            CarryOutSearchOperations(operations);
+                            CarryOutSearchOperations(operations.ToList());
                             break;
                         }
                     case "Classic Binary Search":
                         {
-                            List<SearchOperation> operations = algorithms.ClassicBinarySearch(CurrentEntriesOnGraph.ToArray(),
+                            IEnumerable<SearchOperation> operations = algorithms.ClassicBinarySearch(CurrentEntriesOnGraph.ToArray(),
                                                                                                     SGObj.SearchItemValue);
-                            CarryOutSearchOperations(operations);
+                            CarryOutSearchOperations(operations.ToList());
                             break;
                         }
                     case "Modified Binary Search":
                         {
-                            List<SearchOperation> operations = algorithms.ModifiedBinarySearch(CurrentEntriesOnGraph.ToArray(),
+                            IEnumerable<SearchOperation> operations = algorithms.ModifiedBinarySearch(CurrentEntriesOnGraph.ToArray(),
                                                                                                     SGObj.SearchItemValue);
-                            CarryOutSearchOperations(operations);
+                            CarryOutSearchOperations(operations.ToList());
                             break;
                         }
 
@@ -156,6 +156,13 @@ namespace Algorithms.Views
                             IEnumerable<InterpolationOperation> operations = algorithms.InterpolationSearch(CurrentEntriesOnGraph.ToArray(),
                                                                                                      SGObj.SearchItemValue);
                             CarryOutInterpolationOperations(operations.ToList());
+                            break;
+                        }
+                    case "Fibonacci Search":
+                        {
+                            IEnumerable<SearchOperation> operations = algorithms.FibonacciSearch(CurrentEntriesOnGraph.ToArray(),
+                                                                                                     SGObj.SearchItemValue);
+                            CarryOutSearchOperations(operations.ToList());
                             break;
                         }
                     default:
@@ -288,10 +295,14 @@ namespace Algorithms.Views
                 case GraphCaseEnum.Worst:
                     if(SGObj.CurrentAlg == "Interpolation Search")
                     {
+                        SGObj.SearchItemValue = 10;
+                        searchItemPicker.SelectedItem = "10";
                         CurrentEntriesOnGraph = service.GetWostCaseEntriesForSearch(1, 20, 10).ToArray();
                     }
                     else
                     {
+                        SGObj.SearchItemValue = 20;
+                        searchItemPicker.SelectedItem = "20";
                         CurrentEntriesOnGraph = service.GetWostCaseEntriesForSearch(1, 20).ToArray();
                     }
                     DisplayGraph(CurrentEntriesOnGraph);
@@ -300,7 +311,8 @@ namespace Algorithms.Views
                     if (SGObj.CurrentAlg == "Classic Binary Search" ||
                         SGObj.CurrentAlg == "Modified Binary Search" ||
                         SGObj.CurrentAlg == "Jump Search" ||
-                        SGObj.CurrentAlg == "Interpolation Search")
+                        SGObj.CurrentAlg == "Interpolation Search" ||
+                        SGObj.CurrentAlg == "Fibonacci Search")
                     {
                         if(SGObj.SearchItemValue == 0)
                         {
@@ -340,6 +352,11 @@ namespace Algorithms.Views
                         {
                             SGObj.SearchItemValue = 10;
                             searchItemPicker.SelectedItem = "10";
+                        }
+                        else if(SGObj.CurrentAlg == "Fibonacci Search")
+                        {
+                            SGObj.SearchItemValue = 8;
+                            searchItemPicker.SelectedItem = "8";
                         }
                     }
                     CurrentEntriesOnGraph = service.GetBestCaseEntries(1, 20, SGObj.SearchItemValue).ToArray();
@@ -476,11 +493,9 @@ namespace Algorithms.Views
         {
             SearchingGraphObject SGObj = (SearchingGraphObject)BindingContext;
             SGObj.Case = GraphCaseEnum.Worst;
-            SGObj.SearchItemValue = 20;
-            searchItemPicker.SelectedItem = "20";
+            ResetGraph();
             ToggleSearchItemPicker();
             UpdateCaseBtnAppearance();
-            DisplayGraph(service.GetWostCaseEntriesForSearch(1, 20).ToArray());
         }
 
         private void ChangeToRandomCase()

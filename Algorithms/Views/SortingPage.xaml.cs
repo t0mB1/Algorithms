@@ -123,6 +123,12 @@ namespace Algorithms.Views
                             CarryOutOperations(operations.ToList());
                             break;
                         }
+                    case "Merge Sort":
+                        {
+                            IEnumerable<MergeSortOperation> operations = algorithms.MergeSort(CurrentEntriesOnGraph.ToArray());
+                            CarryOutMergeOperations(operations.ToList());
+                            break;
+                        }
                     case "Quick Sort":
                         {
                             List<SortOperation> ops = new List<SortOperation>();
@@ -143,6 +149,52 @@ namespace Algorithms.Views
                         break;
                 }
             }
+        }
+
+        private async void CarryOutMergeOperations(List<MergeSortOperation> operations)
+        {
+            foreach (MergeSortOperation operation in operations)
+            {
+                SortingGraphObject SGObj = (SortingGraphObject)BindingContext;
+                int speed = SGObj.SpeedDictionary[SGObj.Speed];
+                if (!operation.IsFinalMergeOperation)
+                {
+                    foreach (Entry entry in operation.LeftEntries)
+                    {
+                        Entry tempEntry = CurrentEntriesOnGraph.Where(hr => hr.Value == entry.Value).FirstOrDefault();
+                        if(tempEntry != null)
+                        {
+                            continue;                           // doesn't f*cking work
+                        }
+                    }
+                    
+                    DisplayGraph(CurrentEntriesOnGraph);
+                    await Task.Delay(speed);
+                }
+                else
+                {
+                    CurrentEntriesOnGraph = operation.LeftEntries
+                                                     .Concat(operation.RightEntries)
+                                                     .ToList();
+                    DisplayGraph(CurrentEntriesOnGraph);
+                    await Task.Delay(speed);
+                    int resultValue = (int)operation.ResultsEntries.Last().Value;
+                    Entry entry = CurrentEntriesOnGraph.Where(hr => hr.Value == resultValue)
+                                                     .FirstOrDefault();
+                    if(entry != null)
+                    {
+                        List<Entry> entries = CurrentEntriesOnGraph.Select(hr => hr).ToList();
+                        entries.Remove(entry);
+                        entries.Add(entry);
+                        CurrentEntriesOnGraph = entries;
+                        DisplayGraph(CurrentEntriesOnGraph);
+                        await Task.Delay(speed);
+                    }
+                }
+                
+            }
+            ToggleButtons();
+            DisplayCaseBtns();
         }
 
         private async void CarryOutOperations<T>(List<T> operations) where T : ISortOperation
