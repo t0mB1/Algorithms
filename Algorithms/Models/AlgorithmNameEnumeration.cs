@@ -7,10 +7,12 @@
         InsertionSort,
         QuickSort,
         SelectionSort,
+        MergeSort,
         JumpSearch,
         LinearSearch,
         ClassicBinarySearch,
         ModBinarySearch,
-        InterpolationSearch
+        InterpolationSearch,
+        FibonacciSearch
     }
 }

@@ -7,13 +7,12 @@ namespace Algorithms.Models
 {
     public class SearchingAlgorithms
     {
-        public List<SearchOperation> LinearSearch(Entry[] entries, int searchItem)
+        public IEnumerable<SearchOperation> LinearSearch(Entry[] entries, int searchItem)
         {
             List<SearchOperation> operations = new List<SearchOperation>();
             int i = 0;
             while (i < entries.Length)
             {
-                // highlight Entry Blue
                 operations.Add(new SearchOperation
                 {
                     Entry = entries[i],
@@ -22,7 +21,6 @@ namespace Algorithms.Models
                 });
                 if (entries[i].Value == searchItem)
                 {
-                    // highlight Entry Green
                     operations.Add(new SearchOperation
                     {
                         Entry = entries[i],
@@ -36,7 +34,7 @@ namespace Algorithms.Models
             return operations;
         }
 
-        public List<SearchOperation> ClassicBinarySearch(Entry[] entries, int searchItem)
+        public IEnumerable<SearchOperation> ClassicBinarySearch(Entry[] entries, int searchItem)
         {
             // *** requires a sorted array ***
             int first = 0;
@@ -78,7 +76,7 @@ namespace Algorithms.Models
             return BSOperations;
         }
 
-        public List<SearchOperation> ModifiedBinarySearch(Entry[] entries, int searchItem)
+        public IEnumerable<SearchOperation> ModifiedBinarySearch(Entry[] entries, int searchItem)
         {
             // *** requires a sorted array ***
             int first = 0;
@@ -118,7 +116,7 @@ namespace Algorithms.Models
             return BSOperations;
         }
 
-        public List<SearchOperation> JumpSearch(Entry[] entries, int searchItem)
+        public IEnumerable<SearchOperation> JumpSearch(Entry[] entries, int searchItem)
         {
             // *** requires a sorted array ***
             List<SearchOperation> JSOperations = new List<SearchOperation>();
@@ -288,6 +286,77 @@ namespace Algorithms.Models
                 }
             }
             return operations;
+        }
+
+        public IEnumerable<SearchOperation> FibonacciSearch(Entry[] entries, int searchItem)
+        {
+            List<SearchOperation> operations = new List<SearchOperation>();
+            int fibNMm2 = 0; // (n-2)'th Fib Num
+            int fibNMm1 = 1; // (n-1)'th Fib Num
+            int fibN = fibNMm2 + fibNMm1; // n'th Fibonacci
+
+            // fibM stores the smallest Fib Num greater >= to n
+            while (fibN < entries.Length)
+            {
+                fibNMm2 = fibNMm1;
+                fibNMm1 = fibN;
+                fibN = fibNMm2 + fibNMm1;
+            }
+
+            int offset = -1;
+
+            while (fibN > 1)
+            {
+                int i = Min(offset + fibNMm2, entries.Length - 1);
+                if (entries[i].Value < searchItem)
+                {
+                    fibN = fibNMm1;
+                    fibNMm1 = fibNMm2;
+                    fibNMm2 = fibN - fibNMm1;
+                    offset = i;
+                    operations.Add(new SearchOperation
+                    {
+                        Entry = entries[i],
+                        ChangeToColour = GetColourWhenSearchItemIsFalse(),
+                        IsSearchItem = false
+                    });
+                }
+                else if (entries[i].Value > searchItem)
+                {
+                    fibN = fibNMm2;
+                    fibNMm1 -= fibNMm2;
+                    fibNMm2 = fibN - fibNMm1;
+                    operations.Add(new SearchOperation
+                    {
+                        Entry = entries[i],
+                        ChangeToColour = GetColourWhenSearchItemIsFalse(),
+                        IsSearchItem = false
+                    });
+                }
+                else
+                {
+                    operations.Add(new SearchOperation
+                    {
+                        Entry = entries[i],
+                        ChangeToColour = "#00FF00",
+                        IsSearchItem = true
+                    });
+                    return operations;
+                }
+            }
+
+            if (fibNMm1 == 1 &&
+                entries[offset + 1].Value == searchItem)
+            {
+                return operations;
+            }
+
+            return operations;
+        }
+
+        private static int Min(int x, int y)
+        {
+            return (x <= y) ? x : y;
         }
 
         private string GetColourWhenSearchItemIsFalse()

@@ -275,5 +275,134 @@ namespace Algorithms.Models
                 }
             }
         }
+
+
+
+
+        private List<MergeSortOperation> MergeSortOperations = new List<MergeSortOperation>();
+
+        public IEnumerable<MergeSortOperation> MergeSort(Entry[] entries)
+        {
+            MergeSortOperations.Clear();
+            CarryOutMergeSort(entries);
+            return MergeSortOperations;
+        }
+
+        private IEnumerable<Entry> CarryOutMergeSort(Entry[] entries)
+        {
+            // base case
+            if (entries.Length <= 1)
+            {
+                return entries;
+            }
+
+            int midPoint = entries.Length / 2;
+            Entry[] left = new Entry[midPoint];
+            Entry[] right;
+
+            // create right array
+            if (entries.Length % 2 == 0)
+            {
+                right = new Entry[midPoint];
+            }
+            else
+            {
+                right = new Entry[midPoint + 1];
+            }
+
+            //populate left array
+            for (int i = 0; i < midPoint; i++)
+            {
+                left[i] = entries[i];
+            }
+            //populate right array
+            int x = 0;
+            for (int i = midPoint; i < entries.Length; i++)
+            {
+                right[x] = entries[i];
+                x++;
+            }
+            MergeSortOperations.Add(new MergeSortOperation
+            {
+                LeftEntries = left,
+                RightEntries = right
+            });
+
+            // recursively sort left array
+            left = CarryOutMergeSort(left).ToArray();
+            // recursively sort right array
+            right = CarryOutMergeSort(right).ToArray();
+            // merge the two sorted arrays
+            Entry[] result = Merge(left, right);
+            return result;
+        }
+
+        private Entry[] Merge(Entry[] left, Entry[] right)
+        {
+            int resultLength = right.Length + left.Length;
+            Entry[] resultArr = new Entry[resultLength];
+            int leftIndex = 0;
+            int rightIndex = 0;
+            int indexResult = 0;
+
+            while (leftIndex < left.Length ||
+                   rightIndex < right.Length)
+            {
+                if (leftIndex < left.Length &&
+                    rightIndex < right.Length)
+                {
+                    // if item on left array is less than item on right array
+                    if (left[leftIndex].Value <= right[rightIndex].Value)
+                    {
+                        // add item to result array
+                        resultArr[indexResult] = left[leftIndex];
+                        MergeSortOperations.Add(new MergeSortOperation
+                        {
+                            ResultsEntries = resultArr,
+                            IsFinalMergeOperation = true
+                        });
+                        leftIndex++;
+                        indexResult++;
+                    }
+                    else
+                    {
+                        // right array will be added to results array
+                        resultArr[indexResult] = right[rightIndex];
+                        MergeSortOperations.Add(new MergeSortOperation
+                        {
+                            ResultsEntries = resultArr,
+                            IsFinalMergeOperation = true
+                        });
+                        rightIndex++;
+                        indexResult++;
+                    }
+                }
+                else if (leftIndex < left.Length)
+                {
+                    // add all its items to the results array
+                    resultArr[indexResult] = left[leftIndex];
+                    MergeSortOperations.Add(new MergeSortOperation
+                    {
+                        ResultsEntries = resultArr,
+                        IsFinalMergeOperation = true
+                    });
+                    leftIndex++;
+                    indexResult++;
+                }
+                else if (rightIndex < right.Length)
+                {
+                    // add all its items to the results array
+                    resultArr[indexResult] = right[rightIndex];
+                    MergeSortOperations.Add(new MergeSortOperation
+                    {
+                        ResultsEntries = resultArr,
+                        IsFinalMergeOperation = true
+                    });
+                    rightIndex++;
+                    indexResult++;
+                }
+            }
+            return resultArr;
+        }
     }
 }
