@@ -1,8 +1,8 @@
 # Algorithms
 
 ## Sorting and Searching Algorithms Visualiser.
-note: gifs are not upto date
-Website comming soon
+##### note: GIFs are not upto date
+###### Website comming soon
 
 #### Sorting on iPhone 11: 
 ![alt-text-1](GIFs/SortingGIF2.gif) ![alt-text-2](GIFs/iPhoneGIF.gif) 
