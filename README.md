@@ -1,7 +1,8 @@
 # Algorithms
 
-
 ## Sorting and Searching Algorithms Visualiser.
+note: gifs are not upto date
+Website comming soon
 
 #### Sorting on iPhone 11: 
 ![alt-text-1](GIFs/SortingGIF2.gif) ![alt-text-2](GIFs/iPhoneGIF.gif) 
@@ -19,11 +20,15 @@ The app displays information about each algorithm with simple implementations in
 2. Insertion Sort
 3. Heap Sort
 4. Quick Sort
+5. Merge Sort
+6. Selection Sort
 #### Searches:
 1. Linear Search
 2. Binary Search
 3. A Modified Binary Search
 4. Jump Search
+5. Interpolation Search
+6. Fiboncci Search
 
 ------------------------------
 
