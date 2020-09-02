@@ -1,14 +1,16 @@
-"--cache=/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.6/mtouch-cache"
-"--sim=/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/bin/iPhoneSimulator/Debug/device-builds/iphone 11-13.6/Algorithms.iOS.app"
---executable=Algorithms.iOS
 --debug
 --sgen-conc
---nolink
+/target-framework:Xamarin.iOS,Version=v1.0
+--http-message-handler=NSUrlSessionHandler
+"--cache=/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.6/mtouch-cache"
+--root-assembly=/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/bin/iPhoneSimulator/Debug/Algorithms.iOS.exe
 --sdkroot=/Applications/Xcode.app/Contents/Developer
+"--sim=/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/bin/iPhoneSimulator/Debug/device-builds/iphone 11-13.6/Algorithms.iOS.app"
+--executable=Algorithms.iOS
+--nolink
 --sdk=13.6
 --targetver=8.0
 --aot-options=-O=-float32
---http-message-handler=NSUrlSessionHandler
 --abi=x86_64
 "--symbollist=/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.6/mtouch-symbols.list"
 --dsym=no
@@ -216,5 +218,3 @@
 -r=/Users/tombrayshaw/.nuget/packages/xamarin.forms/4.4.0.991265/lib/Xamarin.iOS10/zh-Hans/Xamarin.Forms.Platform.iOS.resources.dll
 -r=/Users/tombrayshaw/.nuget/packages/xamarin.forms/4.4.0.991265/lib/Xamarin.iOS10/zh-Hant/Xamarin.Forms.Platform.iOS.resources.dll
 -r=/Users/tombrayshaw/Projects/Algorithms/Algorithms/bin/Debug/netstandard2.0/Algorithms.dll
---target-framework=Xamarin.iOS,v1.0
---root-assembly=/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/bin/iPhoneSimulator/Debug/Algorithms.iOS.exe

@@ -63,18 +63,18 @@
 /Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/bin/iPhoneSimulator/Debug/SQLitePCLRaw.core.dll
 /Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/bin/iPhoneSimulator/Debug/SQLitePCLRaw.provider.dynamic_cdecl.dll
 /Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/bin/iPhoneSimulator/Debug/System.Runtime.CompilerServices.Unsafe.dll
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.6/ibtool/_BundleResourceWithLogicalName.items
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.6/actool/_PartialAppManifest.items
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.6/actool/_BundleResourceWithLogicalName.items
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.6/coremlc/_PartialAppManifest.items
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.6/coremlc/_BundleResourceWithLogicalName.items
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.6/optimized/tab_about.png
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.6/optimized/tab_about@2x.png
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.6/optimized/tab_about@3x.png
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.6/optimized/tab_feed.png
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.6/optimized/tab_feed@2x.png
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.6/optimized/tab_feed@3x.png
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.6/optimized/xamarin_logo.png
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.6/optimized/xamarin_logo@2x.png
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.6/optimized/xamarin_logo@3x.png
-/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11-13.6/optimized/
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.6/ibtool/_BundleResourceWithLogicalName.items
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.6/actool/_PartialAppManifest.items
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.6/actool/_BundleResourceWithLogicalName.items
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.6/coremlc/_PartialAppManifest.items
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.6/coremlc/_BundleResourceWithLogicalName.items
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.6/optimized/tab_about.png
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.6/optimized/tab_about@2x.png
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.6/optimized/tab_about@3x.png
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.6/optimized/tab_feed.png
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.6/optimized/tab_feed@2x.png
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.6/optimized/tab_feed@3x.png
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.6/optimized/xamarin_logo.png
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.6/optimized/xamarin_logo@2x.png
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.6/optimized/xamarin_logo@3x.png
+/Users/tombrayshaw/Projects/Algorithms/Algorithms.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone 11 pro-13.6/optimized/

@@ -1,12 +1,7 @@
 ﻿<Properties StartupConfiguration="{51A0C8EF-8F7B-4CB9-8A9E-6964FB17D443}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Algorithms/Views/SelectedAlgorithmPage.xaml.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Algorithms/Views/SortingPage.xaml.cs">
     <Files>
-      <File FileName="Algorithms/Views/SearchingPage.xaml.cs" Line="325" Column="22" />
-      <File FileName="Algorithms/Services/GraphService.cs" Line="66" Column="51" />
-      <File FileName="Algorithms/Views/SortingPage.xaml" Line="72" Column="1" />
-      <File FileName="Algorithms/Views/AboutAlgorithmsPage.xaml" Line="76" Column="67" />
-      <File FileName="Algorithms/Services/FileHandlerService.cs" Line="50" Column="98" />
-      <File FileName="Algorithms/Views/SelectedAlgorithmPage.xaml.cs" Line="67" Column="1" />
+      <File FileName="Algorithms/Views/SortingPage.xaml.cs" Line="368" Column="63" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,8 +9,8 @@
           <Node name="Algorithms" expanded="True">
             <Node name="Algorithms" expanded="True">
               <Node name="Views" expanded="True">
-                <Node name="SelectedAlgorithmPage.xaml" expanded="True">
-                  <Node name="SelectedAlgorithmPage.xaml.cs" selected="True" />
+                <Node name="SortingPage.xaml" expanded="True">
+                  <Node name="SortingPage.xaml.cs" selected="True" />
                 </Node>
               </Node>
             </Node>
@@ -24,7 +19,7 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.Algorithms.iOS Xamarin.HotReload.UnhandledDeviceException.Algorithms.iOS.HideInfoBar="True" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.CF997730-0AA7-430C-B1E6-0F569F7BFD10" />
+  <MonoDevelop.Ide.ItemProperties.Algorithms.iOS Xamarin.HotReload.UnhandledDeviceException.Algorithms.iOS.HideInfoBar="True" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.31FD3AC5-A7A7-488C-AAC9-D08F78D49A52" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
