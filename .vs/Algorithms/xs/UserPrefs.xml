@@ -1,7 +1,9 @@
 ﻿<Properties StartupConfiguration="{51A0C8EF-8F7B-4CB9-8A9E-6964FB17D443}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Algorithms/Views/SortingPage.xaml.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Algorithms/Views/AboutAlgorithmsPage.xaml">
     <Files>
-      <File FileName="Algorithms/Views/SortingPage.xaml.cs" Line="368" Column="63" />
+      <File FileName="Algorithms.iOS/Renderers/CustomPickerRenderer.cs" Line="23" Column="1" />
+      <File FileName="Algorithms/Views/SearchingPage.xaml" />
+      <File FileName="Algorithms/Views/AboutAlgorithmsPage.xaml" Line="83" Column="25" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -9,17 +11,19 @@
           <Node name="Algorithms" expanded="True">
             <Node name="Algorithms" expanded="True">
               <Node name="Views" expanded="True">
-                <Node name="SortingPage.xaml" expanded="True">
-                  <Node name="SortingPage.xaml.cs" selected="True" />
-                </Node>
+                <Node name="AboutAlgorithmsPage.xaml" expanded="True" selected="True" />
+                <Node name="SearchingPage.xaml" expanded="True" />
               </Node>
+            </Node>
+            <Node name="Algorithms.iOS" expanded="True">
+              <Node name="Renderers" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.Algorithms.iOS Xamarin.HotReload.UnhandledDeviceException.Algorithms.iOS.HideInfoBar="True" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.31FD3AC5-A7A7-488C-AAC9-D08F78D49A52" />
+  <MonoDevelop.Ide.ItemProperties.Algorithms.iOS Xamarin.HotReload.UnhandledDeviceException.Algorithms.iOS.HideInfoBar="True" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.73CEC875-F549-494F-B75E-02C9CE7C1B3D" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
